@@ -1,0 +1,11 @@
+{
+  "url": "https://help.getharvest.com/api-v2/authentication-api/overview/authentication/",
+  "final_url": "https://help.getharvest.com/api-v2/authentication-api/overview/authentication/",
+  "title": "Harvest Help Center",
+  "timestamp": "2026-09-24T21:30:27.776648+00:00",
+  "source_method": "firecrawl",
+  "content_hash": "1a5f090606913f9d4dff477a9334644421e72a671154686f9e839700b069791c",
+  "raw_markdown": "![](https://help.getharvest.com/images/error.png)\n\n# We can\u02bct find the page you\u02bcre looking for.\n\nSorry about that! The page you were looking for may have been moved or the address misspelled.\n\n[**Harvest Help Center**\\\\\nModern time tracking and reporting for your business.](https://support.getharvest.com/hc/en-us)\n\n[**Forecast Help Center**\\\\\nThe fast and simple way to plan your team\u2019s time.](https://help.getharvest.com/forecast)\n\n## Related links\n\n- [Harvest API documentation](https://help.getharvest.com/api-v2)\n- [Harvest button & widget](https://www.getharvest.com/add-time-tracking)\n- [Harvest status](https://www.harveststatus.com/)\n- [Contact support](https://www.getharvest.com/contact?from=helpcenter&article=%2Fapi-v2%2Fauthentication-api%2Foverview%2Fauthentication%2F)",
+  "status_code": 200,
+  "error": null
+}

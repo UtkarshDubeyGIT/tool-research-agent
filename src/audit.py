@@ -152,12 +152,59 @@ def run_audit(
     return manifest
 
 
+def prepare_review_queue(
+    first_pass_path: str = "data/first_pass.json",
+    final_pass_path: str = "data/final_results.json",
+    output_path: str = "data/review_queue.json",
+) -> Dict[str, Any]:
+    """Prepare the fixed sample for independent review without inventing ground truth."""
+    first_pass = _load_records(first_pass_path)
+    final_pass = _load_records(final_pass_path)
+    queue = []
+    for app_id in SAMPLED_APP_IDS:
+        first = first_pass.get(app_id, {})
+        final = final_pass.get(app_id, {})
+        urls = list(dict.fromkeys(
+            item.get("url") for item in final.get("evidence", [])
+            if isinstance(item.get("url"), str) and item.get("url")
+        ))
+        queue.append({
+            "id": app_id,
+            "name": final.get("name") or first.get("name"),
+            "category": final.get("category") or first.get("category"),
+            "candidate_sources": urls,
+            "fields": {
+                field: {
+                    "first_pass": first.get(field),
+                    "final_pass": final.get(field),
+                    "review_status": "pending",
+                    "checked_value": None,
+                    "official_source_url": None,
+                }
+                for field in AUDIT_FIELDS
+            },
+        })
+    output = {
+        "purpose": "Reviewer worksheet; values here are not ground truth or an accuracy score.",
+        "sample_rule": "Two fixed IDs from each of the nine supplied categories.",
+        "entries": queue,
+    }
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(output_path).write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
+    return output
+
+
 def main():
     parser = argparse.ArgumentParser(description="Score an independently documented human audit")
     parser.add_argument("--first-pass", default="data/first_pass.json")
     parser.add_argument("--final-pass", default="data/final_results.json")
     parser.add_argument("--manifest", default="data/audit.json")
+    parser.add_argument("--prepare", action="store_true", help="Generate a reviewer worksheet without scoring")
     args = parser.parse_args()
+    if args.prepare:
+        queue = prepare_review_queue(args.first_pass, args.final_pass)
+        print(f"Prepared {len(queue['entries'])} independent review entries in data/review_queue.json.")
+        return
     report = run_audit(args.first_pass, args.final_pass, args.manifest)
     if report.get("status") != "complete":
         print("Human audit pending; no accuracy score was calculated.")

@@ -1,0 +1,971 @@
+{
+  "purpose": "Reviewer worksheet; values here are not ground truth or an accuracy score.",
+  "sample_rule": "Two fixed IDs from each of the nine supplied categories.",
+  "entries": [
+    {
+      "id": 1,
+      "name": "Salesforce",
+      "category": "CRM and Sales",
+      "candidate_sources": [
+        "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm",
+        "https://developer.salesforce.com/signup"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "oauth2"
+          ],
+          "final_pass": [
+            "oauth2"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "yes",
+            "free_or_trial_credentials": "yes",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "buildable_now",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 10,
+      "name": "DealCloud",
+      "category": "CRM and Sales",
+      "candidate_sources": [
+        "https://api.docs.dealcloud.com"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [],
+          "final_pass": [],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 11,
+      "name": "Zendesk",
+      "category": "Support and Helpdesk",
+      "candidate_sources": [
+        "https://developer.zendesk.com/api-reference/"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [],
+          "final_pass": [],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 20,
+      "name": "Gladly",
+      "category": "Support and Helpdesk",
+      "candidate_sources": [
+        "https://developer.gladly.com/rest/"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "token"
+          ],
+          "final_pass": [
+            "token"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 21,
+      "name": "Slack",
+      "category": "Communications and Messaging",
+      "candidate_sources": [
+        "https://docs.slack.dev/authentication/",
+        "https://slack.com/intl/en-in/"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "oauth2",
+            "token"
+          ],
+          "final_pass": [
+            "oauth2"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 28,
+      "name": "WhatsApp Business",
+      "category": "Communications and Messaging",
+      "candidate_sources": [
+        "https://developers.facebook.com/docs/whatsapp",
+        "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "token"
+          ],
+          "final_pass": [
+            "token"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "limited",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 31,
+      "name": "Google Ads",
+      "category": "Marketing, Ads, Email and Social",
+      "candidate_sources": [
+        "https://developers.google.com/google-ads/api/docs/get-started/introduction",
+        "https://developers.google.com/google-ads"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [],
+          "final_pass": [],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 35,
+      "name": "Mailchimp",
+      "category": "Marketing, Ads, Email and Social",
+      "candidate_sources": [
+        "https://mailchimp.com/developer/"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [],
+          "final_pass": [],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 41,
+      "name": "Shopify",
+      "category": "Ecommerce",
+      "candidate_sources": [
+        "https://shopify.dev/docs/apps/build/authentication-authorization"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "token"
+          ],
+          "final_pass": [
+            "token"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 49,
+      "name": "Amazon Selling Partner",
+      "category": "Ecommerce",
+      "candidate_sources": [
+        "https://developer-docs.amazon/sp-api",
+        "https://developer-docs.amazon/sp-api/page/404"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [],
+          "final_pass": [],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 56,
+      "name": "Firecrawl",
+      "category": "Data, SEO and Scraping",
+      "candidate_sources": [
+        "https://docs.firecrawl.dev/api-reference/introduction",
+        "https://www.firecrawl.dev/"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "api_key"
+          ],
+          "final_pass": [
+            "api_key"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "yes",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 59,
+      "name": "Waterfall.io",
+      "category": "Data, SEO and Scraping",
+      "candidate_sources": [
+        "https://www.waterfall.io/"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [],
+          "final_pass": [],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 61,
+      "name": "GitHub",
+      "category": "Developer, Infra and Data platforms",
+      "candidate_sources": [
+        "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+        "https://docs.github.com/en/rest"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "token"
+          ],
+          "final_pass": [
+            "token"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 67,
+      "name": "Snowflake",
+      "category": "Developer, Infra and Data platforms",
+      "candidate_sources": [
+        "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "oauth2",
+            "other"
+          ],
+          "final_pass": [
+            "oauth2",
+            "other"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 71,
+      "name": "Notion",
+      "category": "Productivity and Project Management",
+      "candidate_sources": [
+        "https://developers.notion.com/guides/get-started/overview",
+        "https://developers.notion.com/guides/get-started/authorization"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "oauth2",
+            "token"
+          ],
+          "final_pass": [
+            "oauth2",
+            "token"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 74,
+      "name": "Jira",
+      "category": "Productivity and Project Management",
+      "candidate_sources": [
+        "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "basic",
+            "oauth2"
+          ],
+          "final_pass": [
+            "basic",
+            "oauth2"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 81,
+      "name": "Stripe",
+      "category": "Finance and Fintech",
+      "candidate_sources": [
+        "https://docs.stripe.com/api",
+        "https://docs.stripe.com/api/authentication"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "api_key",
+            "basic",
+            "token"
+          ],
+          "final_pass": [
+            "api_key",
+            "basic"
+          ],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    },
+    {
+      "id": 90,
+      "name": "PitchBook",
+      "category": "Finance and Fintech",
+      "candidate_sources": [
+        "https://pitchbook.com"
+      ],
+      "fields": {
+        "auth_methods": {
+          "first_pass": [
+            "unknown"
+          ],
+          "final_pass": [],
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "credential_access": {
+          "first_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "final_pass": {
+            "self_serve_signup": "unknown",
+            "free_or_trial_credentials": "unknown",
+            "paid_plan_required": "unknown",
+            "admin_approval_required": "unknown",
+            "partner_approval_required": "unknown"
+          },
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "api_breadth": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        },
+        "buildability": {
+          "first_pass": "unknown",
+          "final_pass": "unknown",
+          "review_status": "pending",
+          "checked_value": null,
+          "official_source_url": null
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "generated_at": "2026-09-24T21:33:01.441643+00:00",
+  "input": "data/apps.json",
+  "input_sha256": "da8d651a115bb07651ecef61fcd14553cd399defae18da12672dc31098848623",
+  "source_leads": "data/source_seeds.json",
+  "source_leads_sha256": "f12c10fe50feed4881f8460c60958e3689fd880cd267b7bd9f1fc0ce20618520",
+  "first_pass": "data/first_pass.json",
+  "final_pass": "data/final_results.json",
+  "method": "Two source pages maximum per app; direct HTTP first, budgeted Firecrawl v2 fallback; structured OpenAI extraction; exact saved-source quote match before Jev verification; code-owned rules.",
+  "request_counts": {
+    "first_pass": {
+      "firecrawl": 20,
+      "openai": 87,
+      "openrouter_jev": 0
+    },
+    "full_final_pass": {
+      "firecrawl": 20,
+      "openai": 84,
+      "openrouter_jev": 282
+    },
+    "targeted_recovery": {
+      "firecrawl": 11,
+      "openai": 4,
+      "openrouter_jev": 6
+    }
+  },
+  "quality": {
+    "total_records": 90,
+    "valid_records_count": 60,
+    "flagged_records_count": 30,
+    "cached_source_count": 234
+  },
+  "independent_sample_audit": "pending",
+  "billing_note": "Request counts are CLI observations, not an invoice. One-off development pilots are excluded."
+}

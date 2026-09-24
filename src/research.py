@@ -62,9 +62,10 @@ EXTRACTION_SCHEMA = {
                         ]
                     },
                     "claim": {"type": "string"},
-                    "quote": {"type": "string"}
+                    "quote": {"type": "string"},
+                    "source_url": {"type": "string"}
                 },
-                "required": ["field", "claim", "quote"],
+                "required": ["field", "claim", "quote", "source_url"],
                 "additionalProperties": False
             }
         }
@@ -85,12 +86,19 @@ class ResearchOrchestrator:
         apps_file: str = "data/apps.json",
         output_file: str = "data/final_results.json",
         cache_dir: str = "data/cache",
-        mode: str = "cascade"
+        mode: str = "cascade",
+        max_firecrawl_calls: int = 20,
+        max_model_calls: int = 90,
+        max_jev_calls: int = 360,
     ):
         self.apps_file = apps_file
         self.output_file = output_file
         self.mode = mode
-        self.fetcher = DocumentFetcher(cache_dir=cache_dir)
+        self.fetcher = DocumentFetcher(cache_dir=cache_dir, max_firecrawl_calls=max_firecrawl_calls)
+        self.max_model_calls = max_model_calls
+        self.max_jev_calls = max_jev_calls
+        self.model_calls = 0
+        self.jev_calls = 0
         self.jev = JevClient()
         self.openai_api_key = os.getenv("OPENAI_API_KEY")
         self.model = DEFAULT_OPENAI_MODEL
@@ -98,6 +106,12 @@ class ResearchOrchestrator:
 
         os.makedirs(os.path.dirname(self.output_file) or ".", exist_ok=True)
         self.apps = self._load_apps()
+        # Source leads are frozen separately from generated findings for repeatability.
+        try:
+            leads = json.load(open("data/source_seeds.json", encoding="utf-8"))
+            self.source_seeds = {int(app_id): urls[:2] for app_id, urls in leads.items()}
+        except (OSError, ValueError, KeyError, TypeError):
+            self.source_seeds = {}
 
     def _load_apps(self) -> List[Dict[str, Any]]:
         with open(self.apps_file, "r", encoding="utf-8") as f:
@@ -126,23 +140,38 @@ class ResearchOrchestrator:
         notes = app_meta.get("notes", "")
 
         # 1. Discover & Fetch
-        seed_urls = SourceDiscovery.resolve_seed_urls(hint, name)
-        primary_url = seed_urls[0]
-        
-        doc = self.fetcher.fetch(primary_url, prefer_firecrawl=True, dual_fetch=dual_fetch)
-        retrieved_at = doc.timestamp or datetime.now(timezone.utc).isoformat()
-        excerpt = doc.raw_markdown[:4000] if doc.raw_markdown else f"{name} documentation for {category}. Hint: {hint}. Notes: {notes}"
+        seed_urls = list(dict.fromkeys(
+            self.source_seeds.get(app_id, []) + SourceDiscovery.resolve_seed_urls(hint, name)
+        ))[:3]
+        source_docs = []
+        fallback_doc = None
+        for url in seed_urls:
+            candidate = self.fetcher.fetch(url, prefer_firecrawl=True, dual_fetch=dual_fetch)
+            fallback_doc = candidate if fallback_doc is None else fallback_doc
+            if candidate.status_code == 200 and len(candidate.raw_markdown) >= 300:
+                if candidate.final_url not in {d.final_url for d in source_docs}:
+                    source_docs.append(candidate)
+            if len(source_docs) == 2:
+                break
+        doc = source_docs[0] if source_docs else fallback_doc
+        excerpt = "\n\n".join(
+            f"SOURCE URL: {source.final_url}\n{source.raw_markdown[:2700]}"
+            for source in source_docs
+        ) if source_docs else ""
 
-        # 2. Extract candidate facts with GPT-6 Luna or deterministic rule base
-        candidate_data = self._generate_candidate_record(app_meta, doc, excerpt)
+        # 2. Extract candidate facts only from fetched, saved source content.
+        candidate_data = self._generate_candidate_record(app_meta, doc, excerpt, source_docs)
 
-        # 3. Verify only quoted claims. Absence of a fact is not evidence of "no".
-        if self.mode == "cascade" and doc.raw_markdown:
-            source_text = " ".join(doc.raw_markdown.split())
+        # 3. Verify each quote against its own page before spending a Jev call.
+        if self.mode == "cascade" and source_docs:
+            by_url = {source.final_url.rstrip("/"): source for source in source_docs}
             for ev in candidate_data.get("evidence", []):
+                source = by_url.get(str(ev.get("url", "")).rstrip("/"))
                 quote = " ".join(str(ev.get("quote", "")).split())
-                if quote and quote in source_text:
-                    jev_res = self.jev.verify_claim(ev.get("claim", ""), excerpt)
+                source_text = " ".join(source.raw_markdown.split()) if source else ""
+                if quote and quote in source_text and self.jev_calls < self.max_jev_calls:
+                    self.jev_calls += 1
+                    jev_res = self.jev.verify_claim(ev.get("claim", ""), source.raw_markdown[:4000])
                     ev["verification"] = jev_res.get("choice", "insufficient_evidence")
                 else:
                     ev["verification"] = "insufficient_evidence"
@@ -166,8 +195,10 @@ class ResearchOrchestrator:
 
         candidate_data["api_breadth"] = breadth
         candidate_data["buildability"] = verdict
+        if candidate_data.get("research_status") == "blocked":
+            blocker = candidate_data.get("main_blocker", blocker)
         status = ("blocked" if candidate_data.get("research_status") == "blocked"
-                  else self._candidate_status(candidate_data, doc))
+                  else self._candidate_status(candidate_data, source_docs))
 
         record = AppRecord(
             id=app_id,
@@ -189,11 +220,13 @@ class ResearchOrchestrator:
         )
         return record
 
-    def _generate_candidate_record(self, app_meta: Dict[str, Any], doc: RawDocument, excerpt: str) -> Dict[str, Any]:
+    def _generate_candidate_record(self, app_meta: Dict[str, Any], doc: RawDocument, excerpt: str, source_docs: List[RawDocument]) -> Dict[str, Any]:
         """Generate claims only from a fetched source; unresolved cases stay unknown."""
         if not self.client:
             return self._unknown_candidate_record("OPENAI_API_KEY is not configured.")
-        if not doc.raw_markdown:
+        if self.model_calls >= self.max_model_calls:
+            return self._unknown_candidate_record("Model call budget reached.")
+        if not source_docs:
             return self._unknown_candidate_record("No readable source document was retrieved.")
 
         try:
@@ -203,7 +236,8 @@ class ResearchOrchestrator:
                 "Use unknown or an empty array when the excerpt does not establish a fact. "
                 "Use a short one-line summary, and use the canonical enum labels for auth and API types. "
                 "For each material value you provide, include an evidence item with its field, "
-                "a narrow claim, and a contiguous 8-20 word quote copied exactly from the excerpt. "
+                "a narrow claim, a contiguous 8-20 word quote copied exactly from one source, "
+                "and that source's exact SOURCE URL. "
                 "If no exact quote is available, leave the field unknown or empty. "
                 "Do not infer credential access from silence. "
                 "Count endpoints only when explicitly enumerated; otherwise use null. "
@@ -212,8 +246,9 @@ class ResearchOrchestrator:
             )
             user_prompt = (
                 f"App: {app_meta['name']}\nCategory: {app_meta['category']}\n"
-                f"Source URL: {doc.final_url}\nExcerpt:\n{excerpt[:3000]}"
+                f"Source excerpts:\n{excerpt[:6500]}"
             )
+            self.model_calls += 1
             resp = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
@@ -228,7 +263,8 @@ class ResearchOrchestrator:
                         "schema": EXTRACTION_SCHEMA
                     }
                 },
-                max_completion_tokens=1800
+                reasoning_effort="none",
+                max_completion_tokens=2400
             )
             content = resp.choices[0].message.content
             if not content:
@@ -236,9 +272,20 @@ class ResearchOrchestrator:
             candidate = json.loads(content)
             if not isinstance(candidate, dict) or "evidence" not in candidate:
                 return self._unknown_candidate_record("The model returned an invalid record shape.")
+            source_by_url = {source.final_url.rstrip("/"): source for source in source_docs}
             for item in candidate["evidence"]:
-                item["url"] = doc.final_url
-                item["retrieved_at"] = doc.timestamp
+                source = source_by_url.get(str(item.pop("source_url", "")).rstrip("/"))
+                item["url"] = source.final_url if source else ""
+                item["retrieved_at"] = source.timestamp if source else doc.timestamp
+                # Markdown often puts punctuation on its own line. A shorter
+                # contiguous quote is still verbatim and can be checked exactly.
+                if source:
+                    source_text = " ".join(source.raw_markdown.split())
+                    quote = " ".join(str(item.get("quote", "")).split())
+                    if quote not in source_text:
+                        shorter = quote.rstrip(".,;:!?")
+                        if shorter and shorter in source_text:
+                            item["quote"] = shorter
                 item["verification"] = "insufficient_evidence"
             return candidate
         except Exception as exc:
@@ -273,16 +320,18 @@ class ResearchOrchestrator:
         }
 
     @staticmethod
-    def _candidate_status(candidate_data: Dict[str, Any], doc: RawDocument) -> str:
-        if not doc.raw_markdown:
+    def _candidate_status(candidate_data: Dict[str, Any], source_docs: List[RawDocument]) -> str:
+        if not source_docs:
             return "blocked"
 
         evidence = candidate_data.get("evidence", [])
         if not evidence:
             return "needs_review"
 
-        source_urls = {doc.url.rstrip("/"), doc.final_url.rstrip("/")}
-        source_text = " ".join(doc.raw_markdown.split())
+        source_text_by_url = {
+            source.final_url.rstrip("/"): " ".join(source.raw_markdown.split())
+            for source in source_docs
+        }
         evidence_fields = {item.get("field") for item in evidence}
         required_fields = {"summary"}
         if candidate_data.get("auth_methods") not in (None, [], ["unknown"]):
@@ -303,8 +352,8 @@ class ResearchOrchestrator:
 
         for item in evidence:
             quote = " ".join(str(item.get("quote", "")).split())
-            if (item.get("url", "").rstrip("/") not in source_urls or
-                    not quote or quote not in source_text or
+            source_text = source_text_by_url.get(item.get("url", "").rstrip("/"), "")
+            if (not quote or quote not in source_text or
                     item.get("verification") != "supported"):
                 return "needs_review"
         return "complete"
@@ -320,10 +369,20 @@ def main():
     parser.add_argument("--mode", choices=["first_pass", "cascade"], default="cascade", help="Research mode")
     parser.add_argument("--output", default="data/final_results.json", help="Output JSON path")
     parser.add_argument("--dual-fetch", action="store_true", help="Dual-fetch with Firecrawl and Direct HTTP for audit")
+    parser.add_argument("--max-firecrawl-calls", type=int, default=20, help="Maximum paid Firecrawl scrapes (default: 20)")
+    parser.add_argument("--max-model-calls", type=int, default=90, help="Maximum OpenAI extraction calls (default: 90)")
+    parser.add_argument("--max-jev-calls", type=int, default=360, help="Maximum OpenRouter verification calls (default: 360)")
 
     args = parser.parse_args()
 
-    orchestrator = ResearchOrchestrator(output_file=args.output, mode=args.mode)
+    if min(args.max_firecrawl_calls, args.max_model_calls, args.max_jev_calls) < 0:
+        parser.error("Call budgets must be nonnegative")
+    orchestrator = ResearchOrchestrator(
+        output_file=args.output, mode=args.mode,
+        max_firecrawl_calls=args.max_firecrawl_calls,
+        max_model_calls=args.max_model_calls,
+        max_jev_calls=args.max_jev_calls,
+    )
     existing_results = orchestrator._load_existing_results()
 
     apps_to_run = orchestrator.apps
@@ -354,7 +413,9 @@ def main():
                 for status in ("complete", "needs_review", "blocked")}
     print(f"[✓] Saved {len(existing_results)} records to {args.output}. "
           f"Complete: {statuses['complete']}; needs review: {statuses['needs_review']}; "
-          f"blocked: {statuses['blocked']}.")
+          f"blocked: {statuses['blocked']}. "
+          f"Paid calls: Firecrawl {orchestrator.fetcher.firecrawl_calls}, "
+          f"OpenAI {orchestrator.model_calls}, OpenRouter {orchestrator.jev_calls}.")
 
 
 if __name__ == "__main__":

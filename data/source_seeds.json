@@ -1,0 +1,274 @@
+{
+  "1": [
+    "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm",
+    "https://developer.salesforce.com/signup"
+  ],
+  "2": [
+    "https://developers.hubspot.com/docs/api/private-apps",
+    "https://github.com/modelcontextprotocol/servers"
+  ],
+  "3": [
+    "https://pipedrive.readme.io/docs/how-to-find-the-api-token"
+  ],
+  "4": [
+    "https://developers.attio.com/docs/api-keys"
+  ],
+  "5": [
+    "https://docs.twenty.com/developers/api/authentication"
+  ],
+  "6": [
+    "https://podio.com/settings/api"
+  ],
+  "7": [
+    "https://www.zoho.com/crm/developer/docs/api/v2/oauth-overview.html"
+  ],
+  "8": [
+    "https://developer.close.com/#authentication"
+  ],
+  "9": [
+    "https://developer.copper.com/"
+  ],
+  "10": [
+    "https://api.docs.dealcloud.com/"
+  ],
+  "11": [
+    "https://developer.zendesk.com/api-reference/"
+  ],
+  "12": [
+    "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/"
+  ],
+  "13": [
+    "https://developers.freshdesk.com/api/#authentication"
+  ],
+  "14": [
+    "https://dev.frontapp.com/docs/authentication"
+  ],
+  "15": [
+    "https://docs.usepylon.com/reference/authentication"
+  ],
+  "16": [
+    "https://liveagent.com/api/"
+  ],
+  "17": [
+    "https://plain.com/docs/api-reference"
+  ],
+  "18": [
+    "https://developer.helpscout.com/mailbox-api/overview/authentication/"
+  ],
+  "19": [
+    "https://developers.gorgias.com/reference/authentication"
+  ],
+  "20": [
+    "https://developer.gladly.com/rest/"
+  ],
+  "21": [
+    "https://api.slack.com/authentication"
+  ],
+  "22": [
+    "https://www.twilio.com/docs/iam/api-keys"
+  ],
+  "23": [
+    "https://www.zoho.com/cliq/help/restapi/v2/"
+  ],
+  "24": [
+    "https://open.larksuite.com/document/ukTMukTMukTM/uITNz4iM1MjLzUzM"
+  ],
+  "25": [
+    "https://pumble.com/help/integrations/custom-integrations/"
+  ],
+  "26": [
+    "https://discord.com/developers/docs/reference#authentication"
+  ],
+  "27": [
+    "https://core.telegram.org/bots/api#authorizing-your-bot"
+  ],
+  "28": [
+    "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started"
+  ],
+  "29": [
+    "https://developer.aircall.io/api-references/#authentication"
+  ],
+  "30": [
+    "https://developer.vonage.com/en/getting-started/concepts/authentication"
+  ],
+  "31": [
+    "https://developers.google.com/google-ads/api/docs/first-call/overview"
+  ],
+  "32": [
+    "https://developers.facebook.com/docs/marketing-apis/overview/authentication"
+  ],
+  "33": [
+    "https://learn.microsoft.com/en-us/linkedin/marketing/overview"
+  ],
+  "34": [
+    "https://highlevel.stoplight.io/docs/integrate/001-authentication"
+  ],
+  "35": [
+    "https://mailchimp.com/developer/marketing/guides/access-your-api-key/"
+  ],
+  "36": [
+    "https://developers.klaviyo.com/en/docs/authenticate_with_the_klaviyo_api"
+  ],
+  "37": [
+    "https://systeme.io/help"
+  ],
+  "38": [
+    "https://developers.pinterest.com/docs/getting-started/authentication/"
+  ],
+  "39": [
+    "https://developers.facebook.com/docs/threads/get-started"
+  ],
+  "40": [
+    "https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication"
+  ],
+  "41": [
+    "https://shopify.dev/docs/apps/build/authentication-authorization"
+  ],
+  "42": [
+    "https://woocommerce.github.io/woocommerce-rest-api-docs/#authentication"
+  ],
+  "43": [
+    "https://developer.bigcommerce.com/docs/start/authentication"
+  ],
+  "44": [
+    "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-shopper-apis.html"
+  ],
+  "45": [
+    "https://developer.adobe.com/commerce/webapi/get-started/authentication/"
+  ],
+  "46": [
+    "https://developers.squarespace.com/commerce-apis/authentication"
+  ],
+  "47": [
+    "https://api-docs.ecwid.com/reference/overview"
+  ],
+  "48": [
+    "https://gumroad.com/api#authentication"
+  ],
+  "49": [
+    "https://developer-docs.amazon.com/sp-api/docs/authorization"
+  ],
+  "50": [
+    "https://fanbasis.com"
+  ],
+  "51": [
+    "https://docs.dataforseo.com/v3/appendix/authentication/"
+  ],
+  "52": [
+    "https://seranking.com/api.html"
+  ],
+  "53": [
+    "https://ahrefs.com/api/documentation"
+  ],
+  "54": [
+    "https://docs.mrscraper.com/api"
+  ],
+  "55": [
+    "https://docs.apify.com/api/v2#/introduction/authentication"
+  ],
+  "56": [
+    "https://docs.firecrawl.dev/api-reference/introduction"
+  ],
+  "57": [
+    "https://docs.brightdata.com/api-reference"
+  ],
+  "58": [
+    "https://github.com/sherlock-project/sherlock"
+  ],
+  "59": [
+    "https://waterfall.io"
+  ],
+  "60": [
+    "https://clay.com/docs"
+  ],
+  "61": [
+    "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api"
+  ],
+  "62": [
+    "https://vercel.com/docs/rest-api#authentication"
+  ],
+  "63": [
+    "https://docs.netlify.com/api/get-started/#authentication"
+  ],
+  "64": [
+    "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/"
+  ],
+  "65": [
+    "https://supabase.com/docs/guides/api#api-keys"
+  ],
+  "66": [
+    "https://neo4j.com/docs/http-api/current/"
+  ],
+  "67": [
+    "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating"
+  ],
+  "68": [
+    "https://www.mongodb.com/docs/atlas/reference/api-resources-spec/"
+  ],
+  "69": [
+    "https://docs.datadoghq.com/api/latest/authentication/"
+  ],
+  "70": [
+    "https://docs.sentry.io/api/auth/"
+  ],
+  "71": [
+    "https://developers.notion.com/docs/authorization"
+  ],
+  "72": [
+    "https://airtable.com/developers/web/api/authentication"
+  ],
+  "73": [
+    "https://developers.linear.app/docs/graphql/working-with-the-graphql-api#authentication"
+  ],
+  "74": [
+    "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/"
+  ],
+  "75": [
+    "https://developers.asana.com/docs/authentication-quick-start"
+  ],
+  "76": [
+    "https://developer.monday.com/api-reference/docs/authentication"
+  ],
+  "77": [
+    "https://clickup.com/api/developer-portal/authentication/"
+  ],
+  "78": [
+    "https://coda.io/developers/apis/v1#section/Authentication"
+  ],
+  "79": [
+    "https://smartsheet.redoc.ly/#section/Authentication"
+  ],
+  "80": [
+    "https://help.getharvest.com/api-v2/authentication-api/overview/authentication/"
+  ],
+  "81": [
+    "https://docs.stripe.com/api/authentication"
+  ],
+  "82": [
+    "https://plaid.com/docs/api/tokens/"
+  ],
+  "83": [
+    "https://binance-docs.github.io/apidocs/spot/en/#endpoint-security-type"
+  ],
+  "84": [
+    "https://secure.paygent.com"
+  ],
+  "85": [
+    "https://ipayx.ai/docs"
+  ],
+  "86": [
+    "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization"
+  ],
+  "87": [
+    "https://developer.xero.com/documentation/guides/oauth2/overview/"
+  ],
+  "88": [
+    "https://developer.brex.com/docs/authentication"
+  ],
+  "89": [
+    "https://docs.ramp.com/developer-api/getting-started/authentication"
+  ],
+  "90": [
+    "https://pitchbook.com/products/research-api"
+  ]
+}

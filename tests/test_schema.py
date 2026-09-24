@@ -26,4 +26,5 @@ def test_final_results_schema():
         assert record.buildability in {"buildable_now", "conditional", "outreach_needed", "unknown"}
         assert record.api_breadth in {"broad", "focused", "limited", "unknown"}
         assert record.existing_mcp in {"official", "third_party", "none_found", "unknown"}
-        assert len(record.evidence) > 0, f"App #{record.id} must have supporting evidence"
+        if record.research_status == "complete":
+            assert record.evidence, f"Source-checked app #{record.id} must have evidence"

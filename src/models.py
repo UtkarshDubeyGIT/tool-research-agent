@@ -41,9 +41,9 @@ class AppRecord(BaseModel):
     existing_mcp: ExistingMcp = Field(default="unknown")
     buildability: BuildabilityVerdict = Field(default="unknown")
     main_blocker: str = Field(default="none", description="Key hurdle if not buildable_now")
-    confidence: ConfidenceLevel = Field(default="medium")
+    confidence: ConfidenceLevel = Field(default="low")
     evidence: List[EvidenceItem] = Field(default_factory=list)
-    research_status: ResearchStatus = Field(default="complete")
+    research_status: ResearchStatus = Field(default="needs_review")
     notes: str = Field(default="")
 
 

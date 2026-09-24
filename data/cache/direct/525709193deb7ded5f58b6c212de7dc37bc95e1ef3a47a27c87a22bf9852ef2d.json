@@ -1,0 +1,11 @@
+{
+  "url": "https://developers.attio.com/docs/api-keys",
+  "final_url": "https://docs.attio.com/docs/overview",
+  "title": "Overview - Attio Docs",
+  "timestamp": "2026-09-24T21:09:28.460427+00:00",
+  "source_method": "direct_http",
+  "content_hash": "c8cf8daf4d6020783c6362e034a74c071ff5108aaba625e4f03df645c1ac6bbf",
+  "raw_markdown": "Get started\nOverview\nCopy page\nCopy page\nStart building Attio Apps\nCopy page\nCopy page\nAttio is a revolutionary CRM platform which is highly customisable, incredibly powerful and\ndata-driven. In these guides, you can find everything you need to build powerful integrations,\nautomations and data pipelines on top of Attio.\nOur docs cover guides, examples, references and code to help you build apps and share them with\nAttio\u2019s customers or for your own workspace.\nThe Attio Developer Platform consists of four parts:\nApp SDK\nThis allows developers to embed Typescript React applications within the Attio interface and run\nserver functions with access to our REST API.\nREST API\nThis allows developers to build apps that read and write information to and from Attio workspaces.\nYou can also subscribe to events in realtime using webhooks.\nMCP\nManage Attio via AI. Connect Claude, ChatGPT or your AI tool of choice to search, update and\nmanage your Attio workspace.\nSQL\nRun SQL queries against your workspace data.\nWas this page helpful?\nYes\nNo",
+  "status_code": 200,
+  "error": null
+}

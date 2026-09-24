@@ -4,6 +4,7 @@ import os
 from collections import Counter
 from datetime import datetime, timezone
 from typing import Any, Dict, List
+from src.validate import EvidenceValidator
 
 
 def _write_json(path: str, value: Any) -> None:
@@ -123,6 +124,28 @@ def analyze_dataset(
         else:
             blocker_clusters["closed_portal_or_unreleased_api"] += 1
 
+    validator = EvidenceValidator()
+    def quote_match_stats(rows):
+        total = exact = 0
+        for row in rows:
+            for evidence in row.get("evidence", []):
+                total += 1
+                sources = validator.cached_sources.get(validator._canonical_url(evidence.get("url", "")), [])
+                quote = validator._normalize(evidence.get("quote", ""))
+                if quote and any(quote in validator._normalize(source) for source in sources):
+                    exact += 1
+        return {"exact": exact, "total": total, "percentage": round(exact / total * 100, 1) if total else None}
+
+    try:
+        with open("data/first_pass.json", "r", encoding="utf-8") as f:
+            first_pass_records = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        first_pass_records = []
+    evidence_quality = {
+        "first_pass": quote_match_stats(first_pass_records),
+        "final_pass": quote_match_stats(records),
+        "metric_definition": "Exact quote matches against saved source snapshots; this is not a human accuracy score.",
+    }
     record_status_counts = Counter(r.get("research_status", "needs_review") for r in records)
     audit_complete = audit_data.get("status") == "complete"
     summary = {
@@ -131,7 +154,11 @@ def analyze_dataset(
         "quality_notice": (
             "All records passed source checks and the independent sample audit is complete."
             if record_status_counts.get("complete", 0) == total_apps and audit_complete
-            else "Checked-in classifications are provisional until every evidence quote matches a saved source and the independent human audit is complete."
+            else (
+                f"{record_status_counts.get('complete', 0)} records have source-checked logged claims; "
+                f"{record_status_counts.get('needs_review', 0) + record_status_counts.get('blocked', 0)} still need review. "
+                "The independent manual sample audit is pending."
+            )
         ),
         "coverage": {
             "supplied_input_count": len(supplied_apps),
@@ -150,6 +177,7 @@ def analyze_dataset(
         "category_matrix": category_matrix,
         "mcp_breakdown": mcp_breakdown,
         "blocker_clusters": blocker_clusters,
+        "evidence_quality": evidence_quality,
         "audit_status": "complete" if audit_complete else "pending",
         "audit_metrics": audit_data.get("metrics", {}) if audit_complete else {},
         "concrete_misses": audit_data.get("concrete_misses", []) if audit_complete else [],

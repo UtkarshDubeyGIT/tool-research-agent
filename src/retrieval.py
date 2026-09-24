@@ -121,12 +121,12 @@ class FirecrawlFetcher:
 
         try:
             resp = requests.post(
-                "https://api.firecrawl.dev/v1/scrape",
+                "https://api.firecrawl.dev/v2/scrape",
                 headers={
                     "Authorization": f"Bearer {self.api_key}",
                     "Content-Type": "application/json"
                 },
-                json={"url": url, "formats": ["markdown"]},
+                json={"url": url, "formats": ["markdown"], "onlyMainContent": True},
                 timeout=30
             )
             if resp.status_code == 200:
@@ -155,7 +155,7 @@ class FirecrawlFetcher:
                     content_hash="",
                     raw_markdown="",
                     status_code=resp.status_code,
-                    error=f"Firecrawl API error: {resp.text}"
+                    error=f"Firecrawl API returned HTTP {resp.status_code}"
                 )
         except Exception as e:
             return RawDocument(
@@ -174,8 +174,10 @@ class FirecrawlFetcher:
 class DocumentFetcher:
     """Unified fetcher managing primary Firecrawl extraction, direct fallback, and caching."""
 
-    def __init__(self, cache_dir: str = "data/cache"):
+    def __init__(self, cache_dir: str = "data/cache", max_firecrawl_calls: int = 20):
         self.cache_dir = cache_dir
+        self.max_firecrawl_calls = max_firecrawl_calls
+        self.firecrawl_calls = 0
         self.firecrawl = FirecrawlFetcher()
         self.direct = DirectFetcher()
         os.makedirs(f"{self.cache_dir}/firecrawl", exist_ok=True)
@@ -202,35 +204,27 @@ class DocumentFetcher:
             json.dump(doc.model_dump(), f, indent=2)
 
     def fetch(self, url: str, prefer_firecrawl: bool = True, dual_fetch: bool = False) -> RawDocument:
-        # Check cache first
-        primary_method = "firecrawl" if prefer_firecrawl and self.firecrawl.api_key else "direct"
-        cached_primary = self.get_cached(primary_method, url)
-        if cached_primary and not dual_fetch:
-            return cached_primary
+        # Reuse a successful snapshot from either method before making another request.
+        for method in ("firecrawl", "direct"):
+            cached = self.get_cached(method, url)
+            if cached and cached.status_code == 200 and len(cached.raw_markdown) >= 300 and not dual_fetch:
+                return cached
 
-        doc = None
-        if prefer_firecrawl and self.firecrawl.api_key:
+        direct = self.get_cached("direct", url)
+        if not direct or direct.status_code != 200 or len(direct.raw_markdown) < 300:
+            direct = self.direct.fetch(url)
+            if direct.status_code == 200 and direct.raw_markdown:
+                self.save_cache(direct)
+        if direct.status_code == 200 and len(direct.raw_markdown) >= 300 and not dual_fetch:
+            return direct
+
+        if prefer_firecrawl and self.firecrawl.api_key and self.firecrawl_calls < self.max_firecrawl_calls:
+            self.firecrawl_calls += 1
             doc = self.firecrawl.fetch(url)
-            if doc.status_code == 200 and not doc.error:
+            if doc.status_code == 200 and doc.raw_markdown:
                 self.save_cache(doc)
-            else:
-                # Fallback to direct HTTP on failure
-                doc = self.direct.fetch(url)
-                self.save_cache(doc)
-        else:
-            doc = self.direct.fetch(url)
-            self.save_cache(doc)
-
-        if dual_fetch:
-            # If dual fetch requested, run direct fetch as well if primary was firecrawl
-            if doc.source_method == "firecrawl":
-                direct_doc = self.direct.fetch(url)
-                self.save_cache(direct_doc)
-            elif self.firecrawl.api_key:
-                fc_doc = self.firecrawl.fetch(url)
-                self.save_cache(fc_doc)
-
-        return doc
+                return doc
+        return direct
 
 
 class SourceDiscovery:
@@ -238,8 +232,8 @@ class SourceDiscovery:
 
     @staticmethod
     def resolve_seed_urls(hint: str, name: str) -> list[str]:
-        hint = hint.strip().lower()
-        if not hint.startswith("http"):
+        hint = hint.strip()
+        if not hint.lower().startswith(("http://", "https://")):
             hint_url = f"https://{hint}"
         else:
             hint_url = hint

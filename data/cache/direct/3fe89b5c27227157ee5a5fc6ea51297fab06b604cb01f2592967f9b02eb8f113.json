@@ -1,0 +1,11 @@
+{
+  "url": "https://developers.gorgias.com/reference/authentication",
+  "final_url": "https://developers.gorgias.com/reference/authentication",
+  "title": "Authentication",
+  "timestamp": "2026-09-24T21:10:46.488441+00:00",
+  "source_method": "direct_http",
+  "content_hash": "239a485463ce7e7924820cf9de209ad2e99f85e196e90509d6735f63a3c12771",
+  "raw_markdown": "Copy Page\nAuthentication\nThe Gorgias API supports two authentication methods:\n\ud83d\udd10\nPrivate app\n\u2192 API key\n\ud83d\udc65\nPublic app\n\u2192\nOAuth2\nUsing\nOAuth2\nis\nmandatory\nfor public apps.\nFor testing purposes, you can perform requests directly from the API Reference using your API keys.\nGo to any endpoint (e.g: \"\nRetrieve your account\n\")\nUse your email (username) and your API key\nUpdated\nabout 1 year ago\nDid this page help you?\nYes\nNo",
+  "status_code": 200,
+  "error": null
+}

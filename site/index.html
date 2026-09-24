@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tool Research Agent | Independent Product Ops Case Study</title>
-  <meta name="description" content="Provisional API integration research across the 90 apps supplied in the take-home assignment.">
+  <title>Integration field notes | Product Ops case study</title>
+  <meta name="description" content="A source-led Product Ops review of authentication, API access, and integration feasibility for 90 supplied apps.">
+  <meta name="theme-color" content="#111112">
+  <meta property="og:title" content="Integration field notes | Product Ops case study">
+  <meta property="og:description" content="Explore source-backed integration findings across the 90 apps supplied in the Composio take-home brief.">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310b981'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234560ff'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
 </head>
 <body>
 
@@ -19,30 +22,27 @@
   <header class="navbar">
     <div class="container navbar-inner">
       <div class="brand">
-        <span style="font-weight: 700; letter-spacing: -0.01em; font-size: 16px;">TOOL RESEARCH</span>
+        <span class="brand-mark" aria-hidden="true">C</span><span class="brand-name">Composio / field notes</span>
         <span class="brand-badge">Independent Case Study</span>
       </div>
       <nav class="nav-links">
-        <a href="#overview" class="nav-link">Overview</a>
-        <a href="#patterns" class="nav-link">Patterns</a>
-        <a href="#categories" class="nav-link">Categories</a>
-        <a href="#matrix" class="nav-link">App Matrix</a>
-        <a href="#audit" class="nav-link">Audit &amp; Accuracy</a>
-        <a href="#workflow" class="nav-link">Architecture &amp; CLI</a>
+        <a href="#matrix" class="nav-link">Explore apps</a>
+        <a href="#audit" class="nav-link">Evidence &amp; audit</a>
+        <a href="#workflow" class="nav-link">Method</a>
       </nav>
       <div class="nav-actions">
         <a href="https://github.com/UtkarshDubeyGIT/tool-research-agent" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
           </svg>
-          GitHub Repo
+          Source code
         </a>
-        <a href="#cli-runner" class="btn btn-primary">
+        <a href="#matrix" class="btn btn-primary">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="4 17 10 11 4 5"/>
             <line x1="12" y1="19" x2="20" y2="19"/>
           </svg>
-          Run Guide
+          Explore the 90 apps
         </a>
       </div>
     </div>
@@ -55,115 +55,35 @@
         <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor">
           <circle cx="4" cy="4" r="4"/>
         </svg>
-        PROVISIONAL INTEGRATION RESEARCH
+        INDEPENDENT PRODUCT OPS RESEARCH
       </div>
-      <h1 class="hero-title">Automated Integration Feasibility &amp; Tool Research Agent</h1>
+      <h1 class="hero-title">90 apps. A clearer path to integration feasibility.</h1>
       <p class="hero-subtitle">
-        An independent take-home case study prototype for assessing API access and integration feasibility. The supplied 90-app list is represented in the dataset; its current classifications still need source-level and human verification.
+        A source-led research workflow for mapping authentication, credential access, API surface, and buildability across the apps supplied in the assignment. Open any row to inspect the current evidence and review status.
       </p>
 
       <!-- Key Metrics Grid -->
       <div class="metrics-grid">
         <div class="metric-card">
           <div class="metric-label">Apps in supplied list</div>
-          <div class="metric-value mono" id="metric-total">90 supplied</div>
+          <div class="metric-value mono" id="metric-total">90</div>
           <div class="metric-sub" id="metric-record-status">Draft records pending review</div>
         </div>
         <div class="metric-card">
-          <div class="metric-label">Provisional: Buildable Now</div>
-          <div class="metric-value mono" style="color: var(--accent-green);" id="metric-buildable">72 (80.0%)</div>
-          <div class="metric-sub">Draft classification; source checks pending</div>
+          <div class="metric-label">Source checked</div>
+          <div class="metric-value mono" id="metric-buildable">0</div>
+          <div class="metric-sub">Records meeting evidence checks</div>
         </div>
         <div class="metric-card">
-          <div class="metric-label">Provisional: Conditional</div>
-          <div class="metric-value mono" style="color: var(--accent-amber);" id="metric-conditional">14 (15.6%)</div>
-          <div class="metric-sub">Draft classification; source checks pending</div>
+          <div class="metric-label">Needs review</div>
+          <div class="metric-value mono" id="metric-conditional">90</div>
+          <div class="metric-sub">Unresolved source or claim checks</div>
         </div>
         <div class="metric-card">
-          <div class="metric-label">Provisional: Outreach Needed</div>
-          <div class="metric-value mono" style="color: var(--accent-purple);" id="metric-outreach">4 (4.4%)</div>
-          <div class="metric-sub">Draft classification; source checks pending</div>
+          <div class="metric-label">Audit sample</div>
+          <div class="metric-value mono" id="metric-outreach">18</div>
+          <div class="metric-sub">Fixed sample for independent review</div>
         </div>
-      </div>
-    </section>
-
-    <!-- Patterns & Key Findings Section -->
-    <section class="section" id="patterns">
-      <div class="section-header">
-        <div class="section-tag">Provisional snapshot</div>
-        <h2 class="section-title">Auth Protocols &amp; Credential Access Patterns</h2>
-      </div>
-
-      <div class="patterns-grid">
-        <!-- Auth Breakdown Card -->
-        <div class="pattern-card">
-          <div class="pattern-card-title">
-            <span>Authentication Protocols</span>
-            <span class="badge badge-gray mono">90 Draft Records</span>
-          </div>
-          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">
-            Distribution of authentication protocols supported across the 90 cataloged platforms. Many modern developer tools support both OAuth 2.0 and API keys simultaneously.
-          </p>
-          <div id="auth-distribution-bars">
-            <!-- Dynamically populated by app.js -->
-          </div>
-        </div>
-
-        <!-- Credential & MCP Insights Card -->
-        <div class="pattern-card">
-          <div class="pattern-card-title">
-            <span>Credential Access &amp; MCP Readiness</span>
-            <span class="badge badge-blue mono">Integration Ops</span>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 14px; font-size: 13px;">
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
-              <div style="font-weight: 600; color: var(--accent-green); margin-bottom: 4px;">80.0% Immediate Self-Serve Access</div>
-              <div style="color: var(--text-muted);">
-                The current draft labels 72 of 90 records as self-serve and immediately buildable. Treat this as a provisional count until the underlying source evidence is checked.
-              </div>
-            </div>
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
-              <div style="font-weight: 600; color: var(--accent-amber); margin-bottom: 4px;">15.6% Enterprise &amp; Plan Gatekeeping</div>
-              <div style="color: var(--text-muted);">
-                The draft labels 14 records as conditional. Paid-plan and administrator requirements still need source-by-source confirmation.
-              </div>
-            </div>
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
-              <div style="font-weight: 600; color: var(--accent-purple); margin-bottom: 4px;">4.4% Walled Partner Ecosystems</div>
-              <div style="color: var(--text-muted);">
-                The draft labels 4 records as requiring outreach. These labels remain provisional until the cited access requirements are independently confirmed.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Category Breakdown Table -->
-    <section class="section" id="categories">
-      <div class="section-header">
-        <div class="section-tag">Category Matrix</div>
-        <h2 class="section-title">Integration Feasibility by Category</h2>
-      </div>
-
-      <div class="table-wrapper">
-        <table class="matrix-table">
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>Total Apps</th>
-              <th>Buildable Now</th>
-              <th>Conditional</th>
-              <th>Outreach Needed</th>
-              <th>Unknown</th>
-              <th>Self-Serve %</th>
-              <th>Dominant Auth</th>
-            </tr>
-          </thead>
-          <tbody id="category-matrix-body">
-            <!-- Dynamically populated by app.js -->
-          </tbody>
-        </table>
       </div>
     </section>
 
@@ -172,7 +92,8 @@
       <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
         <div>
           <div class="section-tag">App Directory</div>
-          <h2 class="section-title">Interactive Tool Evaluation Matrix</h2>
+          <h2 class="section-title">Explore the app evidence</h2>
+          <p class="section-description">Source checked means each logged claim has a matching saved quote and a supporting Jev decision. Fields without enough evidence remain unknown; the manual audit is tracked separately.</p>
         </div>
         <div class="mono" style="font-size: 12px; color: var(--text-dim);" id="matrix-count-display">
           Showing 90 of 90 apps
@@ -275,6 +196,43 @@
       </div>
     </div>
 
+    <section class="section" id="patterns">
+      <div class="section-header">
+        <div class="section-tag">Working snapshot</div>
+        <h2 class="section-title">Patterns to verify</h2>
+        <p class="section-description">These counts describe current draft classifications. Source checks and the independent sample audit determine which findings can be relied on.</p>
+      </div>
+      <div class="pattern-card"><div id="auth-distribution-bars"></div></div>
+    </section>
+
+    <!-- Category Breakdown Table -->
+    <section class="section" id="categories">
+      <div class="section-header">
+        <div class="section-tag">Category Matrix</div>
+        <h2 class="section-title">Draft view by category</h2>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Total Apps</th>
+              <th>Buildable Now</th>
+              <th>Conditional</th>
+              <th>Outreach Needed</th>
+              <th>Unknown</th>
+              <th>Self-Serve %</th>
+              <th>Dominant Auth</th>
+            </tr>
+          </thead>
+          <tbody id="category-matrix-body">
+            <!-- Dynamically populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
     <!-- Human-in-the-Loop Audit & Accuracy Section -->
     <section class="section" id="audit">
       <div class="section-header">
@@ -283,6 +241,11 @@
       </div>
       <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px;">
         <div class="badge badge-amber" id="audit-status">Pending independent review</div>
+        <div class="quote-check-summary">
+          <span class="section-tag">Automated quality check</span>
+          <strong id="quote-check-rate">Calculating saved-source quote matches...</strong>
+          <p>Exact quote matching measures evidence traceability. It does not measure answer accuracy or replace the independent sample audit.</p>
+        </div>
         <p id="audit-status-detail" style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 14px 0;">
           No accuracy score is available. The previous comparison used a synthetic baseline and static expected values, so it was removed rather than presented as a human audit.
         </p>
@@ -310,7 +273,7 @@
           <div class="step-num">STAGE 01 &bull; RETRIEVAL</div>
           <div class="step-title">Source Discovery &amp; Firecrawl Fetch</div>
           <div class="step-desc">
-            Starts from the supplied website hint and fetches the first resolved URL. Firecrawl is tried first, with direct HTTP fallback and a local snapshot cache; multi-page discovery remains to be added.
+            Uses a frozen list of documentation leads plus the supplied website hint. Up to two readable pages inform each record. Successful local snapshots are reused; direct HTTP runs before a budgeted Firecrawl fallback.
           </div>
         </div>
 
@@ -318,7 +281,7 @@
           <div class="step-num">STAGE 02 &bull; SYNTHESIS</div>
           <div class="step-title">OpenAI Extraction &amp; Evidence Quoting</div>
           <div class="step-desc">
-            When configured and a readable page is available, OpenAI proposes structured claims from a bounded excerpt. The validator checks quote presence against a saved source snapshot; current checked-in rows are still pending that review.
+            OpenAI proposes structured claims from bounded excerpts of saved pages. Each evidence item names its exact source URL; unmatched quotes remain unresolved rather than being presented as verified.
           </div>
         </div>
 
@@ -350,7 +313,7 @@
           <div class="step-num">STAGE 06 &bull; PUBLISHING</div>
           <div class="step-title">Static Compilation &amp; Web Deployment</div>
           <div class="step-desc">
-            Builds summary JSON, app records JSON/CSV, and a local JavaScript bundle from the records. Vercel serves the static <code>site/</code> directory after the repository is imported.
+            Builds summary JSON, app records JSON/CSV, and a local JavaScript bundle from the records. The public page serves these static files without exposing or using API keys.
           </div>
         </div>
       </div>
@@ -359,7 +322,7 @@
       <div style="margin-top: 36px;" id="cli-runner">
         <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Runnable CLI Triggers &amp; Execution Commands</h3>
         <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
-          The CLI checkpoints per-app outputs. Current checked-in records remain provisional until source validation and independent human review are completed.
+          The CLI checkpoints each app. Request limits bound paid calls, and the independent sample audit remains separate from automated source checking.
         </p>
 
         <div style="background: #000000; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8;">
@@ -367,7 +330,7 @@
           <div style="color: var(--accent-green);">$ python -m src.research --app-id 81</div>
           
           <div style="color: var(--text-dim); margin: 16px 0 8px;"># 2. Run or resume the complete 90-app automated research agent</div>
-          <div style="color: var(--accent-green);">$ python -m src.research --all --resume</div>
+          <div style="color: var(--accent-green);">$ python -m src.research --all --resume --max-firecrawl-calls 20 --max-model-calls 90 --max-jev-calls 360</div>
           
           <div style="color: var(--text-dim); margin: 16px 0 8px;"># 3. Deterministically validate schemas, quotes, and rule consistency</div>
           <div style="color: var(--accent-green);">$ python -m src.validate</div>
@@ -395,7 +358,7 @@
             The PDF assignment prompt specifies: <em>&ldquo;You will evaluate 100 apps across 10 categories&rdquo;</em>. However, the itemized table provided in the take-home document lists only <strong>90 applications across 9 categories</strong>, terminating abruptly at <code>#90 PitchBook</code> in Category 9 (Finance and Fintech).
           </p>
           <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-top: 10px;">
-            The repository contains all <strong>90 supplied input rows</strong>. Its current result rows are marked <strong>needs review</strong>; they are not yet a verified 90-app research run. If the missing ten entries arrive, append them to <code>data/apps.json</code> and extend the schema and deployment coverage accordingly.
+            The repository contains all <strong>90 supplied input rows</strong>. Source-backed findings are marked per row; remaining unknowns and review items are visible in the explorer. If the missing ten entries arrive, they can be added to the input list and researched with the same pipeline.
           </p>
         </div>
 
@@ -424,7 +387,7 @@
           <div>Built by Utkarsh Dubey &bull; Independent Take-Home Case Study</div>
         </div>
         <div style="display: flex; gap: 16px; font-family: var(--font-mono); font-size: 12px;">
-          <a href="https://github.com/UtkarshDubeyGIT/tool-research-agent" target="_blank" rel="noopener noreferrer" style="color: var(--accent-green);">GitHub Repository &nearr;</a>
+          <a href="https://github.com/UtkarshDubeyGIT/tool-research-agent" target="_blank" rel="noopener noreferrer" style="color: var(--accent-green);">Source repository &nearr;</a>
           <a href="data/records.csv" download style="color: var(--accent-blue);">Download CSV &darr;</a>
           <a href="data/records.json" download style="color: var(--text-muted);">Download JSON &darr;</a>
         </div>

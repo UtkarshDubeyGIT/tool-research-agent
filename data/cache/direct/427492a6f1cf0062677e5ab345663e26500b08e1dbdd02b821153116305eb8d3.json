@@ -1,0 +1,11 @@
+{
+  "url": "https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+  "final_url": "https://www.twilio.com:443/docs/sendgrid/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+  "title": "Authentication | SendGrid Docs | Twilio",
+  "timestamp": "2026-09-24T21:12:44.967087+00:00",
+  "source_method": "direct_http",
+  "content_hash": "1ac03848cdef044616366be533e970eba86a31476e7f271ba929b6f84957729f",
+  "raw_markdown": "Authentication\nPositive Feedback\nNegative Feedback\nTwilio supported SDKs\nThe Twilio SendGrid Web REST API v3 provides SDKs for seven different languages.\nC#\n(link takes you to an external page)\nGo\n(link takes you to an external page)\nJava\n(link takes you to an external page)\nNode.js\n(link takes you to an external page)\nPHP\n(link takes you to an external page)\nPython\n(link takes you to an external page)\nRuby\n(link takes you to an external page)\nAuthorization header\nauthorization-header page anchor\nPositive Feedback\nNegative Feedback\nTo authenticate, add an HTTP\nAuthorization\nheader to your API request that contains an\nAPI Key\n.\nAPI keys\napi-keys page anchor\nPositive Feedback\nNegative Feedback\nThe Twilio SendGrid Web API v3 supports API keys, which add an additional layer of security to your account. Using API keys, you can:\nUse another method of authentication separate from your account username and password.\nAssign\nspecific permissions\nto API keys that limit which areas of your account the key can access.\nYou can create\nAPI keys in your account\n(link takes you to an external page)\n. To use an API key, include an\nAuthorization\nheader with the value\nBearer <YOUR_API_KEY_HERE>\nin your request. Replace\n<YOUR_API_KEY_HERE>\nwith your API secret key.\nExample API request header\nexample-api-request-header page anchor\nCopy code block\n1\nGET https://api.sendgrid.com/v3/resource HTTP/1.1\n2\nAuthorization: Bearer <YOUR_API_KEY_HERE>\nExample API request using bash\nexample-api-request-using-bash page anchor\nCopy code block\n1\ncurl\n-X\n\"GET\" \"https://api.sendgrid.com/v3/templates\"\n\\\n2\n-H\n\"Authorization: Bearer <YOUR_API_KEY_HERE>\"\n\\\n3\n-H\n\"Content-Type: application/json\"",
+  "status_code": 200,
+  "error": null
+}

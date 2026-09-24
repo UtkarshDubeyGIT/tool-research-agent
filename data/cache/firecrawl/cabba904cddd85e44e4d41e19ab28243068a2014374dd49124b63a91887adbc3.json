@@ -1,0 +1,11 @@
+{
+  "url": "https://highlevel.stoplight.io",
+  "final_url": "https://highlevel.stoplight.io",
+  "title": "Stoplight",
+  "timestamp": "2026-09-24T21:12:12.303499+00:00",
+  "source_method": "firecrawl",
+  "content_hash": "49f52914ce8b54c71b6c0a8c079f6b7c8aa84053e0148b092c9237d1d8ed3fbc",
+  "raw_markdown": "kmmfkblgkhnf.statuspage.io\n\n# kmmfkblgkhnf.statuspage.io is blocked\n\nThis page has been blocked by an extension\n\n- Try disabling your extensions.\n\nERR\\_BLOCKED\\_BY\\_CLIENT\n\nReload\n\nThis page has been blocked by an extension\n\n![](<Base64-Image-Removed>)![](<Base64-Image-Removed>)\n\n## Workspace does not exist\n\nThere is no workspace at this URL. Click below to create one.\n\n[Create a new workspace!](https://stoplight.io/welcome)",
+  "status_code": 200,
+  "error": null
+}

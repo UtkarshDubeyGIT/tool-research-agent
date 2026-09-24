@@ -1,0 +1,11 @@
+{
+  "url": "https://developer.close.com/#authentication",
+  "final_url": "https://developer.close.com/#authentication",
+  "title": "Close Developer Platform | Close | Developer API Documentation",
+  "timestamp": "2026-09-24T21:09:50.519157+00:00",
+  "source_method": "direct_http",
+  "content_hash": "70b0aef11e5a1d47dd6e955621a84726cb3534f792c202d02c12bc9dfe4cd0ed",
+  "raw_markdown": "Close Developer Platform\nBuild integrations, automate workflows, and extend Close for your team.\nAsk a question\n|\nCopy page\n|\nOpen in Claude\n|\nMore actions\nWhether you\u2019re a\nClose\ncustomer automating your sales process or a partner building an integration, the Close Developer Platform gives everything you or your AI agents need.\nREST API Reference\nFull endpoint docs with schemas, examples, and an interactive API explorer.\nAuthentication\nAPI keys for scripts or OAuth 2.0 for user-facing integrations.\nWebhooks & Events\nReal-time event notifications and a 30-day event log.\nMCP Server\nModel Context Protocol for AI agents.\nBuild an Integration\nCreate an OAuth app, connect your product, and get listed.\nAPI Clients\nCommunity libraries for Python, Node.js, Ruby, PHP, Go, and more.\nAPI Changelog\nLatest API updates and deprecations.\nBrowse 100+ Integrations \u2197\nExplore the full directory of apps and tools that connect with Close.\nUse cases\nPush in CRM data\n\u2014 Push leads, contacts, activities, and custom data into Close from your website or other systems via the\nREST API\n.\nSync data out\n\u2014 Stream changes with\nwebhooks\n, query the\nevent log\n, or pull\nreporting metrics\nand pipeline data into your BI tools, data warehouse, or design custom dashboards & reports.\nAutomate outreach\n\u2014 Manage workflows with\nsequences\nor\nbulk actions\n, or send email/SMS programmatically.\nPublish an integration\n\u2014 Build for many Close customers with\nOAuth\nand get listed in the\nintegrations directory\n.\nPower AI agents\n\u2014 Give Claude, ChatGPT, Cursor, and other tools direct access to Close data via the\nMCP server\n\u2014 no code required.\nGetting help\nOur\nSupport Team\ncan assist Close customers with any questions about the API.\nImplementing something cool or want to chat about where our API is going?\nSchedule a call\nwith Joe Kemp, VP of Engineering.",
+  "status_code": 200,
+  "error": null
+}

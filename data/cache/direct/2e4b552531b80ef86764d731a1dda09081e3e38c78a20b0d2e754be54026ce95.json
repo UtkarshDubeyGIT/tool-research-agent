@@ -1,0 +1,11 @@
+{
+  "url": "https://developer-docs.amazon.com/sp-api/docs/authorization",
+  "final_url": "https://developer-docs.amazon/sp-api/page/404",
+  "title": "Page Not Found",
+  "timestamp": "2026-09-24T21:13:30.857032+00:00",
+  "source_method": "direct_http",
+  "content_hash": "87541b9544438821b24ba55d6b3323aa93055a7a850a882862ff21d273f271a4",
+  "raw_markdown": "Page Not Found\n\ud83e\udded Looking for Selling Partner API documentation?\nThis page might have moved or been deleted. Let's get you back on track:\nVisit the SP-API developer documentation\nfor guides and best practices\nBrowse the API reference documentation\nfor request and response schemas\nUse the search function\nAdditional resources:\nWatch tutorials\non SP-API Developer University\nExplore code samples\nand\nrecipes\nto start building\nJoin the discussion\nin our developer community\nStill can't find what you need?\nContact support\nfor technical assistance with your integration.",
+  "status_code": 200,
+  "error": null
+}

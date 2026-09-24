@@ -1,0 +1,11 @@
+{
+  "url": "https://developers.linear.app/docs/graphql/working-with-the-graphql-api#authentication",
+  "final_url": "https://linear.app/developers#authentication",
+  "title": "Linear Developers",
+  "timestamp": "2026-09-24T21:15:15.970935+00:00",
+  "source_method": "direct_http",
+  "content_hash": "34204258ad2c7e740eddfaa81d4253392b710829b7fbe81c7159f98655a8a212",
+  "raw_markdown": "Linear Developers\nLearn about building apps and integrations for Linear using the GraphQL API and TypeScript SDK.\nGetting Started\nGraphQL API\nLearn how to use the GraphQL API to query and mutate your data\nAuthentication\nUse OAuth 2.0 or personal API keys to authenticate your requests to the Linear API\nAgents\nHow to best integrate an AI agent into Linear\nTypeScript SDK\nInstall the Linear SDK to use strongly typed models and operations\nGuides\nUpload a file\nLearn how to reference a file in markdown content, or upload with the API\nCreate issues via URL\nOpen issue creation with pre-filled fields from a URL\nCLI importer\nImport data from other services into Linear\nResources\nChangelog\nStay up to date with the latest changes to Linear and the API\nBrand Guidelines\nResources and assets for presenting the Linear brand\nAgent Interaction Guidelines\nPrinciples and practices for designing agent interactions",
+  "status_code": 200,
+  "error": null
+}

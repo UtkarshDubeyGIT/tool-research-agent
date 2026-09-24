@@ -35,10 +35,10 @@ function renderVerdictBadge(app) {
     unknown: "badge-gray"
   };
   const verdict = labels[app.buildability] ? app.buildability : "unknown";
-  const draft = summaryData.dataset_status !== "verified" || app.research_status !== "complete";
-  const color = draft ? "badge-gray" : colors[verdict];
+  const checked = app.research_status === "complete";
+  const color = checked ? colors[verdict] : "badge-gray";
   return '<span class="badge ' + color + '">' +
-    (draft ? "Draft · " : "") + labels[verdict] + '</span>';
+    (checked ? "Source checked · " : "Needs review · ") + labels[verdict] + '</span>';
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -76,25 +76,18 @@ function renderAll() {
 
 function renderMetrics() {
   const coverage = summaryData.coverage || {};
-  const breakdown = summaryData.buildability_breakdown || {};
   const supplied = Number(coverage.supplied_input_count || 0);
   const records = Number(coverage.records_present || 0);
 
-  document.getElementById("metric-total").textContent = `${supplied} supplied`;
-  document.getElementById("metric-buildable").textContent = formatDraftMetric(breakdown.buildable_now);
-  document.getElementById("metric-conditional").textContent = formatDraftMetric(breakdown.conditional);
-  document.getElementById("metric-outreach").textContent = formatDraftMetric(breakdown.outreach_needed);
+  document.getElementById("metric-total").textContent = String(supplied);
+  document.getElementById("metric-buildable").textContent = String(Number(coverage.complete_records || 0));
+  document.getElementById("metric-conditional").textContent = String(Number(coverage.needs_review_records || 0) + Number(coverage.blocked_records || 0));
+  document.getElementById("metric-outreach").textContent = String((summaryData.planned_sample_ids || []).length);
 
-  const isVerified = summaryData.dataset_status === "verified";
   const count = document.getElementById("metric-record-status");
-  if (count) count.textContent = isVerified ? `${records} source-checked records` : `${records} draft records; source review pending`;
+  if (count) count.textContent = `${records} records; ${Number(coverage.complete_records || 0)} source checked`;
   const statusNote = document.getElementById("dataset-status-note");
   if (statusNote) statusNote.textContent = summaryData.quality_notice || "Classification status unavailable.";
-}
-
-function formatDraftMetric(metric) {
-  if (!metric) return "Pending";
-  return `${metric.count} (${metric.percentage}%)`;
 }
 
 function renderPatternBars() {
@@ -103,10 +96,10 @@ function renderPatternBars() {
 
   const ab = summaryData.auth_breakdown;
   const items = [
-    { label: "OAuth 2.0 (Dominant standard)", key: "oauth2", color: "var(--accent-green)" },
-    { label: "API Key / Personal Tokens", key: "api_key", color: "var(--accent-blue)" },
-    { label: "Bearer & Internal Tokens", key: "token", color: "var(--accent-purple)" },
-    { label: "HTTP Basic Authentication", key: "basic", color: "var(--accent-amber)" },
+    { label: "OAuth 2.0", key: "oauth2", color: "var(--accent-green)" },
+    { label: "API keys", key: "api_key", color: "var(--accent-blue)" },
+    { label: "Bearer or internal tokens", key: "token", color: "var(--accent-purple)" },
+    { label: "HTTP Basic", key: "basic", color: "var(--accent-amber)" },
   ];
 
   container.innerHTML = items.map(it => {
@@ -151,6 +144,13 @@ function renderAuditSection() {
   const missesContainer = document.getElementById("audit-misses-container");
   if (!status) return;
 
+  const quality = summaryData.evidence_quality || {};
+  const quoteRate = document.getElementById("quote-check-rate");
+  if (quoteRate && quality.first_pass && quality.final_pass) {
+    const first = quality.first_pass;
+    const final = quality.final_pass;
+    quoteRate.textContent = `${first.exact}/${first.total} (${first.percentage}%) first pass → ${final.exact}/${final.total} (${final.percentage}%) final pass`;
+  }
   const complete = summaryData.audit_status === "complete";
   status.textContent = complete ? "Human audit complete" : "Pending independent review";
   if (detail) {
@@ -251,46 +251,37 @@ function openDrawer(appId) {
   
   document.getElementById("drawer-verdict-badge").innerHTML = renderVerdictBadge(app);
 
-  // Render Credential Access Matrix
+  // Keep unknown distinct from a verified no.
   const ca = app.credential_access || {};
-  document.getElementById("drawer-credentials-list").innerHTML = `
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 12px;" class="mono">
-      <div>Self-Serve Signup: <strong style="color: ${ca.self_serve_signup === 'yes' ? 'var(--accent-green)' : '#ef4444'}">${ca.self_serve_signup}</strong></div>
-      <div>Free/Trial: <strong style="color: ${ca.free_or_trial_credentials === 'yes' ? 'var(--accent-green)' : '#ef4444'}">${ca.free_or_trial_credentials}</strong></div>
-      <div>Paid Plan Required: <strong style="color: ${ca.paid_plan_required === 'yes' ? 'var(--accent-amber)' : 'var(--text-main)'}">${ca.paid_plan_required}</strong></div>
-      <div>Admin Approval: <strong style="color: ${ca.admin_approval_required === 'yes' ? 'var(--accent-amber)' : 'var(--text-main)'}">${ca.admin_approval_required}</strong></div>
-      <div style="grid-column: span 2;">Partner Approval: <strong style="color: ${ca.partner_approval_required === 'yes' ? 'var(--accent-purple)' : 'var(--accent-green)'}">${ca.partner_approval_required}</strong></div>
-    </div>
-  `;
+  const credentialLabels = [
+    ["Self-serve signup", "self_serve_signup"],
+    ["Free or trial credentials", "free_or_trial_credentials"],
+    ["Paid plan required", "paid_plan_required"],
+    ["Admin approval", "admin_approval_required"],
+    ["Partner approval", "partner_approval_required"]
+  ];
+  document.getElementById("drawer-credentials-list").innerHTML = credentialLabels.map(([label, key]) => {
+    const value = ["yes", "no"].includes(ca[key]) ? ca[key] : "unknown";
+    return `<div class="credential-row"><span>${label}</span><strong class="credential-value credential-${value}">${value}</strong></div>`;
+  }).join("");
 
-  // Do not display draft quotes as verified evidence before source matching passes.
   const evContainer = document.getElementById("drawer-evidence-container");
-  if (summaryData.dataset_status === "provisional") {
-    const urls = [...new Set((app.evidence || []).map(ev => safeEvidenceUrl(ev.url)).filter(Boolean))];
-    const sourceLinks = urls.map(url =>
-      '<div style="margin-top: 8px;"><a href="' + escapeHTML(url) +
-      '" target="_blank" rel="noopener noreferrer" class="evidence-url mono">' +
-      escapeHTML(url) + ' ↗</a></div>'
-    ).join("");
-    evContainer.innerHTML =
-      '<div style="color: var(--text-muted); font-size: 12px;">Candidate source links. Claims and quotes remain unverified.</div>' +
-      (sourceLinks || '<div style="color: var(--text-dim); font-size: 12px; margin-top: 8px;">No source link recorded.</div>');
-  } else if (app.evidence && app.evidence.length > 0) {
-    evContainer.innerHTML = app.evidence.map(ev => {
-      const url = safeEvidenceUrl(ev.url);
-      const sourceLink = url ? `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer" class="evidence-url mono">${escapeHTML(url)} &nearr;</a>` : "";
-      return `
-        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; margin-bottom: 12px;">
-          <div class="badge badge-gray mono">${escapeHTML(ev.field)}</div>
-          <div style="font-size: 13px; font-weight: 500; margin: 6px 0;">${escapeHTML(ev.claim)}</div>
-          <div class="evidence-quote-box">&ldquo;${escapeHTML(ev.quote)}&rdquo;</div>
-          ${sourceLink}
-          <div style="font-size: 10px; color: var(--text-dim); margin-top: 4px;" class="mono">Retrieved: ${escapeHTML(ev.retrieved_at)}</div>
-        </div>`;
-    }).join("");
-  } else {
-    evContainer.innerHTML = `<div style="color: var(--text-dim); font-size: 12px;">No evidence cards logged.</div>`;
-  }
+  const supported = (app.evidence || []).filter(ev => ev.verification === "supported" && safeEvidenceUrl(ev.url));
+  const unresolved = (app.evidence || []).filter(ev => ev.verification !== "supported" && safeEvidenceUrl(ev.url));
+  const cards = supported.map(ev => {
+    const url = safeEvidenceUrl(ev.url);
+    return `<article class="evidence-card">
+      <div class="badge badge-blue mono">Source checked · ${escapeHTML(ev.field)}</div>
+      <p class="evidence-claim">${escapeHTML(ev.claim)}</p>
+      <blockquote class="evidence-quote-box">“${escapeHTML(ev.quote)}”</blockquote>
+      <a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer" class="evidence-url mono">Open source ↗</a>
+    </article>`;
+  }).join("");
+  const pendingUrls = [...new Set(unresolved.map(ev => safeEvidenceUrl(ev.url)))];
+  const pending = pendingUrls.length
+    ? `<div class="evidence-pending"><strong>Unresolved source checks</strong><p>These candidate claims are excluded from the checked evidence above.</p>${pendingUrls.map(url => `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer" class="evidence-url mono">${escapeHTML(url)} ↗</a>`).join("")}</div>`
+    : "";
+  evContainer.innerHTML = cards + pending || '<p class="empty-evidence">No source-backed evidence is available for this record yet.</p>';
 
   document.getElementById("drawer").classList.add("open");
   document.getElementById("drawer-backdrop").classList.add("open");

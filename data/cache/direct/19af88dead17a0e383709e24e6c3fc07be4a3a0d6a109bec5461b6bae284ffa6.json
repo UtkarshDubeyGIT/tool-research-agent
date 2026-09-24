@@ -1,0 +1,11 @@
+{
+  "url": "https://pipedrive.readme.io/docs/how-to-find-the-api-token",
+  "final_url": "https://pipedrive.readme.io/docs/how-to-find-the-api-token",
+  "title": "How to find the API token",
+  "timestamp": "2026-09-24T21:09:24.774776+00:00",
+  "source_method": "direct_http",
+  "content_hash": "4d1b6995594a388352f9ff9006554e875d6b21f695d7eae6b19f9393dba32b7f",
+  "raw_markdown": "How to find the API token\nTo validate your requests, you'll need your\napi_token\n- this means that our system will need to know who you are and be able to connect all actions you do with your chosen Pipedrive account.\nKeep in mind that a user has a different\napi_token\nfor every company the user is a part of.\n\ud83d\udea7\nKeep your API token safe. You can only have one active API token at any time.\nAPI is enabled\nYou can get the API token\nmanually\nfrom the Pipedrive web app by going to\naccount name (on the top right) > Company settings > Personal preferences > API\nor by clicking\nhere\n(in case you have multiple companies open at the same time, this link will redirect you to the API token of the last opened company).\nDisclaimer: Never disclose your real API token!\nAPI is disabled\nIf you don't see\nAPI\nnext to the\nYour companies\ntab in web app's\nSettings\nfollow our tutorial about\nenabling API\n.\nUpdated\n11 months ago\nRead next\nHow to get the company domain?\nAbout the Pipedrive API\nDid this page help you?\nYes\nNo\nCopy Page",
+  "status_code": 200,
+  "error": null
+}

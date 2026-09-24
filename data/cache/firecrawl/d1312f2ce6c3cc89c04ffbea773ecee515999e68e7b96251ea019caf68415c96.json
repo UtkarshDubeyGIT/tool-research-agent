@@ -1,0 +1,11 @@
+{
+  "url": "https://seranking.com/api",
+  "final_url": "https://seranking.com/api",
+  "title": "Page not found - SE Ranking",
+  "timestamp": "2026-09-24T21:24:45.804812+00:00",
+  "source_method": "firecrawl",
+  "content_hash": "4c0940233d693b891f711100ef0dba452018eb351811420f127b824bca6debc3",
+  "raw_markdown": "# Something went wrong\n\nThe page you\u2019re trying to access doesn\u2019t appear to exist. Please check the entered address and try again or go to the homepage.\n\n[Home](https://seranking.com/)\n\n![error404](https://seranking.com/wp-content/themes/se_theme/images/svg/bg/error404.svg)",
+  "status_code": 200,
+  "error": null
+}

@@ -1,97 +1,66 @@
-# Composio AI Product Ops take-home case study
+# Integration field notes
 
-An independent research-agent prototype and static case-study page for the Product Ops take-home assignment.
+An independent Product Ops take-home case study for researching API integration feasibility. The [review page](https://utkarshdubeygit.github.io/tool-research-agent/) lets an examiner search the app list, open a record, and follow checked claims to saved source quotes and the original page. The [repository](https://github.com/UtkarshDubeyGIT/tool-research-agent) contains the inputs, agent, first pass, final pass, source snapshots, and reviewer worksheet.
 
-## Current status
+## Scope and current quality state
 
-The assignment prompt says 100 apps, but its supplied table contains 90 entries across 9 categories and ends at #90 PitchBook. The repository preserves those 90 inputs in `data/apps.json`.
+The brief says **100 apps in 10 categories**, but its supplied table has **90 entries in 9 categories**, ending at #90 PitchBook. `data/apps.json` preserves all 90 supplied rows; no missing entries were invented.
 
-The checked-in result rows are a **provisional snapshot**, not a verified 90-app research run. All 90 are marked `needs_review`; the current validator reports 0/90 passing and 279 evidence issues, with no schema errors or logical contradictions. The independent human audit is pending. The previous “improved accuracy” figures came from a synthetic first pass and static expected values, so those rows and claims were removed. No accuracy score is currently reported.
+The final automated run has **90/90 records**, of which **60 pass every logged claim's source checks**, **28 need review**, and **2 are blocked by unavailable readable sources**. The validator reports **0 missing IDs, 0 schema errors, 0 logical contradictions, and 79 evidence issues across the 30 unresolved records**. A `needs_review` record may still contain individual checked claims. `unknown` means the retrieved sources did not establish an answer.
 
-## Latest local verification
+The first pass matched **260/292 quotes (89.0%)** to saved pages; the final pass matched **288/308 (93.5%)**. This is an **evidence traceability** measure, not answer accuracy. The independent 18-app field audit remains pending in `data/audit.json`, so no human accuracy or improvement percentage is claimed. `data/review_queue.json` gives the fixed sample and first/final values without inventing reviewer answers.
 
-On 25 September 2026, a one-app Stripe (#81) run used the temporary local OpenAI and OpenRouter keys with a saved direct source page. The cascade produced six candidate evidence items: four were marked supported by Jev and two had insufficient evidence. Exact source validation still failed, so the record remains needs_review; this pilot is not an accuracy score. Firecrawl was disabled for this cached-source pilot to limit paid requests. The full 90-app batch was not rerun.
+## Research method
 
-The local test suite passed (5 tests). The checked-in 90-row dataset still has 0 passing records, 279 evidence issues, an empty first-pass baseline, and a pending 18-app human audit. Complete those checks before submitting the dataset as verified research.
+1. `data/source_seeds.json` freezes candidate documentation leads separately from generated findings. The supplied website hint is a fallback.
+2. The fetcher reuses successful source snapshots, tries direct HTTP, then uses a **budgeted Firecrawl v2** scrape when needed. Up to two readable pages inform a record.
+3. OpenAI extracts a structured candidate with a short claim, exact quote, and source URL for each evidence item. Absent facts stay unknown.
+4. Exact quote matching gates Jev verification; unsupported or contradictory claims keep the record in review. Python rules compute API breadth and buildability from candidate access and API details.
+5. The validator checks schema, IDs, contradictions, source snapshots, quote matches, and Jev support. The analysis step publishes static JSON, CSV, and the browser bundle.
 
-## Deliverables
+`data/run_manifest.json` records the input and source-lead hashes, run phases, request counts, and final quality status. It contains no keys.
 
-- Case-study page: [GitHub Pages](https://utkarshdubeygit.github.io/tool-research-agent/)
-- Source repository: [GitHub](https://github.com/UtkarshDubeyGIT/tool-research-agent)
-- Vercel: the repository is configured to serve `site/`; import instructions are below. The current site is static and does not run the Python research agent on Vercel.
+## Reproduce locally
 
-## Run the agent locally
-
-Prerequisites: Python 3.10+ and Git.
+Requires Python 3.10+.
 
 ```bash
-git clone https://github.com/UtkarshDubeyGIT/tool-research-agent.git
-cd tool-research-agent
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env.local
 ```
 
-Put local CLI keys in the ignored `.env.local` file. The CLI reads `OPENAI_API_KEY`, `OPENROUTER_API_KEY`, and `FIRECRAWL_API_KEY`; `OPENAI_MODEL` defaults to `gpt-6-luna`. Never put real keys in `.env.example`, source files, generated site data, or the README. `.env.local` is ignored by Git.
+Put temporary local values for `OPENAI_API_KEY`, `OPENROUTER_API_KEY`, and `FIRECRAWL_API_KEY` in `.env.local`. This file is Git-ignored. `OPENAI_MODEL` defaults to `gpt-6-luna`. The first-pass and final-pass examples below make paid-call caps explicit; successful cached pages avoid additional Firecrawl calls.
 
 ```bash
-# Try one app first; uncached runs use paid APIs
-python -m src.research --app-id 81 --mode cascade --output stripe-pilot.json
-
-# Capture a real first pass before making manual corrections
-python -m src.research --all --mode first_pass --output data/first_pass.json
-
-# Run the verification cascade and checkpoint results
-python -m src.research --all --resume
-
-# Check schemas, contradictions, cached source URLs, and exact quote matches
+python -m src.research --all --mode first_pass --output data/first_pass.json --max-firecrawl-calls 20 --max-model-calls 90 --max-jev-calls 0
+python -m src.research --all --mode cascade --output data/final_results.json --refresh --max-firecrawl-calls 20 --max-model-calls 90 --max-jev-calls 360
 python -m src.validate
-
-# Score an audit only after recording field-level human checks in data/audit.json
-python -m src.audit
-
-# Regenerate summary, JSON, CSV, and the static browser bundle
+python -m src.audit --prepare
 python -m src.analyze
+python -B -m http.server 8765 --directory site
 ```
 
-Without a readable source page or OpenAI key, the agent leaves findings unknown/blocked. Without an OpenRouter key, Jev claim verification is marked insufficient. The research code currently fetches one resolved seed page per app; multi-page documentation discovery, bounded retries/concurrency, and systematic conflict handling remain work to do.
+The validator exits nonzero while any record is unresolved. The manual audit command stays pending until an independent reviewer enters checked values and official source URLs for all 18 sample IDs in `data/audit.json`, then sets its status to `ready_to_score`. Run `python -m src.audit` after that review. The sample worksheet is a preparation aid, not ground truth.
 
-The human audit manifest is intentionally pending. For each `planned_sample_ids` entry, add `fields` containing `auth_methods`, `credential_access`, `api_breadth`, and `buildability`. Each field entry must include `status: "verified"` or `"unverifiable"`; verified entries also need `ground_truth` and an official `source_url`. Example shape for one app:
+For a bounded single-app pilot, use `python -m src.research --app-id 81 --output /tmp/stripe-pilot.json --max-firecrawl-calls 1 --max-model-calls 1 --max-jev-calls 10`.
 
-```json
-{
-  "id": 1,
-  "fields": {
-    "auth_methods": {"status": "verified", "ground_truth": ["replace with checked value"], "source_url": "https://official.example/docs"},
-    "credential_access": {"status": "unverifiable", "source_url": "https://official.example/docs"},
-    "api_breadth": {"status": "verified", "ground_truth": "replace with checked value", "source_url": "https://official.example/docs"},
-    "buildability": {"status": "verified", "ground_truth": "replace with checked value", "source_url": "https://official.example/docs"}
-  }
-}
-```
+## Deployment and keys
 
-After all sample records are filled, change the manifest status to `ready_to_score` and run `python -m src.audit`. Keep unverifiable fields out of the denominator. The scorer requires real first-pass and final-pass records and will not invent a baseline.
+The page is static. GitHub Pages can host it directly; `vercel.json` serves `site/` on Vercel. **No production API keys are needed for this deployed UI**, and no key is shipped to the browser. The Python research pipeline runs locally before publishing the generated files.
 
-## Deploy the static page to Vercel
-
-1. Import `UtkarshDubeyGIT/tool-research-agent` into Vercel.
-2. Set the project root to the repository root. Select the **Other** framework preset.
-3. Leave the build command empty and use `site` as the output directory. `vercel.json` already sets this output directory.
-4. Deploy. Git-connected pushes to the production branch will create deployments; preview branches create previews.
-
-This deployment serves HTML, CSS, JavaScript, and pre-generated JSON/CSV only. **No production API keys are needed or used by the deployed page.** The Python CLI is not a Vercel function and does not run on page requests.
-
-If a server-side research endpoint is added later, add its keys in Vercel Project Settings → Environment Variables, scoped to the required environments. Use the unprefixed names `OPENAI_API_KEY`, `OPENROUTER_API_KEY`, and `FIRECRAWL_API_KEY`, plus `OPENAI_MODEL` if needed. Never use client-exposed prefixes such as `NEXT_PUBLIC_` or `VITE_` for secrets. Adding environment variables requires a new deployment.
+If a private server-side research endpoint is added later, put unprefixed `OPENAI_API_KEY`, `OPENROUTER_API_KEY`, and `FIRECRAWL_API_KEY` in **Vercel Project Settings → Environment Variables**, scoped to the needed environment, then redeploy. Never use `NEXT_PUBLIC_` or `VITE_` prefixes for these secrets. For local work, keep using the ignored `.env.local`.
 
 ## Repository map
 
-- `data/apps.json`: supplied input list.
-- `data/final_results.json`: provisional current records.
-- `data/first_pass.json`: empty until a real baseline run is captured.
-- `data/audit.json`: pending manifest for independent checks; no synthetic accuracy result.
-- `data/cache/`: retrieval snapshots used for source-quote matching.
-- `src/`: retrieval, extraction, decision, rules, validation, analysis, and audit CLI.
-- `site/`: static case-study page and generated JSON/CSV/browser bundle.
+- `data/apps.json` — supplied input list.
+- `data/source_seeds.json` — frozen candidate source URLs.
+- `data/first_pass.json`, `data/final_results.json` — captured baseline and final automated output.
+- `data/cache/` — saved source snapshots used for exact quote validation.
+- `data/audit.json`, `data/review_queue.json` — pending independent audit and reviewer worksheet.
+- `data/run_manifest.json` — non-secret reproducibility metadata.
+- `src/` — retrieval, extraction, verification, rules, validation, analysis, and audit CLI.
+- `site/` — static review page and generated data.
 
-The local test suite can be rerun with `pytest -q`; all 5 tests passed during the latest review.
+Run `pytest -q -p no:cacheprovider` for local regression checks.

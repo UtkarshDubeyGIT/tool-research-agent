@@ -1,0 +1,11 @@
+{
+  "url": "https://smartsheet.redoc.ly/#section/Authentication",
+  "final_url": "https://smartsheet.redoc.ly/#section/Authentication",
+  "title": "Smartsheet - Official API and SDK Documentation",
+  "timestamp": "2026-09-24T21:15:44.785867+00:00",
+  "source_method": "direct_http",
+  "content_hash": "7821076d9d92f686edefc6dfe1cb49f1cff60242fd623a281f1a545e28c983b0",
+  "raw_markdown": "Authentication\nplaceholder\nget\nPlaceholder health check endpoint\n(DEPRECATED site)\n(\n2.0.0\n)\nDownload OpenAPI specification:\nDownload\nThe new Smartsheet API reference documentation site is located at\nhttps://developers.smartsheet.com/api\n.\nAuthentication\nPlaceholderAuth\nSecurity Scheme Type\nHTTP\nHTTP Authorization Scheme\nbasic\n\u2794 Next to\nplaceholder",
+  "status_code": 200,
+  "error": null
+}

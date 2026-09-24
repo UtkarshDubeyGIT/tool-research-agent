@@ -134,8 +134,7 @@ class EvidenceValidator:
                 continue
 
             quote = self._normalize(evidence.quote)
-            source_text = self._normalize(source)
-            if not quote or quote not in source_text:
+            if not quote or not any(quote in self._normalize(snapshot) for snapshot in source):
                 issues.append(f"evidence item {index} quote does not exactly match its cached source.")
             if evidence.verification != "supported":
                 issues.append(f"evidence item {index} is marked '{evidence.verification}'.")
