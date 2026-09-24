@@ -6,6 +6,21 @@ let activeCategory = "all";
 let activeVerdict = "all";
 let searchQuery = "";
 
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
+  })[char]);
+}
+
+function safeEvidenceUrl(value) {
+  try {
+    const url = new URL(value);
+    return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+  } catch {
+    return "";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initData();
   setupEventListeners();
@@ -40,13 +55,26 @@ function renderAll() {
 }
 
 function renderMetrics() {
-  const bb = summaryData.buildability_breakdown || {};
-  const mcp = summaryData.mcp_breakdown || {};
+  const coverage = summaryData.coverage || {};
+  const breakdown = summaryData.buildability_breakdown || {};
+  const supplied = Number(coverage.supplied_input_count || 0);
+  const records = Number(coverage.records_present || 0);
 
-  document.getElementById("metric-total").textContent = summaryData.coverage ? `${summaryData.coverage.total_researched}/90` : "90/90";
-  document.getElementById("metric-buildable").textContent = bb.buildable_now ? `${bb.buildable_now.count} (${bb.buildable_now.percentage}%)` : "72 (80.0%)";
-  document.getElementById("metric-conditional").textContent = bb.conditional ? `${bb.conditional.count} (${bb.conditional.percentage}%)` : "14 (15.6%)";
-  document.getElementById("metric-outreach").textContent = bb.outreach_needed ? `${bb.outreach_needed.count} (${bb.outreach_needed.percentage}%)` : "4 (4.4%)";
+  document.getElementById("metric-total").textContent = `${supplied} supplied`;
+  document.getElementById("metric-buildable").textContent = formatDraftMetric(breakdown.buildable_now);
+  document.getElementById("metric-conditional").textContent = formatDraftMetric(breakdown.conditional);
+  document.getElementById("metric-outreach").textContent = formatDraftMetric(breakdown.outreach_needed);
+
+  const isVerified = summaryData.dataset_status === "verified";
+  const count = document.getElementById("metric-record-status");
+  if (count) count.textContent = isVerified ? `${records} source-checked records` : `${records} draft records; source review pending`;
+  const statusNote = document.getElementById("dataset-status-note");
+  if (statusNote) statusNote.textContent = summaryData.quality_notice || "Classification status unavailable.";
+}
+
+function formatDraftMetric(metric) {
+  if (!metric) return "Pending";
+  return `${metric.count} (${metric.percentage}%)`;
 }
 
 function renderPatternBars() {
@@ -81,55 +109,58 @@ function renderCategoryMatrix() {
   const container = document.getElementById("category-matrix-body");
   if (!container || !summaryData.category_matrix) return;
 
-  const cm = summaryData.category_matrix;
-  container.innerHTML = Object.entries(cm).map(([cat, data]) => {
-    return `
-      <tr>
-        <td style="font-weight: 500;">${cat}</td>
-        <td class="mono">${data.total}</td>
-        <td><span class="badge badge-green">${data.buildable_now}</span></td>
-        <td><span class="badge badge-amber">${data.conditional}</span></td>
-        <td><span class="badge badge-purple">${data.outreach_needed}</span></td>
-        <td class="mono">${data.self_serve_pct}%</td>
-        <td><span class="badge badge-gray mono">${data.dominant_auth}</span></td>
-      </tr>
-    `;
-  }).join("");
+  container.innerHTML = Object.entries(summaryData.category_matrix).map(([cat, data]) => `
+    <tr>
+      <td style="font-weight: 500;">${escapeHTML(cat)}</td>
+      <td class="mono">${Number(data.total) || 0}</td>
+      <td><span class="badge badge-green">${Number(data.buildable_now) || 0}</span></td>
+      <td><span class="badge badge-amber">${Number(data.conditional) || 0}</span></td>
+      <td><span class="badge badge-purple">${Number(data.outreach_needed) || 0}</span></td>
+      <td><span class="badge badge-gray">${Number(data.unknown) || 0}</span></td>
+      <td class="mono">${Number(data.self_serve_pct) || 0}%</td>
+      <td><span class="badge badge-gray mono">${escapeHTML(data.dominant_auth || "unknown")}</span></td>
+    </tr>
+  `).join("");
 }
 
 function renderAuditSection() {
-  const m = summaryData.audit_metrics;
-  if (!m) return;
-
-  const fp = m.first_pass || {};
-  const fn = m.final_pass || {};
-
-  const fpField = document.getElementById("audit-fp-field");
-  const fnField = document.getElementById("audit-fn-field");
-  const fpApp = document.getElementById("audit-fp-app");
-  const fnApp = document.getElementById("audit-fn-app");
-
-  if (fpField) fpField.textContent = `${fp.field_level_accuracy_pct}% (${fp.field_numerator}/${fp.field_denominator})`;
-  if (fnField) fnField.textContent = `${fn.field_level_accuracy_pct}% (${fn.field_numerator}/${fn.field_denominator})`;
-  if (fpApp) fpApp.textContent = `${fp.app_level_accuracy_pct}% (${fp.app_numerator}/${fp.app_denominator})`;
-  if (fnApp) fnApp.textContent = `${fn.app_level_accuracy_pct}% (${fn.app_numerator}/${fn.app_denominator})`;
-
-  // Render concrete misses
+  const status = document.getElementById("audit-status");
+  const detail = document.getElementById("audit-status-detail");
+  const sample = document.getElementById("audit-sample-ids");
+  const metricsContainer = document.getElementById("audit-metrics");
   const missesContainer = document.getElementById("audit-misses-container");
-  if (missesContainer && summaryData.concrete_misses) {
-    missesContainer.innerHTML = summaryData.concrete_misses.map(miss => `
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; margin-bottom: 12px;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-          <span style="font-weight: 600;">#${miss.app_id} ${miss.app_name} &bull; <span class="mono" style="color: var(--accent-amber);">${miss.field}</span></span>
-          <span class="badge badge-purple">Baseline Miss Corrected</span>
-        </div>
-        <div style="font-size: 12px; margin-bottom: 4px;">
-          <span style="color: var(--text-dim);">Initial Baseline:</span> <span class="mono" style="color: #ef4444;">${JSON.stringify(miss.first_pass_val)}</span>
-          &rarr; <span style="color: var(--text-dim);">Verified Ground Truth:</span> <span class="mono" style="color: var(--accent-green);">${JSON.stringify(miss.ground_truth_val)}</span>
-        </div>
-        <div style="font-size: 12px; color: var(--text-muted);">${miss.correction_rationale}</div>
-      </div>
-    `).join("");
+  if (!status) return;
+
+  const complete = summaryData.audit_status === "complete";
+  status.textContent = complete ? "Human audit complete" : "Pending independent review";
+  if (detail) {
+    detail.textContent = complete
+      ? "Scores below use the recorded human checks and list unverifiable fields outside the denominator."
+      : "No accuracy score is available. The prior synthetic baseline and static expected values were removed.";
+  }
+
+  const ids = summaryData.planned_sample_ids || [];
+  if (sample) sample.textContent = ids.length ? `Planned sample IDs: ${ids.join(", ")}` : "Sample IDs will be frozen before manual verification.";
+
+  const audit = summaryData.audit_metrics || {};
+  const first = audit.first_pass || {};
+  const final = audit.final_pass || {};
+  const fieldScores = document.getElementById("audit-field-scores");
+  const appScores = document.getElementById("audit-app-scores");
+  if (metricsContainer) {
+    metricsContainer.hidden = !complete;
+    metricsContainer.style.display = complete ? "grid" : "none";
+  }
+  if (complete && fieldScores && appScores) {
+    fieldScores.textContent = `${first.field_numerator}/${first.field_denominator} (${first.field_level_accuracy_pct}%) → ${final.field_numerator}/${final.field_denominator} (${final.field_level_accuracy_pct}%)`;
+    appScores.textContent = `${first.app_numerator}/${first.app_denominator} (${first.app_level_accuracy_pct}%) → ${final.app_numerator}/${final.app_denominator} (${final.app_level_accuracy_pct}%)`;
+  }
+
+  if (missesContainer) {
+    const misses = complete ? (summaryData.concrete_misses || []) : [];
+    missesContainer.textContent = misses.length
+      ? misses.map(item => `#${item.app_id} ${item.field}: ${JSON.stringify(item.first_pass_value)} → ${JSON.stringify(item.checked_value)} → ${JSON.stringify(item.final_pass_value)} (${item.source_url})`).join("\n")
+      : "";
   }
 }
 
@@ -173,21 +204,21 @@ function renderTable() {
       verdictBadge = `<span class="badge badge-gray">Unknown</span>`;
     }
 
-    const authBadges = (r.auth_methods || []).map(m => `<span class="badge badge-gray" style="margin-right: 4px;">${m}</span>`).join("");
+    const authBadges = (r.auth_methods || []).map(m => `<span class="badge badge-gray" style="margin-right: 4px;">${escapeHTML(m)}</span>`).join("");
     const mcpBadge = r.existing_mcp === "official" 
       ? `<span class="badge badge-blue">Official</span>` 
       : (r.existing_mcp === "third_party" ? `<span class="badge badge-gray">Community</span>` : `<span style="color: var(--text-dim);">&mdash;</span>`);
 
     return `
-      <tr onclick="openDrawer(${r.id})">
-        <td class="mono" style="color: var(--text-dim);">${r.id}</td>
+      <tr tabindex="0" role="button" aria-label="Open ${escapeHTML(r.name)} details" onclick="openDrawer(${Number(r.id) || 0})" onkeydown="if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openDrawer(${Number(r.id) || 0}); }">
+        <td class="mono" style="color: var(--text-dim);">${Number(r.id) || 0}</td>
         <td>
-          <div style="font-weight: 600;">${r.name}</div>
-          <div style="font-size: 11px; color: var(--text-dim);">${r.website_hint}</div>
+          <div style="font-weight: 600;">${escapeHTML(r.name)}</div>
+          <div style="font-size: 11px; color: var(--text-dim);">${escapeHTML(r.website_hint)}</div>
         </td>
-        <td style="color: var(--text-muted);">${r.category}</td>
+        <td style="color: var(--text-muted);">${escapeHTML(r.category)}</td>
         <td>${authBadges}</td>
-        <td><span class="mono" style="font-size: 12px;">${r.api_breadth}</span></td>
+        <td><span class="mono" style="font-size: 12px;">${escapeHTML(r.api_breadth)}</span></td>
         <td>${mcpBadge}</td>
         <td>${verdictBadge}</td>
       </tr>
@@ -204,6 +235,8 @@ function openDrawer(appId) {
   document.getElementById("drawer-summary").textContent = app.summary || "No summary available.";
   document.getElementById("drawer-hint").textContent = app.website_hint || "N/A";
   document.getElementById("drawer-blocker").textContent = app.main_blocker || "none";
+  const apiTypes = Array.isArray(app.api_types) ? app.api_types.join(", ") : "unknown";
+  document.getElementById("drawer-api-summary").textContent = `Types: ${apiTypes || "unknown"} · Breadth: ${app.api_breadth || "unknown"} · MCP: ${app.existing_mcp || "unknown"} · Review: ${app.research_status || "unknown"}`;
   
   let verdictBadge = "";
   if (app.buildability === "buildable_now") {
@@ -227,21 +260,23 @@ function openDrawer(appId) {
     </div>
   `;
 
-  // Render Evidence cards
+  // Do not display draft quotes as verified evidence before source matching passes.
   const evContainer = document.getElementById("drawer-evidence-container");
-  if (app.evidence && app.evidence.length > 0) {
-    evContainer.innerHTML = app.evidence.map(ev => `
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; margin-bottom: 12px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <span class="badge badge-gray mono">${ev.field}</span>
-          <span class="badge badge-green mono">Jev: ${ev.verification}</span>
-        </div>
-        <div style="font-size: 13px; font-weight: 500; margin-bottom: 6px;">${ev.claim}</div>
-        <div class="evidence-quote-box">&ldquo;${ev.quote}&rdquo;</div>
-        <a href="${ev.url}" target="_blank" rel="noopener noreferrer" class="evidence-url mono">${ev.url} &nearr;</a>
-        <div style="font-size: 10px; color: var(--text-dim); margin-top: 4px;" class="mono">Retrieved: ${ev.retrieved_at}</div>
-      </div>
-    `).join("");
+  if (summaryData.dataset_status === "provisional") {
+    evContainer.innerHTML = `<div style="color: var(--text-dim); font-size: 12px;">Source matching is pending. Draft quotes are hidden until they are checked against the saved source page.</div>`;
+  } else if (app.evidence && app.evidence.length > 0) {
+    evContainer.innerHTML = app.evidence.map(ev => {
+      const url = safeEvidenceUrl(ev.url);
+      const sourceLink = url ? `<a href="${escapeHTML(url)}" target="_blank" rel="noopener noreferrer" class="evidence-url mono">${escapeHTML(url)} &nearr;</a>` : "";
+      return `
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 14px; margin-bottom: 12px;">
+          <div class="badge badge-gray mono">${escapeHTML(ev.field)}</div>
+          <div style="font-size: 13px; font-weight: 500; margin: 6px 0;">${escapeHTML(ev.claim)}</div>
+          <div class="evidence-quote-box">&ldquo;${escapeHTML(ev.quote)}&rdquo;</div>
+          ${sourceLink}
+          <div style="font-size: 10px; color: var(--text-dim); margin-top: 4px;" class="mono">Retrieved: ${escapeHTML(ev.retrieved_at)}</div>
+        </div>`;
+    }).join("");
   } else {
     evContainer.innerHTML = `<div style="color: var(--text-dim); font-size: 12px;">No evidence cards logged.</div>`;
   }

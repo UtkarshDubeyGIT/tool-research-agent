@@ -22,7 +22,7 @@ class CredentialAccess(BaseModel):
 class EvidenceItem(BaseModel):
     field: str = Field(..., description="Target field name, e.g. auth_methods, credential_access, api_types")
     claim: str = Field(..., description="Exact claim being verified")
-    verification: VerificationStatus = Field(default="supported", description="Jev/Validator verdict on claim support")
+    verification: VerificationStatus = Field(default="insufficient_evidence", description="Evidence status; support must be explicitly established")
     url: str = Field(..., description="Exact documentation URL where quote was found")
     quote: str = Field(..., description="Verbatim short excerpt from the fetched document")
     retrieved_at: str = Field(..., description="ISO-8601 timestamp of retrieval")

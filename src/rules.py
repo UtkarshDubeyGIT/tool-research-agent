@@ -37,8 +37,8 @@ def evaluate_api_breadth(
     ]):
         return "limited"
     
-    # Default to focused if public API exists with standard structure
-    return "focused"
+    # Do not infer breadth when the documentation does not expose a usable count or rubric signal.
+    return "unknown"
 
 
 def evaluate_buildability(
@@ -73,8 +73,8 @@ def evaluate_buildability(
     # 4. Buildable now
     has_auth = len(auth_methods) > 0 and auth_methods != ["unknown"]
     has_api = len(api_types) > 0 and api_types != ["unknown"]
-    is_self_serve = credential_access.self_serve_signup in ("yes", "unknown")
-    has_free_or_trial = credential_access.free_or_trial_credentials in ("yes", "unknown")
+    is_self_serve = credential_access.self_serve_signup == "yes"
+    has_free_or_trial = credential_access.free_or_trial_credentials == "yes"
 
     if is_self_serve and has_free_or_trial and has_auth and has_api:
         # If there's an admin approval notice but self-serve sandbox is available (like Salesforce Dev Org)
@@ -82,8 +82,10 @@ def evaluate_buildability(
             return "conditional", existing_blocker or "Requires admin authorization in production (sandbox is self-serve)."
         return "buildable_now", "none"
 
-    # 5. Missing critical info
-    if not has_auth or not has_api:
-        return "unknown", "Official API and authentication documentation is not publicly accessible."
+    # Unknown access gates are not evidence that access is open.
+    if (not has_auth or not has_api or
+            credential_access.self_serve_signup == "unknown" or
+            credential_access.free_or_trial_credentials == "unknown"):
+        return "unknown", existing_blocker or "Credential access or API documentation needs verification."
 
     return "conditional", existing_blocker or "Requires specific environment configuration or plan credentials."

@@ -24,7 +24,7 @@ class JevClient:
     def make_decisions(self, state: Dict[str, Any], questions: Dict[str, Any]) -> Dict[str, Any]:
         """Send application state and typed questions to Jev Decisions API."""
         if not self.api_key:
-            return self._heuristic_fallback(state, questions)
+            return {}
 
         headers = {
             "Authorization": f"Bearer {self.api_key}",
@@ -42,9 +42,9 @@ class JevClient:
                 data = resp.json()
                 return data.get("answers", {})
             else:
-                return self._heuristic_fallback(state, questions)
+                return {}
         except Exception:
-            return self._heuristic_fallback(state, questions)
+            return {}
 
     def verify_claim(self, claim: str, excerpt: str) -> Dict[str, Any]:
         """Verify whether an extracted claim is supported by a documentation excerpt."""
@@ -63,9 +63,17 @@ class JevClient:
                 }
             }
         }
+        if not self.api_key:
+            return {
+                "choice": "insufficient_evidence",
+                "confidence": 0.0,
+                "probabilities": {"insufficient_evidence": 1.0},
+                "method": "no_api_key"
+            }
+
         answers = self.make_decisions(state, questions)
         support = answers.get("claim_support", {})
-        choice = support.get("choice", "supported")
+        choice = support.get("choice", "insufficient_evidence")
         confidence = support.get("confidence", 0.9)
         return {
             "choice": choice,

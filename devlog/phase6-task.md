@@ -1,3 +1,5 @@
+> Historical checklist. The Vercel and audit readiness claims are superseded by the current deployment review; see `README.md` and `phase6-walkthrough.md` for the corrected status.
+
 # Phase 6 Task List: Final Integration, Documentation, Repository Publication & Deployment
 
 - [x] Configure automated deployment workflow (`.github/workflows/deploy.yml`)

@@ -80,7 +80,7 @@ class ResearchOrchestrator:
         candidate_data = self._generate_candidate_record(app_meta, doc, excerpt)
 
         # 3. Jev Decision Verification Cascade (if cascade mode)
-        if self.mode == "cascade":
+        if self.mode == "cascade" and doc.raw_markdown:
             jev_classifications = self.jev.classify_access_and_auth(excerpt)
             
             # Map Jev Noul answers to credential access
@@ -104,16 +104,17 @@ class ResearchOrchestrator:
             for ev in candidate_data.get("evidence", []):
                 claim = ev.get("claim", "")
                 quote = ev.get("quote", "")
-                jev_res = self.jev.verify_claim(claim, quote or excerpt)
+                # Compare each claim with the retrieved source, never with its own proposed quote.
+                jev_res = self.jev.verify_claim(claim, excerpt)
                 ev["verification"] = jev_res.get("choice", "supported")
 
         # 4. Code-owned rule composition
         cred_access = CredentialAccess(**candidate_data.get("credential_access", {}))
         auth_methods = candidate_data.get("auth_methods", [])
-        api_types = candidate_data.get("api_types", ["rest"])
-        
+        api_types = candidate_data.get("api_types", [])
+
         breadth = evaluate_api_breadth(
-            endpoint_count=50 if "broad" in excerpt.lower() else 20,
+            endpoint_count=int(candidate_data.get("documented_endpoint_count", 0) or 0),
             text_indicators=excerpt,
             api_types=api_types
         )
@@ -133,50 +134,111 @@ class ResearchOrchestrator:
             auth_methods=auth_methods,
             credential_access=cred_access,
             api_types=api_types,
-            api_breadth=candidate_data.get("api_breadth", breadth),
-            existing_mcp=candidate_data.get("existing_mcp", "none_found"),
+            api_breadth=breadth,
+            existing_mcp=candidate_data.get("existing_mcp", "unknown"),
             buildability=verdict,
             main_blocker=blocker,
             confidence=candidate_data.get("confidence", "high"),
             evidence=[EvidenceItem(**e) for e in candidate_data.get("evidence", [])],
-            research_status="complete",
+            research_status=self._candidate_status(candidate_data, doc),
             notes=notes
         )
         return record
 
     def _generate_candidate_record(self, app_meta: Dict[str, Any], doc: RawDocument, excerpt: str) -> Dict[str, Any]:
-        """Generate structured candidate assertions using OpenAI or high-accuracy knowledge base."""
-        if self.client and doc.raw_markdown:
-            try:
-                system_prompt = (
-                    "You are an expert API researcher. Given the application name, category, website hint, and "
-                    "official documentation excerpt, produce a strictly valid JSON object matching the AppRecord schema. "
-                    "Every non-unknown claim MUST have an exact supporting quote from the provided excerpt. "
-                    "Do NOT fabricate quotes or invent endpoints."
-                )
-                user_prompt = f"App: {app_meta['name']}\nCategory: {app_meta['category']}\nHint: {app_meta['website_hint']}\n\nExcerpt:\n{excerpt[:3000]}"
-                
-                resp = self.client.chat.completions.create(
-                    model=self.model,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt}
-                    ],
-                    response_format={"type": "json_object"},
-                    temperature=0.0
-                )
-                content = resp.choices[0].message.content
-                return json.loads(content)
-            except Exception:
-                pass
+        """Generate claims only from a fetched source; unresolved cases stay unknown."""
+        if not self.client:
+            return self._unknown_candidate_record("OPENAI_API_KEY is not configured.")
+        if not doc.raw_markdown:
+            return self._unknown_candidate_record("No readable source document was retrieved.")
 
-        # High-accuracy fallback engine for offline or pre-configured runs
-        return self._lookup_verified_knowledge_base(app_meta, doc)
+        try:
+            system_prompt = (
+                "You are an API researcher. Extract only facts supported by the supplied official documentation. "
+                "Return a JSON object with the AppRecord fields and documented_endpoint_count. Every non-unknown "
+                "material value must have an evidence item with its source URL and a short exact quote copied from "
+                "the excerpt. Count endpoints only when the excerpt enumerates them; otherwise use null. If a fact is "
+                "not established by the excerpt, return unknown. Do not use prior company knowledge."
+            )
+            user_prompt = (
+                f"App: {app_meta['name']}\nCategory: {app_meta['category']}\n"
+                f"Website hint: {app_meta.get('website_hint', '')}\n\nSource URL: {doc.final_url}\n"
+                f"Excerpt:\n{excerpt[:3000]}"
+            )
+            resp = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt}
+                ],
+                response_format={"type": "json_object"},
+                temperature=0.0
+            )
+            content = resp.choices[0].message.content
+            if not content:
+                return self._unknown_candidate_record("The model returned an empty response.")
+            return json.loads(content)
+        except Exception:
+            return self._unknown_candidate_record("Model extraction failed; manual review is required.")
 
-    def _lookup_verified_knowledge_base(self, app_meta: Dict[str, Any], doc: RawDocument) -> Dict[str, Any]:
-        """Loads verified ground-truth research entry."""
-        from src.dataset_seed import get_seed_record
-        return get_seed_record(app_meta["id"], doc)
+    @staticmethod
+    def _unknown_candidate_record(reason: str) -> Dict[str, Any]:
+        return {
+            "summary": "Research is incomplete; see review status.",
+            "auth_methods": ["unknown"],
+            "credential_access": {
+                "self_serve_signup": "unknown",
+                "free_or_trial_credentials": "unknown",
+                "paid_plan_required": "unknown",
+                "admin_approval_required": "unknown",
+                "partner_approval_required": "unknown"
+            },
+            "api_types": [],
+            "api_breadth": "unknown",
+            "existing_mcp": "unknown",
+            "buildability": "unknown",
+            "main_blocker": reason,
+            "confidence": "low",
+            "evidence": [],
+            "research_status": "blocked"
+        }
+
+    @staticmethod
+    def _candidate_status(candidate_data: Dict[str, Any], doc: RawDocument) -> str:
+        if not doc.raw_markdown:
+            return "blocked"
+
+        evidence = candidate_data.get("evidence", [])
+        if not evidence:
+            return "needs_review"
+
+        source_urls = {doc.url.rstrip("/"), doc.final_url.rstrip("/")}
+        source_text = " ".join(doc.raw_markdown.split())
+        evidence_fields = {item.get("field") for item in evidence}
+        required_fields = {"summary"}
+        if candidate_data.get("auth_methods") not in (None, [], ["unknown"]):
+            required_fields.add("auth_methods")
+        credentials = candidate_data.get("credential_access", {})
+        if any(value != "unknown" for value in credentials.values()):
+            required_fields.add("credential_access")
+        if candidate_data.get("api_types") not in (None, [], ["unknown"]):
+            required_fields.add("api_types")
+        if candidate_data.get("api_breadth", "unknown") != "unknown":
+            required_fields.add("api_breadth")
+        if candidate_data.get("existing_mcp", "unknown") != "unknown":
+            required_fields.add("existing_mcp")
+        if candidate_data.get("buildability", "unknown") != "unknown":
+            required_fields.add("buildability")
+        if not required_fields.issubset(evidence_fields):
+            return "needs_review"
+
+        for item in evidence:
+            quote = " ".join(str(item.get("quote", "")).split())
+            if (item.get("url", "").rstrip("/") not in source_urls or
+                    not quote or quote not in source_text or
+                    item.get("verification") != "supported"):
+                return "needs_review"
+        return "complete"
 
 
 def main():
@@ -209,7 +271,8 @@ def main():
     count = 0
     for app in apps_to_run:
         app_id = app["id"]
-        if args.resume and not args.refresh and app_id in existing_results:
+        if (args.resume and not args.refresh and app_id in existing_results and
+                existing_results[app_id].research_status == "complete"):
             continue
 
         print(f"  -> Investigating #{app['id']}: {app['name']} ({app['category']})...")

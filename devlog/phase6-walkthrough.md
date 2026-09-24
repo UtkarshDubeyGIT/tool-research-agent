@@ -1,3 +1,5 @@
+> **Correction from the 2026-09-25 deployment review:** This walkthrough is historical and its audit/validation claims are superseded. The reported first-pass baseline was synthetic, the static expected values were not independent human checks, and the checked-in evidence quotes did not match saved source snapshots. Current rows are marked `needs_review`; no accuracy score is reported. Vercel is configured for the static `site/` output but has not been deployed. See the root README for current status.
+
 # Phase 6 Walkthrough: Final Integration, Documentation, Repository Publication & Deployment
 
 ## Summary of Changes

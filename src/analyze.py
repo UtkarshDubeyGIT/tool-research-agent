@@ -1,59 +1,58 @@
-import os
+import csv
 import json
-import argparse
-from typing import Dict, Any, List
+import os
 from collections import Counter
+from datetime import datetime, timezone
+from typing import Any, Dict, List
+
+
+def _write_json(path: str, value: Any) -> None:
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(value, f, indent=2, ensure_ascii=False)
+        f.write("\n")
 
 
 def analyze_dataset(
     results_path: str = "data/final_results.json",
     audit_path: str = "data/audit.json",
-    output_path: str = "site/data/summary.json"
+    output_path: str = "site/data/summary.json",
 ) -> Dict[str, Any]:
-    """Computes all statistical aggregates, category patterns, and matrices from validated JSON."""
+    """Generate provisional analytics and all static data files from the records."""
     if not os.path.exists(results_path):
         raise FileNotFoundError(f"Results file {results_path} not found.")
 
     with open(results_path, "r", encoding="utf-8") as f:
         records: List[Dict[str, Any]] = json.load(f)
+    with open("data/apps.json", "r", encoding="utf-8") as f:
+        supplied_apps = json.load(f)
 
-    audit_data = {}
+    audit_data: Dict[str, Any] = {}
     if os.path.exists(audit_path):
         with open(audit_path, "r", encoding="utf-8") as f:
             audit_data = json.load(f)
 
     total_apps = len(records)
-    categories = sorted(list(set(r["category"] for r in records)))
+    if total_apps == 0:
+        raise ValueError("No result records are available to analyze.")
+    categories = sorted({r.get("category", "Unknown") for r in records})
 
-    # 1. Buildability Distribution
-    verdict_counts = Counter(r["buildability"] for r in records)
+    verdict_counts = Counter(r.get("buildability", "unknown") for r in records)
     buildability_breakdown = {
-        "buildable_now": {
-            "count": verdict_counts.get("buildable_now", 0),
-            "percentage": round(verdict_counts.get("buildable_now", 0) / total_apps * 100, 1)
-        },
-        "conditional": {
-            "count": verdict_counts.get("conditional", 0),
-            "percentage": round(verdict_counts.get("conditional", 0) / total_apps * 100, 1)
-        },
-        "outreach_needed": {
-            "count": verdict_counts.get("outreach_needed", 0),
-            "percentage": round(verdict_counts.get("outreach_needed", 0) / total_apps * 100, 1)
-        },
-        "unknown": {
-            "count": verdict_counts.get("unknown", 0),
-            "percentage": round(verdict_counts.get("unknown", 0) / total_apps * 100, 1)
+        verdict: {
+            "count": verdict_counts.get(verdict, 0),
+            "percentage": round(verdict_counts.get(verdict, 0) / total_apps * 100, 1),
         }
+        for verdict in ["buildable_now", "conditional", "outreach_needed", "unknown"]
     }
 
-    # 2. Auth Methods Distribution
     all_auth_methods = []
     auth_patterns = {"oauth2_only": 0, "api_key_only": 0, "hybrid_both": 0, "token_or_other": 0}
-    for r in records:
-        methods = set(r.get("auth_methods", []))
+    for record in records:
+        methods = set(record.get("auth_methods", []))
         all_auth_methods.extend(methods)
         has_oauth = "oauth2" in methods
-        has_key = any(k in methods for k in ["api_key", "basic"])
+        has_key = any(method in methods for method in ["api_key", "basic"])
         if has_oauth and has_key:
             auth_patterns["hybrid_both"] += 1
         elif has_oauth:
@@ -62,77 +61,87 @@ def analyze_dataset(
             auth_patterns["api_key_only"] += 1
         else:
             auth_patterns["token_or_other"] += 1
-
     auth_counts = Counter(all_auth_methods)
-    auth_breakdown = {k: {"count": v, "percentage": round(v / total_apps * 100, 1)} for k, v in auth_counts.items()}
-
-    # 3. Credential Gating Analysis
-    gating_totals = {
-        "self_serve_signup": sum(1 for r in records if r["credential_access"]["self_serve_signup"] == "yes"),
-        "free_or_trial_credentials": sum(1 for r in records if r["credential_access"]["free_or_trial_credentials"] == "yes"),
-        "paid_plan_required": sum(1 for r in records if r["credential_access"]["paid_plan_required"] == "yes"),
-        "admin_approval_required": sum(1 for r in records if r["credential_access"]["admin_approval_required"] == "yes"),
-        "partner_approval_required": sum(1 for r in records if r["credential_access"]["partner_approval_required"] == "yes")
+    auth_breakdown = {
+        key: {"count": value, "percentage": round(value / total_apps * 100, 1)}
+        for key, value in auth_counts.items()
     }
 
-    # 4. Category-by-Category Matrix
-    category_matrix = {}
-    for cat in categories:
-        cat_records = [r for r in records if r["category"] == cat]
-        cat_total = len(cat_records)
-        category_matrix[cat] = {
-            "total": cat_total,
-            "buildable_now": sum(1 for r in cat_records if r["buildability"] == "buildable_now"),
-            "conditional": sum(1 for r in cat_records if r["buildability"] == "conditional"),
-            "outreach_needed": sum(1 for r in cat_records if r["buildability"] == "outreach_needed"),
-            "self_serve_pct": round(sum(1 for r in cat_records if r["credential_access"]["self_serve_signup"] == "yes") / cat_total * 100, 1),
-            "partner_gated_count": sum(1 for r in cat_records if r["credential_access"]["partner_approval_required"] == "yes"),
-            "dominant_auth": Counter([m for r in cat_records for m in r.get("auth_methods", [])]).most_common(1)[0][0] if cat_records else "none"
+    credential_fields = [
+        "self_serve_signup", "free_or_trial_credentials", "paid_plan_required",
+        "admin_approval_required", "partner_approval_required",
+    ]
+    gating_totals = {}
+    for field in credential_fields:
+        gating_totals[field] = {
+            answer: sum(1 for r in records if r.get("credential_access", {}).get(field, "unknown") == answer)
+            for answer in ["yes", "no", "unknown"]
         }
 
-    # 5. MCP Ecosystem Readiness
-    mcp_counts = Counter(r.get("existing_mcp", "none_found") for r in records)
+    category_matrix = {}
+    for category in categories:
+        subset = [r for r in records if r.get("category") == category]
+        count = len(subset)
+        category_auth = Counter(method for r in subset for method in r.get("auth_methods", []))
+        category_matrix[category] = {
+            "total": count,
+            "buildable_now": sum(r.get("buildability") == "buildable_now" for r in subset),
+            "conditional": sum(r.get("buildability") == "conditional" for r in subset),
+            "outreach_needed": sum(r.get("buildability") == "outreach_needed" for r in subset),
+            "unknown": sum(r.get("buildability") == "unknown" for r in subset),
+            "self_serve_pct": round(sum(r.get("credential_access", {}).get("self_serve_signup") == "yes" for r in subset) / count * 100, 1) if count else 0,
+            "partner_gated_count": sum(r.get("credential_access", {}).get("partner_approval_required") == "yes" for r in subset),
+            "dominant_auth": category_auth.most_common(1)[0][0] if category_auth else "unknown",
+        }
+
+    mcp_counts = Counter(r.get("existing_mcp", "unknown") for r in records)
     mcp_breakdown = {
         "official": mcp_counts.get("official", 0),
         "third_party": mcp_counts.get("third_party", 0),
         "none_found": mcp_counts.get("none_found", 0),
         "unknown": mcp_counts.get("unknown", 0),
         "total_with_mcp": mcp_counts.get("official", 0) + mcp_counts.get("third_party", 0),
-        "mcp_readiness_pct": round((mcp_counts.get("official", 0) + mcp_counts.get("third_party", 0)) / total_apps * 100, 1)
+        "mcp_readiness_pct": round((mcp_counts.get("official", 0) + mcp_counts.get("third_party", 0)) / total_apps * 100, 1),
     }
 
-    # 6. Blocker Clustering
-    blockers_list = []
-    for r in records:
-        b = r.get("main_blocker", "none")
-        if b != "none" and b:
-            blockers_list.append(b)
-    
-    # Categorize blockers into standardized clusters
     blocker_clusters = {
         "partner_application_or_sales_gate": 0,
         "active_paid_plan_required": 0,
         "admin_or_enterprise_authorization": 0,
-        "closed_portal_or_unreleased_api": 0
+        "closed_portal_or_unreleased_api": 0,
     }
-    for b in blockers_list:
-        bl = b.lower()
-        if any(k in bl for k in ["partner", "sales contact", "commercial agreement", "underwriting", "annual subscription"]):
+    for record in records:
+        blocker = (record.get("main_blocker") or "none").lower()
+        if blocker == "none":
+            continue
+        if any(word in blocker for word in ["partner", "sales contact", "commercial agreement", "underwriting", "annual subscription"]):
             blocker_clusters["partner_application_or_sales_gate"] += 1
-        elif any(k in bl for k in ["paid", "seat", "pro and enterprise", "paid subscription"]):
+        elif any(word in blocker for word in ["paid", "seat", "pro and enterprise", "paid subscription"]):
             blocker_clusters["active_paid_plan_required"] += 1
-        elif any(k in bl for k in ["admin", "connected app", "tenant", "authorization in production"]):
+        elif any(word in blocker for word in ["admin", "connected app", "tenant", "authorization in production"]):
             blocker_clusters["admin_or_enterprise_authorization"] += 1
         else:
             blocker_clusters["closed_portal_or_unreleased_api"] += 1
 
+    record_status_counts = Counter(r.get("research_status", "needs_review") for r in records)
+    audit_complete = audit_data.get("status") == "complete"
     summary = {
-        "generated_at": records[0].get("evidence", [{}])[0].get("retrieved_at", "2026-09-24T23:30:00Z"),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "dataset_status": "verified" if record_status_counts.get("complete", 0) == total_apps and audit_complete else "provisional",
+        "quality_notice": (
+            "All records passed source checks and the independent sample audit is complete."
+            if record_status_counts.get("complete", 0) == total_apps and audit_complete
+            else "Checked-in classifications are provisional until every evidence quote matches a saved source and the independent human audit is complete."
+        ),
         "coverage": {
-            "total_researched": total_apps,
+            "supplied_input_count": len(supplied_apps),
+            "records_present": total_apps,
+            "complete_records": record_status_counts.get("complete", 0),
+            "needs_review_records": record_status_counts.get("needs_review", 0),
+            "blocked_records": record_status_counts.get("blocked", 0),
             "expected_prompt_count": 100,
-            "scope_discrepancy_note": "The take-home PDF specification itemizes exactly 90 apps across Categories 1 through 9, omitting Category 10 (#91-#100). The pipeline preserves all 90 supplied entries without fabricating missing rows.",
-            "categories_count": len(categories)
+            "categories_count": len(categories),
+            "scope_discrepancy_note": "The assignment says 100 apps, while its supplied table contains 90 across 9 categories and ends at #90 PitchBook.",
         },
         "buildability_breakdown": buildability_breakdown,
         "auth_breakdown": auth_breakdown,
@@ -141,35 +150,50 @@ def analyze_dataset(
         "category_matrix": category_matrix,
         "mcp_breakdown": mcp_breakdown,
         "blocker_clusters": blocker_clusters,
-        "audit_metrics": audit_data.get("metrics", {}),
-        "concrete_misses": audit_data.get("concrete_misses", []),
-        "sample_selection_rule": audit_data.get("sample_selection_rule", "")
+        "audit_status": "complete" if audit_complete else "pending",
+        "audit_metrics": audit_data.get("metrics", {}) if audit_complete else {},
+        "concrete_misses": audit_data.get("concrete_misses", []) if audit_complete else [],
+        "sample_selection_rule": audit_data.get("sample_selection_rule", ""),
+        "planned_sample_ids": audit_data.get("planned_sample_ids", []),
     }
 
-    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(summary, f, indent=2)
-
+    output_dir = os.path.dirname(output_path) or "."
+    os.makedirs(output_dir, exist_ok=True)
+    _write_json(output_path, summary)
+    _write_json(os.path.join(output_dir, "records.json"), records)
+    with open(os.path.join(output_dir, "records.csv"), "w", encoding="utf-8", newline="") as f:
+        fieldnames = [
+            "id", "name", "category", "website_hint", "summary", "auth_methods",
+            "credential_access", "api_types", "api_breadth", "existing_mcp", "buildability",
+            "main_blocker", "confidence", "research_status", "notes", "evidence",
+        ]
+        writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        for record in records:
+            row = dict(record)
+            for key in ["auth_methods", "credential_access", "api_types", "evidence"]:
+                row[key] = json.dumps(row.get(key), ensure_ascii=False)
+            writer.writerow(row)
+    with open(os.path.join(output_dir, "bundle.js"), "w", encoding="utf-8") as f:
+        f.write("window.CASE_STUDY_DATA = ")
+        f.write(json.dumps({"summary": summary, "records": records}, ensure_ascii=False))
+        f.write(";\n")
     return summary
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Statistical Analysis & Pattern Generation Engine")
-    parser.add_argument("--results", default="data/final_results.json", help="Path to final results JSON")
-    parser.add_argument("--audit", default="data/audit.json", help="Path to audit JSON")
-    parser.add_argument("--output", default="site/data/summary.json", help="Path to summary output JSON")
-
+    import argparse
+    parser = argparse.ArgumentParser(description="Generate analytics and static datasets from research records")
+    parser.add_argument("--results", default="data/final_results.json")
+    parser.add_argument("--audit", default="data/audit.json")
+    parser.add_argument("--output", default="site/data/summary.json")
     args = parser.parse_args()
     summary = analyze_dataset(args.results, args.audit, args.output)
-
-    print("\n================ SUMMARY ANALYSIS ================")
-    print(f"Total Apps Researched: {summary['coverage']['total_researched']} / {summary['coverage']['expected_prompt_count']}")
-    print(f"Buildable Now:         {summary['buildability_breakdown']['buildable_now']['count']} ({summary['buildability_breakdown']['buildable_now']['percentage']}%)")
-    print(f"Conditional:           {summary['buildability_breakdown']['conditional']['count']} ({summary['buildability_breakdown']['conditional']['percentage']}%)")
-    print(f"Outreach Needed:       {summary['buildability_breakdown']['outreach_needed']['count']} ({summary['buildability_breakdown']['outreach_needed']['percentage']}%)")
-    print(f"MCP Readiness:         {summary['mcp_breakdown']['total_with_mcp']} apps ({summary['mcp_breakdown']['mcp_readiness_pct']}%)")
-    print(f"[✓] Summary data exported to {args.output}")
-    print("==================================================\n")
+    coverage = summary["coverage"]
+    print(f"Input entries: {coverage['supplied_input_count']}; records present: {coverage['records_present']}")
+    print(f"Provisional record statuses: {coverage['complete_records']} complete, {coverage['needs_review_records']} needs review, {coverage['blocked_records']} blocked")
+    print(f"Audit status: {summary['audit_status']}; no accuracy score is shown unless human checks are complete.")
+    print(f"Generated static datasets in {os.path.dirname(args.output) or '.'}")
 
 
 if __name__ == "__main__":
