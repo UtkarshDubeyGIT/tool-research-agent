@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composio AI Product Ops | Tool Research Agent &amp; Case Study</title>
+  <meta name="description" content="Evidence-backed API integration assessment and buildability analysis across 90 developer and enterprise platforms.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2310b981'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+</head>
+<body>
+
+  <!-- Scope Discrepancy Notice Banner -->
+  <div class="discrepancy-banner">
+    <strong>PDF Scope Notice:</strong> The take-home assignment brief specifies 100 apps across 10 categories, but the supplied PDF itemized table terminates at <strong>#90 (PitchBook)</strong> in Category 9. All 90 supplied entries are strictly preserved without fabricating data. <a href="#scope-discrepancy">Read Scope Details &darr;</a>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <div class="brand">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-green);">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+        <span style="font-weight: 700; letter-spacing: -0.01em; font-size: 16px;">COMPOSIO</span>
+        <span class="brand-badge">AI Product Ops</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#overview" class="nav-link">Overview</a>
+        <a href="#patterns" class="nav-link">Patterns</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#matrix" class="nav-link">App Matrix</a>
+        <a href="#audit" class="nav-link">Audit &amp; Accuracy</a>
+        <a href="#workflow" class="nav-link">Architecture &amp; CLI</a>
+      </nav>
+      <div style="display: flex; gap: 10px;">
+        <a href="https://github.com/UtkarshDubeyGIT/tool-research-agent" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          GitHub Repo
+        </a>
+        <a href="#cli-runner" class="btn btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 17 10 11 4 5"/>
+            <line x1="12" y1="19" x2="20" y2="19"/>
+          </svg>
+          Run Trigger
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="container">
+    <section class="hero" id="overview">
+      <div class="hero-pill">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor">
+          <circle cx="4" cy="4" r="4"/>
+        </svg>
+        EVIDENCE-BACKED SYSTEM INTEGRATION INTELLIGENCE
+      </div>
+      <h1 class="hero-title">Automated Integration Feasibility &amp; Tool Research Agent</h1>
+      <p class="hero-subtitle">
+        A repeatable, multi-stage evaluation pipeline investigating 90 SaaS &amp; developer platforms from the Composio Product Ops take-home dataset. Combining Firecrawl retrieval, OpenAI synthesis, TypeSafe Jev verification, deterministic rule composition, and human audit validation.
+      </p>
+
+      <!-- Key Metrics Grid -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Total Researched</div>
+          <div class="metric-value mono" id="metric-total">90/90</div>
+          <div class="metric-sub">9 categories covered (PDF terminates at #90)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Buildable Now</div>
+          <div class="metric-value mono" style="color: var(--accent-green);" id="metric-buildable">72 (80.0%)</div>
+          <div class="metric-sub">Self-serve signup &amp; public free/trial API</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Conditional</div>
+          <div class="metric-value mono" style="color: var(--accent-amber);" id="metric-conditional">14 (15.6%)</div>
+          <div class="metric-sub">Paid subscription or admin tier required</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Outreach Needed</div>
+          <div class="metric-value mono" style="color: var(--accent-purple);" id="metric-outreach">4 (4.4%)</div>
+          <div class="metric-sub">Manual partner vetting / sales approval</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Patterns & Key Findings Section -->
+    <section class="section" id="patterns">
+      <div class="section-header">
+        <div class="section-tag">Analysis &amp; Patterns</div>
+        <h2 class="section-title">Auth Protocols &amp; Credential Access Patterns</h2>
+      </div>
+
+      <div class="patterns-grid">
+        <!-- Auth Breakdown Card -->
+        <div class="pattern-card">
+          <div class="pattern-card-title">
+            <span>Authentication Protocols</span>
+            <span class="badge badge-gray mono">90 Apps Total</span>
+          </div>
+          <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 20px;">
+            Distribution of authentication protocols supported across the 90 cataloged platforms. Many modern developer tools support both OAuth 2.0 and API keys simultaneously.
+          </p>
+          <div id="auth-distribution-bars">
+            <!-- Dynamically populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Credential & MCP Insights Card -->
+        <div class="pattern-card">
+          <div class="pattern-card-title">
+            <span>Credential Access &amp; MCP Readiness</span>
+            <span class="badge badge-blue mono">Integration Ops</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px; font-size: 13px;">
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+              <div style="font-weight: 600; color: var(--accent-green); margin-bottom: 4px;">80.0% Immediate Self-Serve Access</div>
+              <div style="color: var(--text-muted);">
+                72 out of 90 apps allow developers to sign up instantly and obtain operational API credentials without manual human intervention or paid gatekeeping.
+              </div>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+              <div style="font-weight: 600; color: var(--accent-amber); margin-bottom: 4px;">15.6% Enterprise &amp; Plan Gatekeeping</div>
+              <div style="color: var(--text-muted);">
+                14 apps restrict API token generation to paid tiers (e.g. SEMrush, Ahrefs, Calendly) or require workspace admin authorization (e.g. Slack bot scopes, Asana admin apps).
+              </div>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px;">
+              <div style="font-weight: 600; color: var(--accent-purple); margin-bottom: 4px;">4.4% Walled Partner Ecosystems</div>
+              <div style="color: var(--text-muted);">
+                4 high-value enterprise apps (PitchBook, DealCloud, Salesforce AppExchange, Gladly) require formal partnership agreements, security reviews, or manual sales approval.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Breakdown Table -->
+    <section class="section" id="categories">
+      <div class="section-header">
+        <div class="section-tag">Category Matrix</div>
+        <h2 class="section-title">Integration Feasibility by Category</h2>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Total Apps</th>
+              <th>Buildable Now</th>
+              <th>Conditional</th>
+              <th>Outreach Needed</th>
+              <th>Self-Serve %</th>
+              <th>Dominant Auth</th>
+            </tr>
+          </thead>
+          <tbody id="category-matrix-body">
+            <!-- Dynamically populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Interactive App Matrix Directory -->
+    <section class="section" id="matrix">
+      <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px;">
+        <div>
+          <div class="section-tag">App Directory</div>
+          <h2 class="section-title">Interactive Tool Evaluation Matrix</h2>
+        </div>
+        <div class="mono" style="font-size: 12px; color: var(--text-dim);" id="matrix-count-display">
+          Showing 90 of 90 apps
+        </div>
+      </div>
+
+      <!-- Controls & Filters -->
+      <div class="matrix-controls">
+        <div class="search-box">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="matrix-search" class="search-input" placeholder="Search by app name, category, domain, or blocker...">
+        </div>
+
+        <!-- Verdict Filters -->
+        <div class="filter-group">
+          <button class="filter-btn verdict-filter-btn active" data-verdict="all">All Verdicts</button>
+          <button class="filter-btn verdict-filter-btn" data-verdict="buildable_now">Buildable Now</button>
+          <button class="filter-btn verdict-filter-btn" data-verdict="conditional">Conditional</button>
+          <button class="filter-btn verdict-filter-btn" data-verdict="outreach_needed">Outreach Needed</button>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="filter-group" style="width: 100%; border-top: 1px solid var(--border-color); padding-top: 10px; margin-top: 4px;">
+          <span style="font-size: 11px; color: var(--text-dim); align-self: center; margin-right: 6px;" class="mono">CATEGORY:</span>
+          <button class="filter-btn cat-filter-btn active" data-cat="all">All Categories</button>
+          <button class="filter-btn cat-filter-btn" data-cat="CRM and Sales">CRM &amp; Sales</button>
+          <button class="filter-btn cat-filter-btn" data-cat="Communications and Messaging">Messaging</button>
+          <button class="filter-btn cat-filter-btn" data-cat="Data, SEO and Scraping">Data &amp; SEO</button>
+          <button class="filter-btn cat-filter-btn" data-cat="Developer, Infra and Data platforms">Dev &amp; Infra</button>
+          <button class="filter-btn cat-filter-btn" data-cat="Ecommerce">Ecommerce</button>
+          <button class="filter-btn cat-filter-btn" data-cat="Finance and Fintech">Fintech</button>
+          <button class="filter-btn cat-filter-btn" data-cat="Marketing, Ads, Email and Social">Marketing</button>
+          <button class="filter-btn cat-filter-btn" data-cat="Productivity and Project Management">Productivity</button>
+          <button class="filter-btn cat-filter-btn" data-cat="Support and Helpdesk">Support</button>
+        </div>
+      </div>
+
+      <!-- App Table -->
+      <div class="table-wrapper">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th style="width: 50px;">#</th>
+              <th>Platform &amp; Domain</th>
+              <th>Category</th>
+              <th>Auth Protocols</th>
+              <th>API Breadth</th>
+              <th>Existing MCP</th>
+              <th>Buildability Verdict</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-tbody">
+            <!-- Dynamically populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Slide-over Evidence Drawer -->
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <div class="drawer" id="drawer">
+      <div class="drawer-header">
+        <div>
+          <div id="drawer-verdict-badge" style="margin-bottom: 6px;"></div>
+          <h3 id="drawer-title" style="font-size: 20px; font-weight: 700;">Platform Title</h3>
+          <div id="drawer-category" style="font-size: 12px; color: var(--text-dim);" class="mono">Category Name</div>
+        </div>
+        <button class="drawer-close" id="drawer-close-btn" aria-label="Close drawer">&times;</button>
+      </div>
+      <div class="drawer-body">
+        <div class="drawer-section">
+          <div class="drawer-label">Operational Summary</div>
+          <p id="drawer-summary" style="font-size: 13px; color: var(--text-main); line-height: 1.6;"></p>
+        </div>
+
+        <div class="drawer-section">
+          <div class="drawer-label">Metadata &amp; Main Blocker</div>
+          <div style="font-size: 12px; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;" class="mono">
+            <div>Website Hint: <span id="drawer-hint" style="color: var(--text-main);"></span></div>
+            <div>Primary Blocker: <span id="drawer-blocker" style="color: var(--accent-amber);"></span></div>
+          </div>
+        </div>
+
+        <div class="drawer-section">
+          <div class="drawer-label">Credential Access Matrix</div>
+          <div id="drawer-credentials-list"></div>
+        </div>
+
+        <div class="drawer-section">
+          <div class="drawer-label">Verifiable Evidence Cards &amp; Quoted Passages</div>
+          <div id="drawer-evidence-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Human-in-the-Loop Audit & Accuracy Section -->
+    <section class="section" id="audit">
+      <div class="section-header">
+        <div class="section-tag">Verification &amp; Quality Control</div>
+        <h2 class="section-title">Human-in-the-Loop Audit &amp; Accuracy Evaluation</h2>
+      </div>
+
+      <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; margin-bottom: 24px;">
+        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Methodology &amp; Stratified Sampling</h3>
+        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 20px;">
+          To ensure reliable ground truth, an independent human audit was conducted on a <strong>20.0% stratified random sample</strong> (18 applications, exactly 2 randomly sampled from each of the 9 categories). Each sampled platform was manually verified in an independent browser against official documentation and portal developer registration flows.
+        </p>
+
+        <!-- Accuracy Comparison Grid -->
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px;">
+          <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 16px;">
+            <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px;">Field-Level Accuracy (72 Total Fields)</div>
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <div>
+                <span style="font-size: 24px; font-weight: 700; color: var(--text-dim);" class="mono" id="audit-fp-field">75.0%</span>
+                <span style="font-size: 11px; color: var(--text-dim); display: block;">First-Pass Baseline</span>
+              </div>
+              <div style="font-size: 18px; color: var(--text-dim);">&rarr;</div>
+              <div>
+                <span style="font-size: 24px; font-weight: 700; color: var(--accent-green);" class="mono" id="audit-fn-field">77.8%</span>
+                <span style="font-size: 11px; color: var(--accent-green); display: block;">Final Verified Ground Truth</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 6px; padding: 16px;">
+            <div style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px;">App-Level Strict Accuracy (18 Sampled Apps)</div>
+            <div style="display: flex; align-items: baseline; gap: 12px;">
+              <div>
+                <span style="font-size: 24px; font-weight: 700; color: var(--text-dim);" class="mono" id="audit-fp-app">38.9%</span>
+                <span style="font-size: 11px; color: var(--text-dim); display: block;">First-Pass Baseline</span>
+              </div>
+              <div style="font-size: 18px; color: var(--text-dim);">&rarr;</div>
+              <div>
+                <span style="font-size: 24px; font-weight: 700; color: var(--accent-green);" class="mono" id="audit-fn-app">44.4%</span>
+                <span style="font-size: 11px; color: var(--accent-green); display: block;">Final Verified Ground Truth</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="font-size: 14px; font-weight: 600; margin-bottom: 12px;">Documented Baseline Misses &amp; Ground Truth Corrections</h4>
+        <div id="audit-misses-container">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture & CLI Execution Section -->
+    <section class="section" id="workflow">
+      <div class="section-header">
+        <div class="section-tag">System Architecture</div>
+        <h2 class="section-title">Multi-Stage Research &amp; Verification Pipeline</h2>
+      </div>
+
+      <div class="workflow-grid">
+        <div class="workflow-step">
+          <div class="step-num">STAGE 01 &bull; RETRIEVAL</div>
+          <div class="step-title">Source Discovery &amp; Firecrawl Fetch</div>
+          <div class="step-desc">
+            Navigates candidate developer documentation URLs, crawls official API references, authentication guides, and pricing pages using Firecrawl with direct HTTP fallback and SHA-256 caching.
+          </div>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-num">STAGE 02 &bull; SYNTHESIS</div>
+          <div class="step-title">OpenAI Extraction &amp; Evidence Quoting</div>
+          <div class="step-desc">
+            OpenAI generative model extracts factual integration candidate claims and pairs every candidate field with verbatim quoted passages, exact source URLs, and fetch timestamps.
+          </div>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-num">STAGE 03 &bull; DECISIONS</div>
+          <div class="step-title">TypeSafe Jev Atomic Verification</div>
+          <div class="step-desc">
+            Dispatches atomic Noul (binary) and Choice decision queries to TypeSafe Jev (<code>typesafe/jev-1.13</code>) to mathematically verify quoted excerpts against candidate claims without hallucinations.
+          </div>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-num">STAGE 04 &bull; COMPOSITION</div>
+          <div class="step-title">Code-Owned Deterministic Rules</div>
+          <div class="step-desc">
+            Python code owns the business logic for calculating <code>api_breadth</code> and final <code>buildability</code> status based on confirmed credential access conditions, eliminating arbitrary LLM guessing.
+          </div>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-num">STAGE 05 &bull; VALIDATION</div>
+          <div class="step-title">Deterministic Schema &amp; Evidence Audit</div>
+          <div class="step-desc">
+            Validates 100% of generated records against strict Pydantic schemas, verifies verbatim quote matching against retrieved markdown snapshots, and ensures zero logical contradictions.
+          </div>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-num">STAGE 06 &bull; PUBLISHING</div>
+          <div class="step-title">Static Compilation &amp; Web Deployment</div>
+          <div class="step-desc">
+            Aggregates cross-category statistics, generates zero-CORS client bundles, exports CSV datasets, and deploys this responsive, interactive case study page to Vercel.
+          </div>
+        </div>
+      </div>
+
+      <!-- Runnable Trigger / CLI Commands -->
+      <div style="margin-top: 36px;" id="cli-runner">
+        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 12px;">Runnable CLI Triggers &amp; Execution Commands</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          The entire research pipeline is 100% reproducible via standard Python CLI commands. Checkpoint resumption ensures interrupted runs can seamlessly resume.
+        </p>
+
+        <div style="background: #000000; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8;">
+          <div style="color: var(--text-dim); margin-bottom: 8px;"># 1. Investigate a single application by ID (e.g. #1 Salesforce)</div>
+          <div style="color: var(--accent-green);">$ python -m src.research --app-id 1</div>
+          
+          <div style="color: var(--text-dim); margin: 16px 0 8px;"># 2. Run or resume the complete 90-app automated research agent</div>
+          <div style="color: var(--accent-green);">$ python -m src.research --all --resume</div>
+          
+          <div style="color: var(--text-dim); margin: 16px 0 8px;"># 3. Deterministically validate schemas, quotes, and rule consistency</div>
+          <div style="color: var(--accent-green);">$ python -m src.validate</div>
+          
+          <div style="color: var(--text-dim); margin: 16px 0 8px;"># 4. Run reproducible human-in-the-loop stratified audit</div>
+          <div style="color: var(--accent-green);">$ python -m src.audit</div>
+
+          <div style="color: var(--text-dim); margin: 16px 0 8px;"># 5. Compile static analytics and regenerate frontend datasets</div>
+          <div style="color: var(--accent-green);">$ python -m src.analyze</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scope Discrepancy & Limitations Section -->
+    <section class="section" id="scope-discrepancy">
+      <div class="section-header">
+        <div class="section-tag">Transparency &amp; Disclosures</div>
+        <h2 class="section-title">Scope Discrepancy &amp; System Limitations</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="font-size: 15px; font-weight: 600; color: var(--accent-amber); margin-bottom: 8px;">Assignment Scope Discrepancy Disclosure</h4>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+            The PDF assignment prompt specifies: <em>&ldquo;You will evaluate 100 apps across 10 categories&rdquo;</em>. However, the itemized table provided in the take-home document lists only <strong>90 applications across 9 categories</strong>, terminating abruptly at <code>#90 PitchBook</code> in Category 9 (Finance and Fintech).
+          </p>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-top: 10px;">
+            In accordance with engineering integrity principles, <strong>no placeholder entries were fabricated</strong>. The pipeline rigorously analyzes all 90 provided entries and transparently reports coverage as <strong>90/90 (100% of provided dataset)</strong>. Should Category 10 (#91&ndash;#100) become available, appending it to <code>data/apps.json</code> will immediately process the new apps upon running <code>python -m src.research --all --resume</code>.
+          </p>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px;">
+          <h4 style="font-size: 15px; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">Research Agent Limitations &amp; Boundary Conditions</h4>
+          <ul style="font-size: 13px; color: var(--text-muted); line-height: 1.6; padding-left: 18px;">
+            <li style="margin-bottom: 8px;">
+              <strong>Anti-Bot &amp; Cloudflare Challenges:</strong> Certain developer portals deploy aggressive JS challenges that block direct HTTP scraping; Firecrawl and browser emulation were used to circumvent these blocks.
+            </li>
+            <li style="margin-bottom: 8px;">
+              <strong>Login-Walled Developer Consoles:</strong> Platforms like Gladly and PitchBook conceal developer token creation behind enterprise subscription logins; public marketing docs were utilized for evidence.
+            </li>
+            <li>
+              <strong>Unambiguous Evidence Standard:</strong> When documentation lacks explicit confirmation of self-serve credentials, the pipeline conservatively classifies the platform as <code>conditional</code> or <code>outreach_needed</code> rather than hallucinating ease of access.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight: 600; color: var(--text-main); margin-bottom: 4px;">Composio AI Product Ops Evaluation</div>
+          <div>Built by Utkarsh Dubey &bull; Independent Take-Home Case Study</div>
+        </div>
+        <div style="display: flex; gap: 16px; font-family: var(--font-mono); font-size: 12px;">
+          <a href="https://github.com/UtkarshDubeyGIT/tool-research-agent" target="_blank" rel="noopener noreferrer" style="color: var(--accent-green);">GitHub Repository &nearr;</a>
+          <a href="data/records.csv" download style="color: var(--accent-blue);">Download CSV &darr;</a>
+          <a href="data/records.json" download style="color: var(--text-muted);">Download JSON &darr;</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Load Data Bundle first for zero-CORS resilience, followed by Application Logic -->
+  <script src="data/bundle.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

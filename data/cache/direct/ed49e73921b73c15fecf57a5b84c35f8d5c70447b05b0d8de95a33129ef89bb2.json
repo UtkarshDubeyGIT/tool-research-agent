@@ -1,0 +1,11 @@
+{
+  "url": "https://docs.sentry.io/api",
+  "final_url": "https://docs.sentry.io/api/",
+  "title": "API Reference | Sentry Docs",
+  "timestamp": "2026-09-24T19:13:26.808174+00:00",
+  "source_method": "direct_http",
+  "content_hash": "c98d581d4f27949f12b2e2f56b246b2c77ca11e0c8cd2f1c9f7cd052c9632c21",
+  "raw_markdown": "Home\nAPI Reference\nCopy page\nAPI Reference\nThe Sentry web API is used to access the Sentry platform programmatically. You can use the APIs to manage account-level resources, like organizations and teams, as well as manage and export data.\nIf you're looking for information about the API surface for Sentry's SDKs, see the\nSDK Development\ndocs.\nVersioning\nThe current version of the Sentry's web API is considered\nv0\n. Our public endpoints are generally stable, but beta endpoints are subject to change.\nGetting Started\nAuthentication\nPagination\nPermissions\nRate Limits\nRequests\nSentry API Tutorials\nTutorial: Create a Sentry Authentication Token\nTutorial: Create and List Teams with the Sentry API\nChoosing the Right API Base Domain\nWhile many of Sentry's APIs use\nsentry.io\nas the host for API endpoints, if you want to indicate a specific\ndata storage location\n, you can use your region-specific domain. Using your organization's region-specific domain will generally result in lower latency for most API calls. For example, if you are hosted in the US region, you would use\nus.sentry.io\n. You can check which region your organization is in by viewing your\norganization\u2019s settings page\n.\nUS region is hosted on\nus.sentry.io\nDE region is hosted on\nde.sentry.io\n.\nTo find out which API resources are available on region-based domains, see\nwhat types of data are stored where\nfor more information.\nPrevious\nSentry CLI\nNext\nAPI Authentication\nWas this helpful?\nYes \ud83d\udc4d\nNo \ud83d\udc4e\nHow can we improve this page?\nEmail\n(optional)\nSubmit feedback",
+  "status_code": 200,
+  "error": null
+}

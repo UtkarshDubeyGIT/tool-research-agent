@@ -1,0 +1,11 @@
+{
+  "url": "https://developers.asana.com",
+  "final_url": "https://developers.asana.com/",
+  "title": "Asana Docs",
+  "timestamp": "2026-09-24T19:13:31.605666+00:00",
+  "source_method": "direct_http",
+  "content_hash": "909d67e321884a3c9962464c4309fd33070333bdda8dabbbe07f1df3af555e4f",
+  "raw_markdown": "Build for Clarity, Connectivity, and Collaboration\nIntegrate tools, automate actions, and customize your workflows with Asana\u2019s developer platform.\nGet started\nQuick start\nNew to the Asana API? Build your first app with our step by step quick start guide. Learn to create and authorize with a token then create tasks via the API.\nView quick start guide\nTutorial: Export status updates to a CSV\nLearn to read status updates from Asana and share them in another tool. This step-by-step tutorial, example app, and recipe will help you build an app that can generate a report of status updates.\nView tutorial\nFeatures\nAutomate\nAutomate tedious work in powerful, bespoke ways with our platform\n features like rule actions, webhooks, and our API. Learn about how\n you can\nautomate workflows\n.\nEmbed\nPlug your app directly into the Asana UI with\napp components\n. Build app\n components on the surface of tasks or rules so that customers can\n use their favorite tools and stay in flow.\nIntegrate\nMany apps in our App Directory create Asana tasks and kick start\n workflow from other tools. Learn about building and publishing apps\n that\nkeep work tools connected\n.\nStay in touch\nFollow our developer forum\nAsk questions, get updates about our Platform, and connect with other developers in the Asana community on our\ndeveloper forum\n.\nVisit our Help Center\nCan't find what you're looking for in the forum or documentation? Our Developer Support Team is here to help \u2014 reach out to us through the\nAsana Help Center\n!",
+  "status_code": 200,
+  "error": null
+}

@@ -1,0 +1,4326 @@
+// Auto-generated data bundle for offline & production zero-CORS resilience
+window.CASE_STUDY_DATA = {
+  summary: {
+  "generated_at": "2026-09-24T19:12:05.126725+00:00",
+  "coverage": {
+    "total_researched": 90,
+    "expected_prompt_count": 100,
+    "scope_discrepancy_note": "The take-home PDF specification itemizes exactly 90 apps across Categories 1 through 9, omitting Category 10 (#91-#100). The pipeline preserves all 90 supplied entries without fabricating missing rows.",
+    "categories_count": 9
+  },
+  "buildability_breakdown": {
+    "buildable_now": {
+      "count": 72,
+      "percentage": 80.0
+    },
+    "conditional": {
+      "count": 13,
+      "percentage": 14.4
+    },
+    "outreach_needed": {
+      "count": 4,
+      "percentage": 4.4
+    },
+    "unknown": {
+      "count": 1,
+      "percentage": 1.1
+    }
+  },
+  "auth_breakdown": {
+    "oauth2": {
+      "count": 52,
+      "percentage": 57.8
+    },
+    "api_key": {
+      "count": 46,
+      "percentage": 51.1
+    },
+    "token": {
+      "count": 31,
+      "percentage": 34.4
+    },
+    "basic": {
+      "count": 8,
+      "percentage": 8.9
+    },
+    "unknown": {
+      "count": 1,
+      "percentage": 1.1
+    },
+    "none": {
+      "count": 1,
+      "percentage": 1.1
+    },
+    "key_pair": {
+      "count": 1,
+      "percentage": 1.1
+    },
+    "digest": {
+      "count": 1,
+      "percentage": 1.1
+    },
+    "signature": {
+      "count": 1,
+      "percentage": 1.1
+    }
+  },
+  "auth_patterns": {
+    "oauth2_only": 36,
+    "api_key_only": 33,
+    "hybrid_both": 16,
+    "token_or_other": 5
+  },
+  "gating_totals": {
+    "self_serve_signup": 82,
+    "free_or_trial_credentials": 77,
+    "paid_plan_required": 0,
+    "admin_approval_required": 1,
+    "partner_approval_required": 4
+  },
+  "category_matrix": {
+    "CRM and Sales": {
+      "total": 10,
+      "buildable_now": 8,
+      "conditional": 1,
+      "outreach_needed": 1,
+      "self_serve_pct": 90.0,
+      "partner_gated_count": 1,
+      "dominant_auth": "oauth2"
+    },
+    "Communications and Messaging": {
+      "total": 10,
+      "buildable_now": 10,
+      "conditional": 0,
+      "outreach_needed": 0,
+      "self_serve_pct": 100.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "token"
+    },
+    "Data, SEO and Scraping": {
+      "total": 10,
+      "buildable_now": 8,
+      "conditional": 2,
+      "outreach_needed": 0,
+      "self_serve_pct": 90.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "api_key"
+    },
+    "Developer, Infra and Data platforms": {
+      "total": 10,
+      "buildable_now": 10,
+      "conditional": 0,
+      "outreach_needed": 0,
+      "self_serve_pct": 100.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "token"
+    },
+    "Ecommerce": {
+      "total": 10,
+      "buildable_now": 6,
+      "conditional": 3,
+      "outreach_needed": 0,
+      "self_serve_pct": 80.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "oauth2"
+    },
+    "Finance and Fintech": {
+      "total": 10,
+      "buildable_now": 5,
+      "conditional": 5,
+      "outreach_needed": 0,
+      "self_serve_pct": 70.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "api_key"
+    },
+    "Marketing, Ads, Email and Social": {
+      "total": 10,
+      "buildable_now": 7,
+      "conditional": 1,
+      "outreach_needed": 2,
+      "self_serve_pct": 100.0,
+      "partner_gated_count": 2,
+      "dominant_auth": "oauth2"
+    },
+    "Productivity and Project Management": {
+      "total": 10,
+      "buildable_now": 10,
+      "conditional": 0,
+      "outreach_needed": 0,
+      "self_serve_pct": 100.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "oauth2"
+    },
+    "Support and Helpdesk": {
+      "total": 10,
+      "buildable_now": 8,
+      "conditional": 1,
+      "outreach_needed": 1,
+      "self_serve_pct": 90.0,
+      "partner_gated_count": 1,
+      "dominant_auth": "api_key"
+    }
+  },
+  "mcp_breakdown": {
+    "official": 19,
+    "third_party": 33,
+    "none_found": 38,
+    "unknown": 0,
+    "total_with_mcp": 52,
+    "mcp_readiness_pct": 57.8
+  },
+  "blocker_clusters": {
+    "partner_application_or_sales_gate": 8,
+    "active_paid_plan_required": 0,
+    "admin_or_enterprise_authorization": 1,
+    "closed_portal_or_unreleased_api": 8
+  },
+  "audit_metrics": {
+    "first_pass": {
+      "field_level_accuracy_pct": 75.0,
+      "field_numerator": 54,
+      "field_denominator": 72,
+      "app_level_accuracy_pct": 38.9,
+      "app_numerator": 7,
+      "app_denominator": 18
+    },
+    "final_pass": {
+      "field_level_accuracy_pct": 77.8,
+      "field_numerator": 56,
+      "field_denominator": 72,
+      "app_level_accuracy_pct": 44.4,
+      "app_numerator": 8,
+      "app_denominator": 18
+    },
+    "unverifiable_fields": 0
+  },
+  "concrete_misses": [
+    {
+      "app_id": 1,
+      "app_name": "Salesforce",
+      "field": "buildability",
+      "first_pass_val": "buildable_now",
+      "ground_truth_val": "conditional",
+      "correction_rationale": "Misclassified by unassisted LLM baseline."
+    },
+    {
+      "app_id": 10,
+      "app_name": "DealCloud",
+      "field": "credential_access",
+      "first_pass_val": {
+        "self_serve_signup": "yes",
+        "free_or_trial_credentials": "no",
+        "paid_plan_required": "no",
+        "admin_approval_required": "no",
+        "partner_approval_required": "no"
+      },
+      "ground_truth_val": {
+        "self_serve_signup": "no",
+        "partner_approval_required": "no"
+      },
+      "correction_rationale": "Unassisted LLM assumed self-serve developer portal; actually requires enterprise tenant provisioning."
+    },
+    {
+      "app_id": 10,
+      "app_name": "DealCloud",
+      "field": "buildability",
+      "first_pass_val": "buildable_now",
+      "ground_truth_val": "conditional",
+      "correction_rationale": "Corrected from buildable_now to conditional."
+    },
+    {
+      "app_id": 11,
+      "app_name": "Zendesk",
+      "field": "credential_access",
+      "first_pass_val": {
+        "self_serve_signup": "yes",
+        "free_or_trial_credentials": "yes",
+        "paid_plan_required": "no",
+        "admin_approval_required": "no",
+        "partner_approval_required": "yes"
+      },
+      "ground_truth_val": {
+        "self_serve_signup": "yes",
+        "partner_approval_required": "no"
+      },
+      "correction_rationale": "Misclassified by unassisted LLM baseline."
+    },
+    {
+      "app_id": 11,
+      "app_name": "Zendesk",
+      "field": "buildability",
+      "first_pass_val": "outreach_needed",
+      "ground_truth_val": "buildable_now",
+      "correction_rationale": "Misclassified by unassisted LLM baseline."
+    },
+    {
+      "app_id": 20,
+      "app_name": "Gladly",
+      "field": "credential_access",
+      "first_pass_val": {
+        "self_serve_signup": "yes",
+        "free_or_trial_credentials": "no",
+        "paid_plan_required": "no",
+        "admin_approval_required": "no",
+        "partner_approval_required": "no"
+      },
+      "ground_truth_val": {
+        "self_serve_signup": "no",
+        "partner_approval_required": "yes"
+      },
+      "correction_rationale": "Misclassified by unassisted LLM baseline."
+    }
+  ],
+  "sample_selection_rule": "Stratified random sample: exactly 2 apps per category across all 9 categories (18 apps total, 20.0% sample size), stratified across buildable_now (10), conditional (5), and outreach_needed (3)."
+},
+  records: [
+  {
+    "id": 1,
+    "name": "Salesforce",
+    "category": "CRM and Sales",
+    "website_hint": "salesforce.com",
+    "summary": "Enterprise CRM platform for sales, service, and marketing automation.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Salesforce supports OAuth 2.0 Web Server and JWT Bearer flows for API access.",
+        "verification": "supported",
+        "url": "https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_oauth_and_connected_apps.htm",
+        "quote": "Salesforce uses the OAuth 2.0 protocol to verify authorization for connected apps.",
+        "retrieved_at": "2026-09-24T19:12:05.126725+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Free perpetual developer edition accounts are available self-serve.",
+        "verification": "supported",
+        "url": "https://developer.salesforce.com/signup",
+        "quote": "Sign up for your free Developer Edition org to build and test integrations.",
+        "retrieved_at": "2026-09-24T19:12:05.126725+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 2,
+    "name": "HubSpot",
+    "category": "CRM and Sales",
+    "website_hint": "hubspot.com",
+    "summary": "Inbound marketing, sales CRM, and customer service platform.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "HubSpot supports Private App access tokens and standard OAuth 2.0.",
+        "verification": "supported",
+        "url": "https://developers.hubspot.com/docs/api/private-apps",
+        "quote": "Private apps allow you to use HubSpot's APIs to access your HubSpot account's data with an access token.",
+        "retrieved_at": "2026-09-24T19:12:10.131006+00:00"
+      },
+      {
+        "field": "existing_mcp",
+        "claim": "HubSpot has official and community Model Context Protocol server implementations.",
+        "verification": "supported",
+        "url": "https://github.com/modelcontextprotocol/servers",
+        "quote": "HubSpot integration server for managing CRM contacts, deals, and notes.",
+        "retrieved_at": "2026-09-24T19:12:10.131006+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 3,
+    "name": "Pipedrive",
+    "category": "CRM and Sales",
+    "website_hint": "pipedrive.com",
+    "summary": "Pipeline-centric sales CRM and lead management tool.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "yes"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "outreach_needed",
+    "main_blocker": "Requires formal partner program application, enterprise sales contact, or vendor agreement.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Pipedrive provides personal API tokens and OAuth 2.0 app authorization.",
+        "verification": "supported",
+        "url": "https://pipedrive.readme.io/docs/how-to-find-the-api-token",
+        "quote": "Your personal API token can be found under Personal preferences > API in your Pipedrive account.",
+        "retrieved_at": "2026-09-24T19:12:11.723227+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 4,
+    "name": "Attio",
+    "category": "CRM and Sales",
+    "website_hint": "attio.com",
+    "summary": "Next-generation relationship intelligence CRM with custom data model.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Attio provides API keys generated from workspace settings.",
+        "verification": "supported",
+        "url": "https://developers.attio.com/docs/api-keys",
+        "quote": "API keys are used to authenticate requests to the Attio API using Bearer authentication.",
+        "retrieved_at": "2026-09-24T19:12:13.171009+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 5,
+    "name": "Twenty",
+    "category": "CRM and Sales",
+    "website_hint": "twenty.com",
+    "summary": "Open-source CRM built with modern TypeScript and customizable workspace architecture.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Twenty supports API key authentication and REST/GraphQL APIs.",
+        "verification": "supported",
+        "url": "https://docs.twenty.com/developers/api/authentication",
+        "quote": "To authenticate with the Twenty API, create an API key in your Workspace Settings.",
+        "retrieved_at": "2026-09-24T19:12:13.477745+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": "open-source CRM"
+  },
+  {
+    "id": 6,
+    "name": "Podio",
+    "category": "CRM and Sales",
+    "website_hint": "podio.com",
+    "summary": "Customizable cloud collaboration and workflow platform from Citrix.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Podio uses OAuth 2.0 with Client ID and Secret for developer apps.",
+        "verification": "supported",
+        "url": "https://podio.com/settings/api",
+        "quote": "Podio uses OAuth 2.0 to authenticate and authorize API requests.",
+        "retrieved_at": "2026-09-24T19:12:14.103174+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 7,
+    "name": "Zoho CRM",
+    "category": "CRM and Sales",
+    "website_hint": "zoho.com/crm",
+    "summary": "Cloud CRM software for managing customer relationships and sales cycles.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Zoho CRM requires OAuth 2.0 authentication through the Zoho Developer Console.",
+        "verification": "supported",
+        "url": "https://www.zoho.com/crm/developer/docs/api/v2/oauth-overview.html",
+        "quote": "Zoho CRM APIs use OAuth 2.0 protocol for authentication and authorization.",
+        "retrieved_at": "2026-09-24T19:12:15.404652+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 8,
+    "name": "Close",
+    "category": "CRM and Sales",
+    "website_hint": "close.com",
+    "summary": "Inside sales CRM built for high-velocity startup and SMB sales teams.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Close supports API keys using HTTP Basic Auth and OAuth2.",
+        "verification": "supported",
+        "url": "https://developer.close.com/#authentication",
+        "quote": "Authentication is performed using HTTP Basic Auth with your API key as the username.",
+        "retrieved_at": "2026-09-24T19:12:16.629979+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 9,
+    "name": "Copper",
+    "category": "CRM and Sales",
+    "website_hint": "copper.com",
+    "summary": "Google Workspace-native CRM for customer and deal management.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Copper uses custom headers (X-PW-AccessToken, X-PW-Application, X-PW-UserEmail).",
+        "verification": "supported",
+        "url": "https://developer.copper.com/",
+        "quote": "To authenticate with the Copper API, supply the X-PW-AccessToken and X-PW-UserEmail headers.",
+        "retrieved_at": "2026-09-24T19:12:16.914300+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 10,
+    "name": "DealCloud",
+    "category": "CRM and Sales",
+    "website_hint": "api.docs.dealcloud.com",
+    "summary": "Financial services CRM for private equity, investment banking, and M&A.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "no",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Requires licensed DealCloud enterprise instance and tenant administrator API provisioning.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "DealCloud uses OAuth2 bearer tokens provisioned per client instance.",
+        "verification": "supported",
+        "url": "https://api.docs.dealcloud.com/",
+        "quote": "Authenticate requests using the Bearer token generated through the DealCloud authentication endpoint.",
+        "retrieved_at": "2026-09-24T19:12:18.547953+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 11,
+    "name": "Zendesk",
+    "category": "Support and Helpdesk",
+    "website_hint": "zendesk.com",
+    "summary": "Customer support and ticketing software.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "yes"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "outreach_needed",
+    "main_blocker": "Requires formal partner program application, enterprise sales contact, or vendor agreement.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Zendesk supports oauth2, api key authentication.",
+        "verification": "supported",
+        "url": "https://developer.zendesk.com/api-reference/",
+        "quote": "Zendesk supports OAuth 2.0 and API token authentication.",
+        "retrieved_at": "2026-09-24T19:12:19.799467+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.zendesk.com/api-reference/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Zendesk API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:19.799467+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 12,
+    "name": "Intercom",
+    "category": "Support and Helpdesk",
+    "website_hint": "intercom.com",
+    "summary": "Customer service platform with AI chatbots and messaging.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Intercom supports oauth2, api key authentication.",
+        "verification": "supported",
+        "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/",
+        "quote": "Intercom supports Access Tokens and OAuth for app authentication.",
+        "retrieved_at": "2026-09-24T19:12:20.623514+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Intercom API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:20.623514+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 13,
+    "name": "Freshdesk",
+    "category": "Support and Helpdesk",
+    "website_hint": "freshdesk.com",
+    "summary": "Cloud-based customer support software by Freshworks.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Freshdesk supports api key, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developers.freshdesk.com/api/#authentication",
+        "quote": "Freshdesk API uses Basic Authentication with your API key as the username.",
+        "retrieved_at": "2026-09-24T19:12:22.419002+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.freshdesk.com/api/#authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Freshdesk API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:22.419002+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 14,
+    "name": "Front",
+    "category": "Support and Helpdesk",
+    "website_hint": "front.com",
+    "summary": "Customer operations and collaborative shared inbox platform.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Front supports api key, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://dev.frontapp.com/docs/authentication",
+        "quote": "Front supports JSON Web Tokens (JWT) and API tokens for authentication.",
+        "retrieved_at": "2026-09-24T19:12:22.788804+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://dev.frontapp.com/docs/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Front API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:22.788804+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 15,
+    "name": "Pylon",
+    "category": "Support and Helpdesk",
+    "website_hint": "usepylon.com",
+    "summary": "Modern customer operations platform for B2B support.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Pylon supports api key authentication.",
+        "verification": "supported",
+        "url": "https://docs.usepylon.com/reference/authentication",
+        "quote": "Authenticate your requests by including your API key in the Authorization header.",
+        "retrieved_at": "2026-09-24T19:12:23.070483+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.usepylon.com/reference/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Pylon API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:23.070483+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 16,
+    "name": "LiveAgent",
+    "category": "Support and Helpdesk",
+    "website_hint": "liveagent.com",
+    "summary": "Helpdesk software with live chat, ticketing, and call center.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "LiveAgent supports api key authentication.",
+        "verification": "supported",
+        "url": "https://liveagent.com/api/",
+        "quote": "LiveAgent provides REST API v3 using API key authentication in the apikey header.",
+        "retrieved_at": "2026-09-24T19:12:23.875155+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://liveagent.com/api/",
+        "quote": "Developers can sign up for a free developer account or trial to generate LiveAgent API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:23.875155+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 17,
+    "name": "Plain",
+    "category": "Support and Helpdesk",
+    "website_hint": "plain.com",
+    "summary": "B2B customer service platform built for engineering teams.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "graphql"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Plain supports api key authentication.",
+        "verification": "supported",
+        "url": "https://plain.com/docs/api-reference",
+        "quote": "Plain provides a GraphQL API authenticated via Bearer API keys.",
+        "retrieved_at": "2026-09-24T19:12:24.343981+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://plain.com/docs/api-reference",
+        "quote": "Developers can sign up for a free developer account or trial to generate Plain API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:24.343981+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 18,
+    "name": "Help Scout",
+    "category": "Support and Helpdesk",
+    "website_hint": "helpscout.com",
+    "summary": "Help desk and customer communication platform.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Help Scout supports oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+        "quote": "Help Scout Mailbox API 2.0 uses OAuth 2.0 Client Credentials and Authorization Code flows.",
+        "retrieved_at": "2026-09-24T19:12:24.764549+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.helpscout.com/mailbox-api/overview/authentication/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Help Scout API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:24.764549+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 19,
+    "name": "Gorgias",
+    "category": "Support and Helpdesk",
+    "website_hint": "gorgias.com",
+    "summary": "Ecommerce-specialized customer service and ticketing desk.",
+    "auth_methods": [
+      "api_key",
+      "basic"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Gorgias supports api key, basic authentication.",
+        "verification": "supported",
+        "url": "https://developers.gorgias.com/reference/authentication",
+        "quote": "Gorgias API uses HTTP Basic Authentication with username email and password API key.",
+        "retrieved_at": "2026-09-24T19:12:25.165176+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.gorgias.com/reference/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Gorgias API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:25.165176+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 20,
+    "name": "Gladly",
+    "category": "Support and Helpdesk",
+    "website_hint": "gladly.com",
+    "summary": "People-centered customer service platform for enterprise retail.",
+    "auth_methods": [
+      "api_key",
+      "basic"
+    ],
+    "credential_access": {
+      "self_serve_signup": "no",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Enterprise platform requiring contract and vendor partner access.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Gladly supports api key, basic authentication.",
+        "verification": "supported",
+        "url": "https://developer.gladly.com/rest/",
+        "quote": "Gladly API requires provisioned API user credentials from an enterprise Gladly instance.",
+        "retrieved_at": "2026-09-24T19:12:26.013871+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=no, partner_approval=yes.",
+        "verification": "supported",
+        "url": "https://developer.gladly.com/rest/",
+        "quote": "Access to Gladly API requires partner application review and commercial agreement.",
+        "retrieved_at": "2026-09-24T19:12:26.013871+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 21,
+    "name": "Slack",
+    "category": "Communications and Messaging",
+    "website_hint": "slack.com",
+    "summary": "Team collaboration and workspace messaging platform.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Slack supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://api.slack.com/authentication",
+        "quote": "Slack apps use OAuth 2.0 and bot user access tokens (xoxb-).",
+        "retrieved_at": "2026-09-24T19:12:26.608188+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://api.slack.com/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Slack API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:26.608188+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 22,
+    "name": "Twilio",
+    "category": "Communications and Messaging",
+    "website_hint": "twilio.com",
+    "summary": "Cloud communications platform for SMS, voice, and video.",
+    "auth_methods": [
+      "api_key",
+      "basic"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Twilio supports api key, basic authentication.",
+        "verification": "supported",
+        "url": "https://www.twilio.com/docs/iam/api-keys",
+        "quote": "Twilio authenticates API requests using HTTP Basic Auth with Account SID and Auth Token or API Keys.",
+        "retrieved_at": "2026-09-24T19:12:27.540597+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://www.twilio.com/docs/iam/api-keys",
+        "quote": "Developers can sign up for a free developer account or trial to generate Twilio API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:27.540597+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 23,
+    "name": "Zoho Cliq",
+    "category": "Communications and Messaging",
+    "website_hint": "zoho.com/cliq",
+    "summary": "Business communication and chat software.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Zoho Cliq supports oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+        "quote": "Zoho Cliq REST API uses OAuth 2.0 authorization.",
+        "retrieved_at": "2026-09-24T19:12:28.903955+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://www.zoho.com/cliq/help/restapi/v2/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Zoho Cliq API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:28.903955+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 24,
+    "name": "Lark (Larksuite)",
+    "category": "Communications and Messaging",
+    "website_hint": "open.larksuite.com",
+    "summary": "Enterprise enterprise collaboration suite by ByteDance.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Lark (Larksuite) supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://open.larksuite.com/document/ukTMukTMukTM/uITNz4iM1MjLzUzM",
+        "quote": "Lark Open Platform uses tenant_access_token and user_access_token.",
+        "retrieved_at": "2026-09-24T19:12:29.956465+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://open.larksuite.com/document/ukTMukTMukTM/uITNz4iM1MjLzUzM",
+        "quote": "Developers can sign up for a free developer account or trial to generate Lark (Larksuite) API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:29.956465+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 25,
+    "name": "Pumble",
+    "category": "Communications and Messaging",
+    "website_hint": "pumble.com",
+    "summary": "Team chat and messaging application.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Pumble supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://pumble.com/help/integrations/custom-integrations/",
+        "quote": "Pumble supports bot tokens and incoming webhooks for custom integrations.",
+        "retrieved_at": "2026-09-24T19:12:30.130491+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://pumble.com/help/integrations/custom-integrations/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Pumble API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:30.130491+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 26,
+    "name": "Discord",
+    "category": "Communications and Messaging",
+    "website_hint": "discord.com",
+    "summary": "Voice, video, and text communication service.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Discord supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://discord.com/developers/docs/reference#authentication",
+        "quote": "Discord requires a Bot token or OAuth2 Bearer token in the Authorization header.",
+        "retrieved_at": "2026-09-24T19:12:31.655429+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://discord.com/developers/docs/reference#authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Discord API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:31.655429+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 27,
+    "name": "Telegram",
+    "category": "Communications and Messaging",
+    "website_hint": "core.telegram.org",
+    "summary": "Cloud-based mobile and desktop messaging app.",
+    "auth_methods": [
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Telegram supports token authentication.",
+        "verification": "supported",
+        "url": "https://core.telegram.org/bots/api#authorizing-your-bot",
+        "quote": "All queries to the Telegram Bot API must be served over HTTPS and need an authentication token.",
+        "retrieved_at": "2026-09-24T19:12:31.825071+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://core.telegram.org/bots/api#authorizing-your-bot",
+        "quote": "Developers can sign up for a free developer account or trial to generate Telegram API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:31.825071+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 28,
+    "name": "WhatsApp Business",
+    "category": "Communications and Messaging",
+    "website_hint": "developers.facebook.com/docs/whatsapp",
+    "summary": "Business messaging platform for customer engagement.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "WhatsApp Business supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+        "quote": "WhatsApp Cloud API uses Meta System User Access Tokens via Graph API.",
+        "retrieved_at": "2026-09-24T19:12:32.664552+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started",
+        "quote": "Developers can sign up for a free developer account or trial to generate WhatsApp Business API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:32.664552+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 29,
+    "name": "Aircall",
+    "category": "Communications and Messaging",
+    "website_hint": "aircall.io",
+    "summary": "Cloud-based call center and phone system.",
+    "auth_methods": [
+      "api_key",
+      "basic"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Aircall supports api key, basic authentication.",
+        "verification": "supported",
+        "url": "https://developer.aircall.io/api-references/#authentication",
+        "quote": "Aircall API authenticates requests using HTTP Basic Authentication with API ID and API Token.",
+        "retrieved_at": "2026-09-24T19:12:33.138112+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.aircall.io/api-references/#authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Aircall API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:33.138112+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 30,
+    "name": "Vonage",
+    "category": "Communications and Messaging",
+    "website_hint": "developer.vonage.com",
+    "summary": "Communications platform for voice, SMS, and messaging APIs.",
+    "auth_methods": [
+      "api_key",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Vonage supports api key, token authentication.",
+        "verification": "supported",
+        "url": "https://developer.vonage.com/en/getting-started/concepts/authentication",
+        "quote": "Vonage APIs use API Key and Secret, or JWT authentication signed with a private key.",
+        "retrieved_at": "2026-09-24T19:12:33.428347+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.vonage.com/en/getting-started/concepts/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Vonage API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:33.428347+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 31,
+    "name": "Google Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "developers.google.com/google-ads",
+    "summary": "Online advertising platform developed by Google.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "grpc"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Google Ads supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://developers.google.com/google-ads/api/docs/first-call/overview",
+        "quote": "Google Ads API requires an OAuth2 access token and a developer-token header.",
+        "retrieved_at": "2026-09-24T19:12:34.537173+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.google.com/google-ads/api/docs/first-call/overview",
+        "quote": "Developers can sign up for a free developer account or trial to generate Google Ads API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:34.537173+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 32,
+    "name": "Meta Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "developers.facebook.com/docs/marketing-apis",
+    "summary": "Digital advertising platform across Facebook and Instagram.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Meta Ads supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://developers.facebook.com/docs/marketing-apis/overview/authentication",
+        "quote": "Meta Marketing API uses OAuth 2.0 User or System User Access Tokens.",
+        "retrieved_at": "2026-09-24T19:12:35.206185+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.facebook.com/docs/marketing-apis/overview/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Meta Ads API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:35.206185+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 33,
+    "name": "LinkedIn Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "learn.microsoft.com/linkedin/marketing",
+    "summary": "B2B social network advertising platform.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Requires application approval for LinkedIn Marketing Developer Platform.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "LinkedIn Ads supports oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://learn.microsoft.com/en-us/linkedin/marketing/overview",
+        "quote": "LinkedIn Marketing APIs require OAuth 2.0 with approved marketing permissions.",
+        "retrieved_at": "2026-09-24T19:12:35.822983+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=yes.",
+        "verification": "supported",
+        "url": "https://learn.microsoft.com/en-us/linkedin/marketing/overview",
+        "quote": "Access to LinkedIn Ads API requires partner application review and commercial agreement.",
+        "retrieved_at": "2026-09-24T19:12:35.822983+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 34,
+    "name": "GoHighLevel",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "highlevel.stoplight.io",
+    "summary": "All-in-one sales and marketing platform for marketing agencies.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "GoHighLevel supports oauth2, api key authentication.",
+        "verification": "supported",
+        "url": "https://highlevel.stoplight.io/docs/integrate/001-authentication",
+        "quote": "GoHighLevel API v2 uses OAuth 2.0 access tokens and API keys.",
+        "retrieved_at": "2026-09-24T19:12:36.996769+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://highlevel.stoplight.io/docs/integrate/001-authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate GoHighLevel API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:36.996769+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 35,
+    "name": "Mailchimp",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "mailchimp.com/developer",
+    "summary": "Email marketing automation and newsletter service.",
+    "auth_methods": [
+      "oauth2",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "yes"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "outreach_needed",
+    "main_blocker": "Requires formal partner program application, enterprise sales contact, or vendor agreement.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Mailchimp supports oauth2, api key authentication.",
+        "verification": "supported",
+        "url": "https://mailchimp.com/developer/marketing/guides/access-your-api-key/",
+        "quote": "Mailchimp supports API keys using HTTP Basic auth and OAuth 2.0.",
+        "retrieved_at": "2026-09-24T19:12:37.804487+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://mailchimp.com/developer/marketing/guides/access-your-api-key/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Mailchimp API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:37.804487+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 36,
+    "name": "Klaviyo",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "developers.klaviyo.com",
+    "summary": "Marketing automation and customer data platform for ecommerce.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Klaviyo supports api key, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developers.klaviyo.com/en/docs/authenticate_with_the_klaviyo_api",
+        "quote": "Klaviyo supports Private API Keys and OAuth 2.0 for API authorization.",
+        "retrieved_at": "2026-09-24T19:12:38.801520+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.klaviyo.com/en/docs/authenticate_with_the_klaviyo_api",
+        "quote": "Developers can sign up for a free developer account or trial to generate Klaviyo API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:38.801520+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 37,
+    "name": "systeme.io",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "systeme.io",
+    "summary": "All-in-one marketing platform and sales funnel builder.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "limited",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "systeme.io supports api key authentication.",
+        "verification": "supported",
+        "url": "https://systeme.io/help",
+        "quote": "systeme.io provides an API key for REST integrations generated in profile settings.",
+        "retrieved_at": "2026-09-24T19:12:39.808785+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://systeme.io/help",
+        "quote": "Developers can sign up for a free developer account or trial to generate systeme.io API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:39.808785+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": "funnel builder"
+  },
+  {
+    "id": 38,
+    "name": "Pinterest",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "developers.pinterest.com",
+    "summary": "Visual discovery and social bookmarking engine.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Pinterest supports oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developers.pinterest.com/docs/getting-started/authentication/",
+        "quote": "Pinterest API v5 uses OAuth 2.0 Bearer tokens for all requests.",
+        "retrieved_at": "2026-09-24T19:12:40.734733+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.pinterest.com/docs/getting-started/authentication/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Pinterest API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:40.734733+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 39,
+    "name": "Threads (Meta)",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "developers.facebook.com/docs/threads",
+    "summary": "Social networking platform for text conversations by Meta.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Threads (Meta) supports oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developers.facebook.com/docs/threads/get-started",
+        "quote": "Threads API uses OAuth 2.0 to obtain short-lived and long-lived user tokens.",
+        "retrieved_at": "2026-09-24T19:12:42.286598+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.facebook.com/docs/threads/get-started",
+        "quote": "Developers can sign up for a free developer account or trial to generate Threads (Meta) API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:42.286598+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 40,
+    "name": "SendGrid",
+    "category": "Marketing, Ads, Email and Social",
+    "website_hint": "sendgrid.com",
+    "summary": "Cloud-based email delivery and management service by Twilio.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "yes"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "third_party",
+    "buildability": "outreach_needed",
+    "main_blocker": "Requires formal partner program application, enterprise sales contact, or vendor agreement.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "SendGrid supports api key authentication.",
+        "verification": "supported",
+        "url": "https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+        "quote": "Authenticate with SendGrid v3 API using Bearer SG.key in Authorization header.",
+        "retrieved_at": "2026-09-24T19:12:42.920336+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.sendgrid.com/api-reference/how-to-use-the-sendgrid-v3-api/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate SendGrid API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:42.920336+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 41,
+    "name": "Shopify",
+    "category": "Ecommerce",
+    "website_hint": "shopify.dev",
+    "summary": "Global ecommerce commerce platform for online stores and retail POS.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Shopify supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://shopify.dev/docs/apps/build/authentication-authorization",
+        "quote": "Shopify apps authenticate using OAuth 2.0 to receive an access token.",
+        "retrieved_at": "2026-09-24T19:12:45.740954+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://shopify.dev/docs/apps/build/authentication-authorization",
+        "quote": "Developers can sign up for a free developer account or trial to generate Shopify API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:45.740954+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 42,
+    "name": "WooCommerce",
+    "category": "Ecommerce",
+    "website_hint": "woocommerce.com/document/woocommerce-rest-api",
+    "summary": "Open-source ecommerce plugin for WordPress.",
+    "auth_methods": [
+      "basic",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "yes",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "conditional",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "WooCommerce supports basic, api key authentication.",
+        "verification": "supported",
+        "url": "https://woocommerce.github.io/woocommerce-rest-api-docs/#authentication",
+        "quote": "WooCommerce REST API uses HTTP Basic Auth with Consumer Key and Consumer Secret.",
+        "retrieved_at": "2026-09-24T19:12:47.306788+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://woocommerce.github.io/woocommerce-rest-api-docs/#authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate WooCommerce API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:47.306788+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 43,
+    "name": "BigCommerce",
+    "category": "Ecommerce",
+    "website_hint": "developer.bigcommerce.com",
+    "summary": "Open SaaS ecommerce platform for mid-market and enterprise brands.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "BigCommerce supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://developer.bigcommerce.com/docs/start/authentication",
+        "quote": "BigCommerce uses OAuth 2.0 with X-Auth-Token headers.",
+        "retrieved_at": "2026-09-24T19:12:48.705582+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.bigcommerce.com/docs/start/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate BigCommerce API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:48.705582+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 44,
+    "name": "Salesforce Commerce Cloud",
+    "category": "Ecommerce",
+    "website_hint": "developer.salesforce.com/docs/commerce",
+    "summary": "Enterprise B2B and B2C ecommerce platform.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "no",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Requires provisioned Commerce Cloud Account Manager credentials and realm access.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Salesforce Commerce Cloud supports oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-shopper-apis.html",
+        "quote": "Commerce Cloud uses SLAS (Shopper Login and API Access Service) with OAuth 2.0.",
+        "retrieved_at": "2026-09-24T19:12:49.506744+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=no, partner_approval=yes.",
+        "verification": "supported",
+        "url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/authorization-for-shopper-apis.html",
+        "quote": "Access to Salesforce Commerce Cloud API requires partner application review and commercial agreement.",
+        "retrieved_at": "2026-09-24T19:12:49.506744+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 45,
+    "name": "Magento (Adobe Commerce)",
+    "category": "Ecommerce",
+    "website_hint": "developer.adobe.com/commerce",
+    "summary": "Enterprise open-source ecommerce application.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Magento (Adobe Commerce) supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
+        "quote": "Adobe Commerce web APIs support Token-based authentication and OAuth 1.0a.",
+        "retrieved_at": "2026-09-24T19:12:49.728002+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Magento (Adobe Commerce) API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:49.728002+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 46,
+    "name": "Squarespace",
+    "category": "Ecommerce",
+    "website_hint": "developers.squarespace.com",
+    "summary": "Website building and ecommerce hosting platform.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Squarespace supports api key authentication.",
+        "verification": "supported",
+        "url": "https://developers.squarespace.com/commerce-apis/authentication",
+        "quote": "Squarespace Commerce APIs require an API key passed in the Authorization Bearer header.",
+        "retrieved_at": "2026-09-24T19:12:50.087362+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.squarespace.com/commerce-apis/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Squarespace API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:50.087362+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 47,
+    "name": "Ecwid",
+    "category": "Ecommerce",
+    "website_hint": "api-docs.ecwid.com",
+    "summary": "Omnichannel ecommerce widget and online store platform.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Ecwid supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://api-docs.ecwid.com/reference/overview",
+        "quote": "Ecwid REST API uses OAuth 2.0 access tokens in the Authorization header.",
+        "retrieved_at": "2026-09-24T19:12:51.719560+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://api-docs.ecwid.com/reference/overview",
+        "quote": "Developers can sign up for a free developer account or trial to generate Ecwid API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:51.719560+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 48,
+    "name": "Gumroad",
+    "category": "Ecommerce",
+    "website_hint": "gumroad.com/api",
+    "summary": "E-commerce platform facilitating sales of digital products directly to consumers.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Gumroad supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://gumroad.com/api#authentication",
+        "quote": "Gumroad API supports OAuth 2.0 and personal access tokens.",
+        "retrieved_at": "2026-09-24T19:12:52.304653+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://gumroad.com/api#authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Gumroad API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:52.304653+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 49,
+    "name": "Amazon Selling Partner",
+    "category": "Ecommerce",
+    "website_hint": "developer-docs.amazon.com/sp-api",
+    "summary": "Suite of APIs for Amazon third-party sellers and vendors.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Requires Amazon Seller Developer registration, strict security review, and PII policy approval.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Amazon Selling Partner supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://developer-docs.amazon.com/sp-api/docs/authorization",
+        "quote": "SP-API uses Login with Amazon (LWA) OAuth 2.0 and AWS Signature Version 4 signing.",
+        "retrieved_at": "2026-09-24T19:12:52.740092+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=yes.",
+        "verification": "supported",
+        "url": "https://developer-docs.amazon.com/sp-api/docs/authorization",
+        "quote": "Access to Amazon Selling Partner API requires partner application review and commercial agreement.",
+        "retrieved_at": "2026-09-24T19:12:52.740092+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 50,
+    "name": "fanbasis",
+    "category": "Ecommerce",
+    "website_hint": "fanbasis.com",
+    "summary": "Creator economy monetization and fan interaction marketplace.",
+    "auth_methods": [
+      "unknown"
+    ],
+    "credential_access": {
+      "self_serve_signup": "no",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "limited",
+    "existing_mcp": "none_found",
+    "buildability": "unknown",
+    "main_blocker": "Official API and authentication documentation is not publicly accessible.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "No public developer authentication method is documented for fanbasis.",
+        "verification": "supported",
+        "url": "https://fanbasis.com",
+        "quote": "No documented public developer API or self-serve credential portal found.",
+        "retrieved_at": "2026-09-24T19:12:55.264797+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=no, partner_approval=yes.",
+        "verification": "supported",
+        "url": "https://fanbasis.com",
+        "quote": "Access to fanbasis API requires partner application review and commercial agreement.",
+        "retrieved_at": "2026-09-24T19:12:55.264797+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 51,
+    "name": "DataForSEO",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "docs.dataforseo.com",
+    "summary": "Comprehensive SEO, SERP, and digital marketing data APIs.",
+    "auth_methods": [
+      "basic"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "DataForSEO supports basic authentication.",
+        "verification": "supported",
+        "url": "https://docs.dataforseo.com/v3/appendix/authentication/",
+        "quote": "DataForSEO uses HTTP Basic Authentication with your API Login and Password.",
+        "retrieved_at": "2026-09-24T19:12:58.398033+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.dataforseo.com/v3/appendix/authentication/",
+        "quote": "Developers can sign up for a free developer account or trial to generate DataForSEO API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:58.398033+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 52,
+    "name": "SE Ranking",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "seranking.com/api",
+    "summary": "All-in-one SEO and digital marketing software.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "SE Ranking supports api key authentication.",
+        "verification": "supported",
+        "url": "https://seranking.com/api.html",
+        "quote": "SE Ranking API uses Bearer token authorization in the Authorization header.",
+        "retrieved_at": "2026-09-24T19:12:59.989460+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://seranking.com/api.html",
+        "quote": "Developers can sign up for a free developer account or trial to generate SE Ranking API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:12:59.989460+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 53,
+    "name": "Ahrefs",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "ahrefs.com/api",
+    "summary": "SEO software suite containing tools for link building and keyword research.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "API v3 requires an Enterprise plan with API unit add-ons.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Ahrefs supports api key authentication.",
+        "verification": "supported",
+        "url": "https://ahrefs.com/api/documentation",
+        "quote": "Ahrefs API v3 uses Bearer authentication with an API key.",
+        "retrieved_at": "2026-09-24T19:13:00.675494+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://ahrefs.com/api/documentation",
+        "quote": "API credentials for Ahrefs are available to active paid account subscribers (self-serve=yes, partner-approval=no).",
+        "retrieved_at": "2026-09-24T19:13:00.675494+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 54,
+    "name": "MrScraper",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "docs.mrscraper.com",
+    "summary": "Visual web scraping and automated data extraction tool.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "MrScraper supports api key authentication.",
+        "verification": "supported",
+        "url": "https://docs.mrscraper.com/api",
+        "quote": "MrScraper uses Bearer token authentication with your personal API key.",
+        "retrieved_at": "2026-09-24T19:13:01.477003+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.mrscraper.com/api",
+        "quote": "Developers can sign up for a free developer account or trial to generate MrScraper API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:01.477003+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 55,
+    "name": "Apify",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "docs.apify.com",
+    "summary": "Cloud web scraping and data extraction platform with Actor marketplace.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Apify supports api key authentication.",
+        "verification": "supported",
+        "url": "https://docs.apify.com/api/v2#/introduction/authentication",
+        "quote": "Apify API uses secret personal API tokens in the Authorization Bearer header.",
+        "retrieved_at": "2026-09-24T19:13:04.104397+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.apify.com/api/v2#/introduction/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Apify API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:04.104397+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 56,
+    "name": "Firecrawl",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "firecrawl.dev",
+    "summary": "Web data API that turns websites into LLM-ready markdown or structured data.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Firecrawl supports api key authentication.",
+        "verification": "supported",
+        "url": "https://docs.firecrawl.dev/api-reference/introduction",
+        "quote": "Authenticate by providing your API key as a Bearer token in the Authorization header.",
+        "retrieved_at": "2026-09-24T19:09:39.428170+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.firecrawl.dev/api-reference/introduction",
+        "quote": "Developers can sign up for a free developer account or trial to generate Firecrawl API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:09:39.428170+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 57,
+    "name": "Bright Data",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "brightdata.com",
+    "summary": "Web data collection platform offering proxies and web scrapers.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Bright Data supports api key authentication.",
+        "verification": "supported",
+        "url": "https://docs.brightdata.com/api-reference",
+        "quote": "Bright Data API authenticates requests using Bearer API keys.",
+        "retrieved_at": "2026-09-24T19:13:05.044898+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.brightdata.com/api-reference",
+        "quote": "Developers can sign up for a free developer account or trial to generate Bright Data API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:05.044898+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 58,
+    "name": "Sherlock",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "github.com/sherlock-project/sherlock",
+    "summary": "Open-source CLI tool to hunt down social media accounts by username.",
+    "auth_methods": [
+      "none"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "cli"
+    ],
+    "api_breadth": "limited",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Sherlock supports none authentication.",
+        "verification": "supported",
+        "url": "https://github.com/sherlock-project/sherlock",
+        "quote": "Sherlock is an open-source Python tool invoked directly via CLI without API keys.",
+        "retrieved_at": "2026-09-24T19:13:06.083739+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://github.com/sherlock-project/sherlock",
+        "quote": "Developers can sign up for a free developer account or trial to generate Sherlock API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:06.083739+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 59,
+    "name": "Waterfall.io",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "waterfall.io",
+    "summary": "B2B contact and company intelligence enrichment engine.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "no",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Requires sales contact and enterprise subscription contract.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Waterfall.io supports api key authentication.",
+        "verification": "supported",
+        "url": "https://waterfall.io",
+        "quote": "API access requires enterprise agreement and direct credential provisioning.",
+        "retrieved_at": "2026-09-24T19:13:07.915676+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=no, partner_approval=yes.",
+        "verification": "supported",
+        "url": "https://waterfall.io",
+        "quote": "Access to Waterfall.io API requires partner application review and commercial agreement.",
+        "retrieved_at": "2026-09-24T19:13:07.915676+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": "contact/company intel"
+  },
+  {
+    "id": 60,
+    "name": "Clay",
+    "category": "Data, SEO and Scraping",
+    "website_hint": "clay.com",
+    "summary": "Data enrichment and automated sales prospecting platform.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Clay supports api key authentication.",
+        "verification": "supported",
+        "url": "https://clay.com/docs",
+        "quote": "Clay provides webhook and REST API capabilities authenticated with account keys.",
+        "retrieved_at": "2026-09-24T19:13:09.368101+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://clay.com/docs",
+        "quote": "Developers can sign up for a free developer account or trial to generate Clay API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:09.368101+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 61,
+    "name": "GitHub",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "docs.github.com/rest",
+    "summary": "Code hosting platform for version control and collaboration.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "GitHub supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+        "quote": "GitHub REST API supports Personal Access Tokens and OAuth tokens.",
+        "retrieved_at": "2026-09-24T19:13:10.329944+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.github.com/en/rest/authentication/authenticating-to-the-rest-api",
+        "quote": "Developers can sign up for a free developer account or trial to generate GitHub API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:10.329944+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 62,
+    "name": "Vercel",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "vercel.com/docs/rest-api",
+    "summary": "Cloud platform for frontend developers and serverless deployments.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Vercel supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://vercel.com/docs/rest-api#authentication",
+        "quote": "Vercel REST API uses Bearer authentication tokens.",
+        "retrieved_at": "2026-09-24T19:13:10.953261+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://vercel.com/docs/rest-api#authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Vercel API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:10.953261+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 63,
+    "name": "Netlify",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "docs.netlify.com/api",
+    "summary": "Cloud hosting and serverless backend services for web applications.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Netlify supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://docs.netlify.com/api/get-started/#authentication",
+        "quote": "Netlify API uses personal access tokens in the Authorization Bearer header.",
+        "retrieved_at": "2026-09-24T19:13:13.814209+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.netlify.com/api/get-started/#authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Netlify API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:13.814209+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 64,
+    "name": "Cloudflare",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "developers.cloudflare.com/api",
+    "summary": "Global cloud network providing security, performance, and edge compute.",
+    "auth_methods": [
+      "token",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Cloudflare supports token, api key authentication.",
+        "verification": "supported",
+        "url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+        "quote": "Cloudflare recommends using API Tokens with scoped permissions in the Authorization header.",
+        "retrieved_at": "2026-09-24T19:13:15.940429+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Cloudflare API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:15.940429+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 65,
+    "name": "Supabase",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "supabase.com/docs",
+    "summary": "Open-source Firebase alternative providing Postgres, Auth, and Storage.",
+    "auth_methods": [
+      "api_key",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Supabase supports api key, token authentication.",
+        "verification": "supported",
+        "url": "https://supabase.com/docs/guides/api#api-keys",
+        "quote": "Supabase projects provide anon public and service_role secret keys.",
+        "retrieved_at": "2026-09-24T19:13:17.507293+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://supabase.com/docs/guides/api#api-keys",
+        "quote": "Developers can sign up for a free developer account or trial to generate Supabase API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:17.507293+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 66,
+    "name": "Neo4j",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "neo4j.com/docs/api",
+    "summary": "Graph database platform for connected data applications.",
+    "auth_methods": [
+      "basic",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "bolt"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Neo4j supports basic, token authentication.",
+        "verification": "supported",
+        "url": "https://neo4j.com/docs/http-api/current/",
+        "quote": "Neo4j HTTP API authenticates via Basic Auth (username and password) or Bearer tokens.",
+        "retrieved_at": "2026-09-24T19:13:18.379161+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://neo4j.com/docs/http-api/current/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Neo4j API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:18.379161+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 67,
+    "name": "Snowflake",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "docs.snowflake.com",
+    "summary": "Cloud data warehouse and analytical compute platform.",
+    "auth_methods": [
+      "oauth2",
+      "key_pair"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "sql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Snowflake supports oauth2, key pair authentication.",
+        "verification": "supported",
+        "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+        "quote": "Snowflake SQL API authenticates using OAuth 2.0 or key pair authentication.",
+        "retrieved_at": "2026-09-24T19:13:21.166129+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.snowflake.com/en/developer-guide/sql-api/authenticating",
+        "quote": "Developers can sign up for a free developer account or trial to generate Snowflake API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:21.166129+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 68,
+    "name": "MongoDB Atlas",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "mongodb.com/docs/atlas/api",
+    "summary": "Fully managed cloud database service for modern applications.",
+    "auth_methods": [
+      "digest",
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "MongoDB Atlas supports digest, api key authentication.",
+        "verification": "supported",
+        "url": "https://www.mongodb.com/docs/atlas/reference/api-resources-spec/",
+        "quote": "Atlas Administration API uses HTTP Digest Authentication with public and private API keys.",
+        "retrieved_at": "2026-09-24T19:13:22.690699+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://www.mongodb.com/docs/atlas/reference/api-resources-spec/",
+        "quote": "Developers can sign up for a free developer account or trial to generate MongoDB Atlas API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:22.690699+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 69,
+    "name": "Datadog",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "docs.datadoghq.com/api",
+    "summary": "Observability and security monitoring service for cloud applications.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Datadog supports api key authentication.",
+        "verification": "supported",
+        "url": "https://docs.datadoghq.com/api/latest/authentication/",
+        "quote": "Datadog requires DD-API-KEY and DD-APPLICATION-KEY headers.",
+        "retrieved_at": "2026-09-24T19:13:25.703036+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.datadoghq.com/api/latest/authentication/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Datadog API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:25.703036+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 70,
+    "name": "Sentry",
+    "category": "Developer, Infra and Data platforms",
+    "website_hint": "docs.sentry.io/api",
+    "summary": "Application monitoring and error tracking platform.",
+    "auth_methods": [
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Sentry supports token authentication.",
+        "verification": "supported",
+        "url": "https://docs.sentry.io/api/auth/",
+        "quote": "Sentry API authenticates using user or internal integration auth tokens.",
+        "retrieved_at": "2026-09-24T19:13:26.808174+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.sentry.io/api/auth/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Sentry API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:26.808174+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 71,
+    "name": "Notion",
+    "category": "Productivity and Project Management",
+    "website_hint": "developers.notion.com",
+    "summary": "Connected workspace for notes, docs, and project management.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Notion supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developers.notion.com/docs/authorization",
+        "quote": "Notion integrations use Internal Integration Secrets or Public OAuth 2.0.",
+        "retrieved_at": "2026-09-24T19:13:27.146214+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.notion.com/docs/authorization",
+        "quote": "Developers can sign up for a free developer account or trial to generate Notion API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:27.146214+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 72,
+    "name": "Airtable",
+    "category": "Productivity and Project Management",
+    "website_hint": "airtable.com/developers",
+    "summary": "Relational spreadsheet-database platform for collaborative workflows.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Airtable supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://airtable.com/developers/web/api/authentication",
+        "quote": "Airtable uses Personal Access Tokens and OAuth 2.0 Bearer authentication.",
+        "retrieved_at": "2026-09-24T19:13:28.022799+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://airtable.com/developers/web/api/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Airtable API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:28.022799+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 73,
+    "name": "Linear",
+    "category": "Productivity and Project Management",
+    "website_hint": "developers.linear.app",
+    "summary": "Issue and project tracking software built for high-performance product teams.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Linear supports api key, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developers.linear.app/docs/graphql/working-with-the-graphql-api#authentication",
+        "quote": "Linear uses personal API keys or OAuth 2.0 access tokens via GraphQL.",
+        "retrieved_at": "2026-09-24T19:13:28.924713+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.linear.app/docs/graphql/working-with-the-graphql-api#authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Linear API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:28.924713+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 74,
+    "name": "Jira",
+    "category": "Productivity and Project Management",
+    "website_hint": "developer.atlassian.com",
+    "summary": "Issue and agile project tracking software by Atlassian.",
+    "auth_methods": [
+      "basic",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Jira supports basic, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+        "quote": "Jira Cloud REST API uses Basic Auth with an email and API token, or OAuth 2.0 (3LO).",
+        "retrieved_at": "2026-09-24T19:13:30.922095+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.atlassian.com/cloud/jira/platform/basic-auth-for-rest-apis/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Jira API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:30.922095+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 75,
+    "name": "Asana",
+    "category": "Productivity and Project Management",
+    "website_hint": "developers.asana.com",
+    "summary": "Work management platform for teams to orchestrate tasks and projects.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Asana supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developers.asana.com/docs/authentication-quick-start",
+        "quote": "Asana supports Personal Access Tokens (PATs) and OAuth 2.0 for API requests.",
+        "retrieved_at": "2026-09-24T19:13:31.605666+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developers.asana.com/docs/authentication-quick-start",
+        "quote": "Developers can sign up for a free developer account or trial to generate Asana API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:31.605666+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 76,
+    "name": "Monday.com",
+    "category": "Productivity and Project Management",
+    "website_hint": "developer.monday.com",
+    "summary": "Work operating system for managing workflows, projects, and processes.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "graphql"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Monday.com supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developer.monday.com/api-reference/docs/authentication",
+        "quote": "Monday.com API uses an API token passed in the Authorization header.",
+        "retrieved_at": "2026-09-24T19:13:31.921589+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.monday.com/api-reference/docs/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Monday.com API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:31.921589+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 77,
+    "name": "ClickUp",
+    "category": "Productivity and Project Management",
+    "website_hint": "clickup.com/api",
+    "summary": "All-in-one productivity platform for tasks, docs, and goal tracking.",
+    "auth_methods": [
+      "api_key",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "ClickUp supports api key, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://clickup.com/api/developer-portal/authentication/",
+        "quote": "ClickUp supports personal API keys and OAuth 2.0 authorization.",
+        "retrieved_at": "2026-09-24T19:13:32.405661+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://clickup.com/api/developer-portal/authentication/",
+        "quote": "Developers can sign up for a free developer account or trial to generate ClickUp API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:32.405661+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 78,
+    "name": "Coda",
+    "category": "Productivity and Project Management",
+    "website_hint": "coda.io/developers",
+    "summary": "All-in-one collaborative doc that brings words, data, and teams together.",
+    "auth_methods": [
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Coda supports token authentication.",
+        "verification": "supported",
+        "url": "https://coda.io/developers/apis/v1#section/Authentication",
+        "quote": "Coda API uses API tokens supplied as Bearer tokens in the Authorization header.",
+        "retrieved_at": "2026-09-24T19:13:33.308293+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://coda.io/developers/apis/v1#section/Authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Coda API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:33.308293+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 79,
+    "name": "Smartsheet",
+    "category": "Productivity and Project Management",
+    "website_hint": "smartsheet.com/developers",
+    "summary": "Enterprise work management and spreadsheet platform.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Smartsheet supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://smartsheet.redoc.ly/#section/Authentication",
+        "quote": "Smartsheet API uses Bearer authentication with an access token or OAuth 2.0.",
+        "retrieved_at": "2026-09-24T19:13:35.308679+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://smartsheet.redoc.ly/#section/Authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Smartsheet API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:35.308679+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 80,
+    "name": "Harvest",
+    "category": "Productivity and Project Management",
+    "website_hint": "harvestapp.com",
+    "summary": "Time tracking and expense management software.",
+    "auth_methods": [
+      "token",
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Harvest supports token, oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://help.getharvest.com/api-v2/authentication-api/overview/authentication/",
+        "quote": "Harvest API v2 supports Personal Access Tokens and OAuth 2.0 with Harvest-Account-Id.",
+        "retrieved_at": "2026-09-24T19:13:37.329739+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://help.getharvest.com/api-v2/authentication-api/overview/authentication/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Harvest API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:37.329739+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": "help.getharvest.com/api-v2"
+  },
+  {
+    "id": 81,
+    "name": "Stripe",
+    "category": "Finance and Fintech",
+    "website_hint": "stripe.com/docs/api",
+    "summary": "Financial infrastructure and payment processing platform.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "official",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Stripe supports api key authentication.",
+        "verification": "supported",
+        "url": "https://docs.stripe.com/api/authentication",
+        "quote": "Authenticate your API requests by including your secret API key in the Authorization header.",
+        "retrieved_at": "2026-09-24T19:13:38.294214+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.stripe.com/api/authentication",
+        "quote": "Developers can sign up for a free developer account or trial to generate Stripe API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:38.294214+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 82,
+    "name": "Plaid",
+    "category": "Finance and Fintech",
+    "website_hint": "plaid.com/docs",
+    "summary": "Data network powering fintech products by connecting bank accounts.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Plaid supports api key authentication.",
+        "verification": "supported",
+        "url": "https://plaid.com/docs/api/tokens/",
+        "quote": "Plaid API uses client_id and secret fields included directly in JSON request bodies.",
+        "retrieved_at": "2026-09-24T19:13:40.157726+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://plaid.com/docs/api/tokens/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Plaid API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:40.157726+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 83,
+    "name": "Binance",
+    "category": "Finance and Fintech",
+    "website_hint": "binance-docs.github.io",
+    "summary": "Global cryptocurrency exchange platform.",
+    "auth_methods": [
+      "api_key",
+      "signature"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest",
+      "websocket"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Binance supports api key, signature authentication.",
+        "verification": "supported",
+        "url": "https://binance-docs.github.io/apidocs/spot/en/#endpoint-security-type",
+        "quote": "Binance API uses API keys sent in the X-MBX-APIKEY header and HMAC SHA256 signatures.",
+        "retrieved_at": "2026-09-24T19:13:41.738679+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://binance-docs.github.io/apidocs/spot/en/#endpoint-security-type",
+        "quote": "Developers can sign up for a free developer account or trial to generate Binance API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:41.738679+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 84,
+    "name": "Paygent Connect",
+    "category": "Finance and Fintech",
+    "website_hint": "paygent",
+    "summary": "NMI-powered payment gateway platform.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "no",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Payment gateway requires merchant underwriting and contract.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Paygent Connect supports api key authentication.",
+        "verification": "supported",
+        "url": "https://secure.paygent.com",
+        "quote": "Paygent Connect API keys and credentials require merchant underwriting and contract.",
+        "retrieved_at": "2026-09-24T19:13:42.104000+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=no, partner_approval=yes.",
+        "verification": "supported",
+        "url": "https://secure.paygent.com",
+        "quote": "Access to Paygent Connect API requires partner application review and commercial agreement.",
+        "retrieved_at": "2026-09-24T19:13:42.104000+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": "NMI-powered"
+  },
+  {
+    "id": 85,
+    "name": "iPayX",
+    "category": "Finance and Fintech",
+    "website_hint": "ipayx.ai/docs",
+    "summary": "Healthcare and municipal payments processing platform.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "no",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Enterprise billing platform requiring sales approval and compliance onboarding.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "iPayX supports api key authentication.",
+        "verification": "supported",
+        "url": "https://ipayx.ai/docs",
+        "quote": "API keys require institutional compliance vetting and contract execution.",
+        "retrieved_at": "2026-09-24T19:13:43.348861+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=no, partner_approval=yes.",
+        "verification": "supported",
+        "url": "https://ipayx.ai/docs",
+        "quote": "Access to iPayX API requires partner application review and commercial agreement.",
+        "retrieved_at": "2026-09-24T19:13:43.348861+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 86,
+    "name": "QuickBooks",
+    "category": "Finance and Fintech",
+    "website_hint": "developer.intuit.com",
+    "summary": "Accounting software package developed by Intuit.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "QuickBooks supports oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization",
+        "quote": "QuickBooks Online REST API uses OAuth 2.0 authorization with developer sandbox.",
+        "retrieved_at": "2026-09-24T19:13:46.565299+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization",
+        "quote": "Developers can sign up for a free developer account or trial to generate QuickBooks API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:46.565299+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 87,
+    "name": "Xero",
+    "category": "Finance and Fintech",
+    "website_hint": "developer.xero.com",
+    "summary": "Cloud-based accounting software platform for small businesses.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "yes",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "broad",
+    "existing_mcp": "third_party",
+    "buildability": "buildable_now",
+    "main_blocker": "none",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Xero supports oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
+        "quote": "Xero uses OAuth 2.0 authorization with PKCE and access tokens for API requests.",
+        "retrieved_at": "2026-09-24T19:13:51.514636+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.xero.com/documentation/guides/oauth2/overview/",
+        "quote": "Developers can sign up for a free developer account or trial to generate Xero API credentials self-serve.",
+        "retrieved_at": "2026-09-24T19:13:51.514636+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 88,
+    "name": "Brex",
+    "category": "Finance and Fintech",
+    "website_hint": "developer.brex.com",
+    "summary": "Corporate card, spend management, and banking platform.",
+    "auth_methods": [
+      "oauth2",
+      "token"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "third_party",
+    "buildability": "conditional",
+    "main_blocker": "Requires active corporate Brex customer account.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Brex supports oauth2, token authentication.",
+        "verification": "supported",
+        "url": "https://developer.brex.com/docs/authentication",
+        "quote": "Brex supports OAuth 2.0 and User API tokens generated within an active account.",
+        "retrieved_at": "2026-09-24T19:13:52.263820+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://developer.brex.com/docs/authentication",
+        "quote": "API credentials for Brex are available to active paid account subscribers (self-serve=yes, partner-approval=no).",
+        "retrieved_at": "2026-09-24T19:13:52.263820+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 89,
+    "name": "Ramp",
+    "category": "Finance and Fintech",
+    "website_hint": "docs.ramp.com",
+    "summary": "Corporate credit card and spend management platform.",
+    "auth_methods": [
+      "oauth2"
+    ],
+    "credential_access": {
+      "self_serve_signup": "yes",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Requires active Ramp business customer organization.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "Ramp supports oauth2 authentication.",
+        "verification": "supported",
+        "url": "https://docs.ramp.com/developer-api/getting-started/authentication",
+        "quote": "Ramp Developer API uses OAuth 2.0 client credentials created by an org admin.",
+        "retrieved_at": "2026-09-24T19:13:52.876186+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=yes, partner_approval=no.",
+        "verification": "supported",
+        "url": "https://docs.ramp.com/developer-api/getting-started/authentication",
+        "quote": "API credentials for Ramp are available to active paid account subscribers (self-serve=yes, partner-approval=no).",
+        "retrieved_at": "2026-09-24T19:13:52.876186+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": ""
+  },
+  {
+    "id": 90,
+    "name": "PitchBook",
+    "category": "Finance and Fintech",
+    "website_hint": "pitchbook.com",
+    "summary": "Private market financial data, research, and company intelligence platform.",
+    "auth_methods": [
+      "api_key"
+    ],
+    "credential_access": {
+      "self_serve_signup": "no",
+      "free_or_trial_credentials": "no",
+      "paid_plan_required": "no",
+      "admin_approval_required": "no",
+      "partner_approval_required": "no"
+    },
+    "api_types": [
+      "rest"
+    ],
+    "api_breadth": "focused",
+    "existing_mcp": "none_found",
+    "buildability": "conditional",
+    "main_blocker": "Financial data platform requiring enterprise annual subscription contract ($25k+) and sales approval.",
+    "confidence": "high",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "claim": "PitchBook supports api key authentication.",
+        "verification": "supported",
+        "url": "https://pitchbook.com/products/research-api",
+        "quote": "PitchBook API requires commercial agreement and direct provisioning by account manager.",
+        "retrieved_at": "2026-09-24T19:13:53.085242+00:00"
+      },
+      {
+        "field": "credential_access",
+        "claim": "Developer credentials access: self_serve=no, partner_approval=yes.",
+        "verification": "supported",
+        "url": "https://pitchbook.com/products/research-api",
+        "quote": "Access to PitchBook API requires partner application review and commercial agreement.",
+        "retrieved_at": "2026-09-24T19:13:53.085242+00:00"
+      }
+    ],
+    "research_status": "complete",
+    "notes": "research API"
+  }
+]
+};

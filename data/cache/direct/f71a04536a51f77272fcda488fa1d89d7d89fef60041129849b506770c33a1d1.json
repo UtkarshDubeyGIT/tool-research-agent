@@ -1,0 +1,11 @@
+{
+  "url": "https://developer.brex.com",
+  "final_url": "https://developer.brex.com/",
+  "title": "Overview",
+  "timestamp": "2026-09-24T19:13:52.263820+00:00",
+  "source_method": "direct_http",
+  "content_hash": "a6695a4b296242a8509e448e078a6600710ad5cafdd9f28738e1bcc715587ee6",
+  "raw_markdown": "Overview\nCopy\nCopy for LLM\nCopy page as Markdown for LLMs\nView as Markdown\nOpen this page as Markdown\nOpen in ChatGPT\nGet insights from ChatGPT\nOpen in Claude\nGet insights from Claude\nBrex\nis the first fully unified spend platform \u2014 with global corporate cards, expense management, reimbursements, travel, and bill pay. Brex makes it easy for finance teams to control all of their spend, all in one place. Using the Brex API, you can power your internal tools and create custom workflows.\nBrex APIs use the\nREST\narchitecture, are defined using the\nOpenAPI specification\nand use standard HTTP response codes and verbs. All APIs accept and return JSON and require HTTPS.\nExplore our guides and review our API documentation to see how you can integrate with Brex.\nAccounting API\n: View and manage accounting data\nBudgets API\n: Manage budgets and budget programs\nExpenses API\n: View and manage card expenses data, receipt match and receipt uploads\nFields API\n: View and manage fields and their options\nOnboarding API\n: Refer your customers and personal contacts to Brex and prefill signup information\nPayments API\n: Manage vendors and send ACH, domestic wires, and checks\nTeam API\n: Manage users, locations, departments, and cards\nTransactions API\n: View your transactions, accounts, and statements\nTravel API\n: View trips made in Brex Travel\nWebhooks API\n: Send real-time notifications based on events\nQuickstart\nCheck out our\nquickstart guide\nto get up and running making your first Brex API call in just a few minutes. The rest of the guides and documentation provide more in-depth context.\nAPI Status\nGo to\nhttps://status.brex.com\nto see API and Brex system status.\nJoin us on Slack\nHave feedback, questions, or ideas?\nJoin our Slack community\nto discuss your API integrations with Brex employees and other developers.",
+  "status_code": 200,
+  "error": null
+}

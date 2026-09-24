@@ -1,0 +1,11 @@
+{
+  "url": "https://seranking.com/api",
+  "final_url": "https://seranking.com/api",
+  "title": "",
+  "timestamp": "2026-09-24T19:12:59.989460+00:00",
+  "source_method": "direct_http",
+  "content_hash": "",
+  "raw_markdown": "",
+  "status_code": 404,
+  "error": "HTTP Error 404"
+}

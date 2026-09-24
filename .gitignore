@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments & secrets
+.env
+.env.local
+.env.*.local
+
+# Vercel & Node
+.vercel
+node_modules/
+
+# Testing & caches
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS metadata
+.DS_Store
+Thumbs.db

@@ -1,0 +1,272 @@
+{
+  "generated_at": "2026-09-24T19:12:05.126725+00:00",
+  "coverage": {
+    "total_researched": 90,
+    "expected_prompt_count": 100,
+    "scope_discrepancy_note": "The take-home PDF specification itemizes exactly 90 apps across Categories 1 through 9, omitting Category 10 (#91-#100). The pipeline preserves all 90 supplied entries without fabricating missing rows.",
+    "categories_count": 9
+  },
+  "buildability_breakdown": {
+    "buildable_now": {
+      "count": 72,
+      "percentage": 80.0
+    },
+    "conditional": {
+      "count": 13,
+      "percentage": 14.4
+    },
+    "outreach_needed": {
+      "count": 4,
+      "percentage": 4.4
+    },
+    "unknown": {
+      "count": 1,
+      "percentage": 1.1
+    }
+  },
+  "auth_breakdown": {
+    "oauth2": {
+      "count": 52,
+      "percentage": 57.8
+    },
+    "api_key": {
+      "count": 46,
+      "percentage": 51.1
+    },
+    "token": {
+      "count": 31,
+      "percentage": 34.4
+    },
+    "basic": {
+      "count": 8,
+      "percentage": 8.9
+    },
+    "unknown": {
+      "count": 1,
+      "percentage": 1.1
+    },
+    "none": {
+      "count": 1,
+      "percentage": 1.1
+    },
+    "key_pair": {
+      "count": 1,
+      "percentage": 1.1
+    },
+    "digest": {
+      "count": 1,
+      "percentage": 1.1
+    },
+    "signature": {
+      "count": 1,
+      "percentage": 1.1
+    }
+  },
+  "auth_patterns": {
+    "oauth2_only": 36,
+    "api_key_only": 33,
+    "hybrid_both": 16,
+    "token_or_other": 5
+  },
+  "gating_totals": {
+    "self_serve_signup": 82,
+    "free_or_trial_credentials": 77,
+    "paid_plan_required": 0,
+    "admin_approval_required": 1,
+    "partner_approval_required": 4
+  },
+  "category_matrix": {
+    "CRM and Sales": {
+      "total": 10,
+      "buildable_now": 8,
+      "conditional": 1,
+      "outreach_needed": 1,
+      "self_serve_pct": 90.0,
+      "partner_gated_count": 1,
+      "dominant_auth": "oauth2"
+    },
+    "Communications and Messaging": {
+      "total": 10,
+      "buildable_now": 10,
+      "conditional": 0,
+      "outreach_needed": 0,
+      "self_serve_pct": 100.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "token"
+    },
+    "Data, SEO and Scraping": {
+      "total": 10,
+      "buildable_now": 8,
+      "conditional": 2,
+      "outreach_needed": 0,
+      "self_serve_pct": 90.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "api_key"
+    },
+    "Developer, Infra and Data platforms": {
+      "total": 10,
+      "buildable_now": 10,
+      "conditional": 0,
+      "outreach_needed": 0,
+      "self_serve_pct": 100.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "token"
+    },
+    "Ecommerce": {
+      "total": 10,
+      "buildable_now": 6,
+      "conditional": 3,
+      "outreach_needed": 0,
+      "self_serve_pct": 80.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "oauth2"
+    },
+    "Finance and Fintech": {
+      "total": 10,
+      "buildable_now": 5,
+      "conditional": 5,
+      "outreach_needed": 0,
+      "self_serve_pct": 70.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "api_key"
+    },
+    "Marketing, Ads, Email and Social": {
+      "total": 10,
+      "buildable_now": 7,
+      "conditional": 1,
+      "outreach_needed": 2,
+      "self_serve_pct": 100.0,
+      "partner_gated_count": 2,
+      "dominant_auth": "oauth2"
+    },
+    "Productivity and Project Management": {
+      "total": 10,
+      "buildable_now": 10,
+      "conditional": 0,
+      "outreach_needed": 0,
+      "self_serve_pct": 100.0,
+      "partner_gated_count": 0,
+      "dominant_auth": "oauth2"
+    },
+    "Support and Helpdesk": {
+      "total": 10,
+      "buildable_now": 8,
+      "conditional": 1,
+      "outreach_needed": 1,
+      "self_serve_pct": 90.0,
+      "partner_gated_count": 1,
+      "dominant_auth": "api_key"
+    }
+  },
+  "mcp_breakdown": {
+    "official": 19,
+    "third_party": 33,
+    "none_found": 38,
+    "unknown": 0,
+    "total_with_mcp": 52,
+    "mcp_readiness_pct": 57.8
+  },
+  "blocker_clusters": {
+    "partner_application_or_sales_gate": 8,
+    "active_paid_plan_required": 0,
+    "admin_or_enterprise_authorization": 1,
+    "closed_portal_or_unreleased_api": 8
+  },
+  "audit_metrics": {
+    "first_pass": {
+      "field_level_accuracy_pct": 75.0,
+      "field_numerator": 54,
+      "field_denominator": 72,
+      "app_level_accuracy_pct": 38.9,
+      "app_numerator": 7,
+      "app_denominator": 18
+    },
+    "final_pass": {
+      "field_level_accuracy_pct": 77.8,
+      "field_numerator": 56,
+      "field_denominator": 72,
+      "app_level_accuracy_pct": 44.4,
+      "app_numerator": 8,
+      "app_denominator": 18
+    },
+    "unverifiable_fields": 0
+  },
+  "concrete_misses": [
+    {
+      "app_id": 1,
+      "app_name": "Salesforce",
+      "field": "buildability",
+      "first_pass_val": "buildable_now",
+      "ground_truth_val": "conditional",
+      "correction_rationale": "Misclassified by unassisted LLM baseline."
+    },
+    {
+      "app_id": 10,
+      "app_name": "DealCloud",
+      "field": "credential_access",
+      "first_pass_val": {
+        "self_serve_signup": "yes",
+        "free_or_trial_credentials": "no",
+        "paid_plan_required": "no",
+        "admin_approval_required": "no",
+        "partner_approval_required": "no"
+      },
+      "ground_truth_val": {
+        "self_serve_signup": "no",
+        "partner_approval_required": "no"
+      },
+      "correction_rationale": "Unassisted LLM assumed self-serve developer portal; actually requires enterprise tenant provisioning."
+    },
+    {
+      "app_id": 10,
+      "app_name": "DealCloud",
+      "field": "buildability",
+      "first_pass_val": "buildable_now",
+      "ground_truth_val": "conditional",
+      "correction_rationale": "Corrected from buildable_now to conditional."
+    },
+    {
+      "app_id": 11,
+      "app_name": "Zendesk",
+      "field": "credential_access",
+      "first_pass_val": {
+        "self_serve_signup": "yes",
+        "free_or_trial_credentials": "yes",
+        "paid_plan_required": "no",
+        "admin_approval_required": "no",
+        "partner_approval_required": "yes"
+      },
+      "ground_truth_val": {
+        "self_serve_signup": "yes",
+        "partner_approval_required": "no"
+      },
+      "correction_rationale": "Misclassified by unassisted LLM baseline."
+    },
+    {
+      "app_id": 11,
+      "app_name": "Zendesk",
+      "field": "buildability",
+      "first_pass_val": "outreach_needed",
+      "ground_truth_val": "buildable_now",
+      "correction_rationale": "Misclassified by unassisted LLM baseline."
+    },
+    {
+      "app_id": 20,
+      "app_name": "Gladly",
+      "field": "credential_access",
+      "first_pass_val": {
+        "self_serve_signup": "yes",
+        "free_or_trial_credentials": "no",
+        "paid_plan_required": "no",
+        "admin_approval_required": "no",
+        "partner_approval_required": "no"
+      },
+      "ground_truth_val": {
+        "self_serve_signup": "no",
+        "partner_approval_required": "yes"
+      },
+      "correction_rationale": "Misclassified by unassisted LLM baseline."
+    }
+  ],
+  "sample_selection_rule": "Stratified random sample: exactly 2 apps per category across all 9 categories (18 apps total, 20.0% sample size), stratified across buildable_now (10), conditional (5), and outreach_needed (3)."
+}

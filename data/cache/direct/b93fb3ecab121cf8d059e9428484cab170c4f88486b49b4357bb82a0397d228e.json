@@ -1,0 +1,11 @@
+{
+  "url": "https://paygent",
+  "final_url": "https://paygent",
+  "title": "",
+  "timestamp": "2026-09-24T19:13:42.104000+00:00",
+  "source_method": "direct_http",
+  "content_hash": "",
+  "raw_markdown": "",
+  "status_code": 0,
+  "error": "HTTPSConnectionPool(host='paygent', port=443): Max retries exceeded with url: / (Caused by NameResolutionError(\"HTTPSConnection(host='paygent', port=443): Failed to resolve 'paygent' ([Errno 8] nodename nor servname provided, or not known)\"))"
+}
