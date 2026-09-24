@@ -19,6 +19,63 @@ from src.rules import evaluate_api_breadth, evaluate_buildability
 
 DEFAULT_OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-6-luna")
 
+EXTRACTION_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "summary": {"type": "string"},
+        "auth_methods": {"type": "array", "items": {"type": "string", "enum": ["oauth2", "api_key", "basic", "token", "other"]}},
+        "credential_access": {
+            "type": "object",
+            "properties": {
+                key: {"type": "string", "enum": ["yes", "no", "unknown"]}
+                for key in (
+                    "self_serve_signup", "free_or_trial_credentials",
+                    "paid_plan_required", "admin_approval_required",
+                    "partner_approval_required"
+                )
+            },
+            "required": [
+                "self_serve_signup", "free_or_trial_credentials",
+                "paid_plan_required", "admin_approval_required",
+                "partner_approval_required"
+            ],
+            "additionalProperties": False
+        },
+        "api_types": {"type": "array", "items": {"type": "string", "enum": ["rest", "graphql", "grpc", "soap", "webhooks", "other"]}},
+        "documented_endpoint_count": {"type": ["integer", "null"]},
+        "existing_mcp": {
+            "type": "string",
+            "enum": ["official", "third_party", "none_found", "unknown"]
+        },
+        "main_blocker": {"type": "string"},
+        "evidence": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "field": {
+                        "type": "string",
+                        "enum": [
+                            "summary", "auth_methods", "credential_access",
+                            "api_types", "api_breadth", "existing_mcp",
+                            "buildability"
+                        ]
+                    },
+                    "claim": {"type": "string"},
+                    "quote": {"type": "string"}
+                },
+                "required": ["field", "claim", "quote"],
+                "additionalProperties": False
+            }
+        }
+    },
+    "required": [
+        "summary", "auth_methods", "credential_access", "api_types",
+        "documented_endpoint_count", "existing_mcp", "main_blocker", "evidence"
+    ],
+    "additionalProperties": False
+}
+
 
 class ResearchOrchestrator:
     """Repeatable per-app research agent orchestrating Firecrawl retrieval, GPT-6 Luna extraction, and Jev decisions."""
@@ -37,7 +94,7 @@ class ResearchOrchestrator:
         self.jev = JevClient()
         self.openai_api_key = os.getenv("OPENAI_API_KEY")
         self.model = DEFAULT_OPENAI_MODEL
-        self.client = OpenAI(api_key=self.openai_api_key) if self.openai_api_key else None
+        self.client = OpenAI(api_key=self.openai_api_key, timeout=30.0, max_retries=0) if self.openai_api_key else None
 
         os.makedirs(os.path.dirname(self.output_file) or ".", exist_ok=True)
         self.apps = self._load_apps()
@@ -79,34 +136,16 @@ class ResearchOrchestrator:
         # 2. Extract candidate facts with GPT-6 Luna or deterministic rule base
         candidate_data = self._generate_candidate_record(app_meta, doc, excerpt)
 
-        # 3. Jev Decision Verification Cascade (if cascade mode)
+        # 3. Verify only quoted claims. Absence of a fact is not evidence of "no".
         if self.mode == "cascade" and doc.raw_markdown:
-            jev_classifications = self.jev.classify_access_and_auth(excerpt)
-            
-            # Map Jev Noul answers to credential access
-            cred_dict = candidate_data.get("credential_access", {})
-            if "self_serve_signup" in jev_classifications:
-                p = jev_classifications["self_serve_signup"].get("noul", 0.5)
-                cred_dict["self_serve_signup"] = "yes" if p > 0.6 else ("no" if p < 0.3 else cred_dict.get("self_serve_signup", "unknown"))
-            if "paid_plan_required" in jev_classifications:
-                p = jev_classifications["paid_plan_required"].get("noul", 0.5)
-                cred_dict["paid_plan_required"] = "yes" if p > 0.6 else ("no" if p < 0.3 else cred_dict.get("paid_plan_required", "unknown"))
-            if "admin_approval_required" in jev_classifications:
-                p = jev_classifications["admin_approval_required"].get("noul", 0.5)
-                cred_dict["admin_approval_required"] = "yes" if p > 0.6 else ("no" if p < 0.3 else cred_dict.get("admin_approval_required", "unknown"))
-            if "partner_approval_required" in jev_classifications:
-                p = jev_classifications["partner_approval_required"].get("noul", 0.5)
-                cred_dict["partner_approval_required"] = "yes" if p > 0.6 else ("no" if p < 0.3 else cred_dict.get("partner_approval_required", "unknown"))
-
-            candidate_data["credential_access"] = cred_dict
-
-            # Verify claims with Jev
+            source_text = " ".join(doc.raw_markdown.split())
             for ev in candidate_data.get("evidence", []):
-                claim = ev.get("claim", "")
-                quote = ev.get("quote", "")
-                # Compare each claim with the retrieved source, never with its own proposed quote.
-                jev_res = self.jev.verify_claim(claim, excerpt)
-                ev["verification"] = jev_res.get("choice", "supported")
+                quote = " ".join(str(ev.get("quote", "")).split())
+                if quote and quote in source_text:
+                    jev_res = self.jev.verify_claim(ev.get("claim", ""), excerpt)
+                    ev["verification"] = jev_res.get("choice", "insufficient_evidence")
+                else:
+                    ev["verification"] = "insufficient_evidence"
 
         # 4. Code-owned rule composition
         cred_access = CredentialAccess(**candidate_data.get("credential_access", {}))
@@ -125,6 +164,11 @@ class ResearchOrchestrator:
             existing_blocker=candidate_data.get("main_blocker", "none")
         )
 
+        candidate_data["api_breadth"] = breadth
+        candidate_data["buildability"] = verdict
+        status = ("blocked" if candidate_data.get("research_status") == "blocked"
+                  else self._candidate_status(candidate_data, doc))
+
         record = AppRecord(
             id=app_id,
             name=name,
@@ -138,9 +182,9 @@ class ResearchOrchestrator:
             existing_mcp=candidate_data.get("existing_mcp", "unknown"),
             buildability=verdict,
             main_blocker=blocker,
-            confidence=candidate_data.get("confidence", "high"),
+            confidence="medium" if status == "complete" else "low",
             evidence=[EvidenceItem(**e) for e in candidate_data.get("evidence", [])],
-            research_status=self._candidate_status(candidate_data, doc),
+            research_status=status,
             notes=notes
         )
         return record
@@ -154,16 +198,21 @@ class ResearchOrchestrator:
 
         try:
             system_prompt = (
-                "You are an API researcher. Extract only facts supported by the supplied official documentation. "
-                "Return a JSON object with the AppRecord fields and documented_endpoint_count. Every non-unknown "
-                "material value must have an evidence item with its source URL and a short exact quote copied from "
-                "the excerpt. Count endpoints only when the excerpt enumerates them; otherwise use null. If a fact is "
-                "not established by the excerpt, return unknown. Do not use prior company knowledge."
+                "Extract facts only from the supplied official source excerpt. "
+                "Return one flat JSON object matching the schema; do not wrap it in app_record. "
+                "Use unknown or an empty array when the excerpt does not establish a fact. "
+                "Use a short one-line summary, and use the canonical enum labels for auth and API types. "
+                "For each material value you provide, include an evidence item with its field, "
+                "a narrow claim, and a contiguous 8-20 word quote copied exactly from the excerpt. "
+                "If no exact quote is available, leave the field unknown or empty. "
+                "Do not infer credential access from silence. "
+                "Count endpoints only when explicitly enumerated; otherwise use null. "
+                "Set existing_mcp to unknown unless this excerpt explicitly mentions an MCP. "
+                "Do not use prior knowledge."
             )
             user_prompt = (
                 f"App: {app_meta['name']}\nCategory: {app_meta['category']}\n"
-                f"Website hint: {app_meta.get('website_hint', '')}\n\nSource URL: {doc.final_url}\n"
-                f"Excerpt:\n{excerpt[:3000]}"
+                f"Source URL: {doc.final_url}\nExcerpt:\n{excerpt[:3000]}"
             )
             resp = self.client.chat.completions.create(
                 model=self.model,
@@ -171,15 +220,35 @@ class ResearchOrchestrator:
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt}
                 ],
-                response_format={"type": "json_object"},
-                temperature=0.0
+                response_format={
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "integration_research",
+                        "strict": True,
+                        "schema": EXTRACTION_SCHEMA
+                    }
+                },
+                max_completion_tokens=1800
             )
             content = resp.choices[0].message.content
             if not content:
                 return self._unknown_candidate_record("The model returned an empty response.")
-            return json.loads(content)
-        except Exception:
-            return self._unknown_candidate_record("Model extraction failed; manual review is required.")
+            candidate = json.loads(content)
+            if not isinstance(candidate, dict) or "evidence" not in candidate:
+                return self._unknown_candidate_record("The model returned an invalid record shape.")
+            for item in candidate["evidence"]:
+                item["url"] = doc.final_url
+                item["retrieved_at"] = doc.timestamp
+                item["verification"] = "insufficient_evidence"
+            return candidate
+        except Exception as exc:
+            status = getattr(exc, "status_code", None)
+            body = getattr(exc, "body", None)
+            error = body.get("error", body) if isinstance(body, dict) else {}
+            code = error.get("code") if isinstance(error, dict) else None
+            param = error.get("param") if isinstance(error, dict) else None
+            details = ", ".join(str(part) for part in (type(exc).__name__, status, code, param) if part)
+            return self._unknown_candidate_record(f"Model extraction failed ({details}); manual review is required.")
 
     @staticmethod
     def _unknown_candidate_record(reason: str) -> Dict[str, Any]:
@@ -281,7 +350,11 @@ def main():
         orchestrator._save_all_results(existing_results)
         count += 1
 
-    print(f"[✓] Research complete. Successfully saved {len(existing_results)} records to {args.output}")
+    statuses = {status: sum(r.research_status == status for r in existing_results.values())
+                for status in ("complete", "needs_review", "blocked")}
+    print(f"[✓] Saved {len(existing_results)} records to {args.output}. "
+          f"Complete: {statuses['complete']}; needs review: {statuses['needs_review']}; "
+          f"blocked: {statuses['blocked']}.")
 
 
 if __name__ == "__main__":

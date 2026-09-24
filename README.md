@@ -8,6 +8,12 @@ The assignment prompt says 100 apps, but its supplied table contains 90 entries 
 
 The checked-in result rows are a **provisional snapshot**, not a verified 90-app research run. All 90 are marked `needs_review`; the current validator reports 0/90 passing and 279 evidence issues, with no schema errors or logical contradictions. The independent human audit is pending. The previous “improved accuracy” figures came from a synthetic first pass and static expected values, so those rows and claims were removed. No accuracy score is currently reported.
 
+## Latest local verification
+
+On 25 September 2026, a one-app Stripe (#81) run used the temporary local OpenAI and OpenRouter keys with a saved direct source page. The cascade produced six candidate evidence items: four were marked supported by Jev and two had insufficient evidence. Exact source validation still failed, so the record remains needs_review; this pilot is not an accuracy score. Firecrawl was disabled for this cached-source pilot to limit paid requests. The full 90-app batch was not rerun.
+
+The local test suite passed (5 tests). The checked-in 90-row dataset still has 0 passing records, 279 evidence issues, an empty first-pass baseline, and a pending 18-app human audit. Complete those checks before submitting the dataset as verified research.
+
 ## Deliverables
 
 - Case-study page: [GitHub Pages](https://utkarshdubeygit.github.io/tool-research-agent/)
@@ -30,6 +36,9 @@ cp .env.example .env.local
 Put local CLI keys in the ignored `.env.local` file. The CLI reads `OPENAI_API_KEY`, `OPENROUTER_API_KEY`, and `FIRECRAWL_API_KEY`; `OPENAI_MODEL` defaults to `gpt-6-luna`. Never put real keys in `.env.example`, source files, generated site data, or the README. `.env.local` is ignored by Git.
 
 ```bash
+# Try one app first; uncached runs use paid APIs
+python -m src.research --app-id 81 --mode cascade --output stripe-pilot.json
+
 # Capture a real first pass before making manual corrections
 python -m src.research --all --mode first_pass --output data/first_pass.json
 
@@ -85,4 +94,4 @@ If a server-side research endpoint is added later, add its keys in Vercel Projec
 - `src/`: retrieval, extraction, decision, rules, validation, analysis, and audit CLI.
 - `site/`: static case-study page and generated JSON/CSV/browser bundle.
 
-The existing test suite can be run with `pytest`; it was not run during this deployment-readiness review.
+The local test suite can be rerun with `pytest -q`; all 5 tests passed during the latest review.

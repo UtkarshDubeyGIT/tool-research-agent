@@ -86,6 +86,6 @@ def evaluate_buildability(
     if (not has_auth or not has_api or
             credential_access.self_serve_signup == "unknown" or
             credential_access.free_or_trial_credentials == "unknown"):
-        return "unknown", existing_blocker or "Credential access or API documentation needs verification."
+        return "unknown", "Credential access or API documentation needs verification."
 
     return "conditional", existing_blocker or "Requires specific environment configuration or plan credentials."

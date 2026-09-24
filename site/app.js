@@ -21,6 +21,26 @@ function safeEvidenceUrl(value) {
   }
 }
 
+function renderVerdictBadge(app) {
+  const labels = {
+    buildable_now: "Buildable Now",
+    conditional: "Conditional",
+    outreach_needed: "Outreach Needed",
+    unknown: "Unknown"
+  };
+  const colors = {
+    buildable_now: "badge-green",
+    conditional: "badge-amber",
+    outreach_needed: "badge-purple",
+    unknown: "badge-gray"
+  };
+  const verdict = labels[app.buildability] ? app.buildability : "unknown";
+  const draft = summaryData.dataset_status !== "verified" || app.research_status !== "complete";
+  const color = draft ? "badge-gray" : colors[verdict];
+  return '<span class="badge ' + color + '">' +
+    (draft ? "Draft · " : "") + labels[verdict] + '</span>';
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initData();
   setupEventListeners();
@@ -193,16 +213,7 @@ function renderTable() {
   }
 
   tbody.innerHTML = filtered.map(r => {
-    let verdictBadge = "";
-    if (r.buildability === "buildable_now") {
-      verdictBadge = `<span class="badge badge-green">Buildable Now</span>`;
-    } else if (r.buildability === "conditional") {
-      verdictBadge = `<span class="badge badge-amber">Conditional</span>`;
-    } else if (r.buildability === "outreach_needed") {
-      verdictBadge = `<span class="badge badge-purple">Outreach Needed</span>`;
-    } else {
-      verdictBadge = `<span class="badge badge-gray">Unknown</span>`;
-    }
+    const verdictBadge = renderVerdictBadge(r);
 
     const authBadges = (r.auth_methods || []).map(m => `<span class="badge badge-gray" style="margin-right: 4px;">${escapeHTML(m)}</span>`).join("");
     const mcpBadge = r.existing_mcp === "official" 
@@ -238,15 +249,7 @@ function openDrawer(appId) {
   const apiTypes = Array.isArray(app.api_types) ? app.api_types.join(", ") : "unknown";
   document.getElementById("drawer-api-summary").textContent = `Types: ${apiTypes || "unknown"} · Breadth: ${app.api_breadth || "unknown"} · MCP: ${app.existing_mcp || "unknown"} · Review: ${app.research_status || "unknown"}`;
   
-  let verdictBadge = "";
-  if (app.buildability === "buildable_now") {
-    verdictBadge = `<span class="badge badge-green">Buildable Now</span>`;
-  } else if (app.buildability === "conditional") {
-    verdictBadge = `<span class="badge badge-amber">Conditional</span>`;
-  } else {
-    verdictBadge = `<span class="badge badge-purple">Outreach Needed</span>`;
-  }
-  document.getElementById("drawer-verdict-badge").innerHTML = verdictBadge;
+  document.getElementById("drawer-verdict-badge").innerHTML = renderVerdictBadge(app);
 
   // Render Credential Access Matrix
   const ca = app.credential_access || {};
@@ -263,7 +266,15 @@ function openDrawer(appId) {
   // Do not display draft quotes as verified evidence before source matching passes.
   const evContainer = document.getElementById("drawer-evidence-container");
   if (summaryData.dataset_status === "provisional") {
-    evContainer.innerHTML = `<div style="color: var(--text-dim); font-size: 12px;">Source matching is pending. Draft quotes are hidden until they are checked against the saved source page.</div>`;
+    const urls = [...new Set((app.evidence || []).map(ev => safeEvidenceUrl(ev.url)).filter(Boolean))];
+    const sourceLinks = urls.map(url =>
+      '<div style="margin-top: 8px;"><a href="' + escapeHTML(url) +
+      '" target="_blank" rel="noopener noreferrer" class="evidence-url mono">' +
+      escapeHTML(url) + ' ↗</a></div>'
+    ).join("");
+    evContainer.innerHTML =
+      '<div style="color: var(--text-muted); font-size: 12px;">Candidate source links. Claims and quotes remain unverified.</div>' +
+      (sourceLinks || '<div style="color: var(--text-dim); font-size: 12px; margin-top: 8px;">No source link recorded.</div>');
   } else if (app.evidence && app.evidence.length > 0) {
     evContainer.innerHTML = app.evidence.map(ev => {
       const url = safeEvidenceUrl(ev.url);
