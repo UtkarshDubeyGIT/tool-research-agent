@@ -9,10 +9,11 @@
 
 ---
 
-## 🌐 Live URLs
+## 🌐 Live URLs & Deployment
 
-- **Live Case Study Web App:** [https://composio-tool-research-agent.vercel.app](https://composio-tool-research-agent.vercel.app) *(or deployed Vercel domain)*
+- **Live Case Study Web App:** [https://utkarshdubeygit.github.io/tool-research-agent/](https://utkarshdubeygit.github.io/tool-research-agent/)
 - **Public GitHub Repository:** [https://github.com/UtkarshDubeyGIT/tool-research-agent](https://github.com/UtkarshDubeyGIT/tool-research-agent)
+- **Vercel Deployment:** Pre-configured via `vercel.json` (`outputDirectory: "site"`). Ready for 1-click deployment on Vercel.
 
 ---
 
