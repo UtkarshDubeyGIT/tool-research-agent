@@ -1,6 +1,10 @@
 # Integration field notes
 
-An independent Product Ops take-home case study for researching API integration feasibility. The [public Vercel review page](https://composio-research-agent-nine.vercel.app/) and [GitHub Pages mirror](https://utkarshdubeygit.github.io/tool-research-agent/) let an examiner search the app list, open a record, and follow checked claims to saved source quotes and the original page. The [repository](https://github.com/UtkarshDubeyGIT/tool-research-agent) contains the inputs, agent, first pass, final pass, source snapshots, and reviewer worksheet.
+An independent Product Ops take-home case study for researching API integration feasibility. The [public Vercel review page](https://composio-research-agent.dubey.page/) and [GitHub Pages mirror](https://utkarshdubeygit.github.io/tool-research-agent/) let an examiner search the app list, open a record, and follow checked claims to saved source quotes and the original page. The [repository](https://github.com/UtkarshDubeyGIT/tool-research-agent) contains the inputs, agent, first pass, final pass, source snapshots, and reviewer worksheet.
+
+## Author
+
+[Utkarsh Dubey](https://dubey.page/) · [GitHub](https://github.com/utkarshdubeygit) · [Email](mailto:utkarshd9990@gmail.com)
 
 ## Scope and current quality state
 
@@ -48,7 +52,7 @@ For a bounded single-app pilot, use `python -m src.research --app-id 81 --output
 
 ## Deployment and keys
 
-The page is static. [Vercel production](https://composio-research-agent-nine.vercel.app/) is the primary examiner link; [GitHub Pages](https://utkarshdubeygit.github.io/tool-research-agent/) is a public mirror. `vercel.json` serves `site/` with the framework preset set to Other. **No production API keys are needed for this deployed UI**, and no key is shipped to the browser. The Python research pipeline runs locally before publishing the generated files.
+The page is static. [Vercel production](https://composio-research-agent.dubey.page/) is the primary examiner link; [GitHub Pages](https://utkarshdubeygit.github.io/tool-research-agent/) is a public mirror. `vercel.json` serves `site/` with the framework preset set to Other. **No production API keys are needed for this deployed UI**, and no key is shipped to the browser. The Python research pipeline runs locally before publishing the generated files.
 
 If a private server-side research endpoint is added later, put unprefixed `OPENAI_API_KEY`, `OPENROUTER_API_KEY`, and `FIRECRAWL_API_KEY` in **Vercel Project Settings → Environment Variables**, scoped to the needed environment, then redeploy. Never use `NEXT_PUBLIC_` or `VITE_` prefixes for these secrets. For local work, keep using the ignored `.env.local`.
 
